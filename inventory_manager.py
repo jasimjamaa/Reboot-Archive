@@ -161,7 +161,7 @@ def product_page(data: dict, folder: Path) -> str:
         if value not in (None, ""):
             specs.append(f"<div><dt>{esc(label)}</dt><dd>{esc(value)}</dd></div>")
     sold_badge = '<span class="sold">Sold</span>' if status == "sold" else ""
-    ebay_button = f'<a class="ebay-button" href="{ebay_url}" target="_blank" rel="noopener noreferrer">View on eBay <span aria-hidden="true">↗</span></a>' if ebay_url else '<p class="availability">eBay link not added yet.</p>'
+    ebay_button = f'<a class="ebay-button" href="{ebay_url}" target="_blank" rel="noopener noreferrer">View on eBay <span aria-hidden="true">&#8599;&#65038;</span></a>' if ebay_url else '<p class="availability">eBay link not added yet.</p>'
     price_value = data.get("Price (in GBP)")
     price_html = f'<p class="price">{money(price_value)}</p>' if price_value not in (None, "") else '<p class="price">Price on eBay</p>'
     return f'''<!doctype html>
