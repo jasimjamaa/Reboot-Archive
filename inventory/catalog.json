@@ -1,14 +1,3 @@
 {
-  "Listings": [
-    {
-      "Product ID": "RA0001",
-      "Catalog URL": "inventory/RA0001/listing.html",
-      "Title": "iPod shuffle 4th Generation (Late 2012) -Purple",
-      "Category": "Music",
-      "Device Series": "iPod",
-      "Device Model": "iPod shuffle 4th Generation",
-      "Price (in GBP)": 21.5,
-      "Status": "available"
-    }
-  ]
+  "Listings": []
 }
