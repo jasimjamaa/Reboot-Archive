@@ -27,5 +27,6 @@
   "Status": "sold",
   "Active": false,
   "Archived": true,
-  "Date sold": "2026-11-21"
+  "Date sold": "2026-11-21",
+  "Condition report PDF (optional value)": "condition-report.pdf"
 }

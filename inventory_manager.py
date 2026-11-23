@@ -38,6 +38,7 @@ FIELDS = [
     "RAM (optional value)",
     "Price (in GBP)",
     "eBay link",
+    "Condition report PDF (optional value)",
     "Status",
 ]
 
@@ -152,6 +153,12 @@ def product_page(data: dict, folder: Path) -> str:
     sold_date = esc(data.get("Date sold", ""))
     description = str(data.get("Description") or "")
     ebay_url = esc(data.get("eBay link", ""))
+    report_name = Path(str(data.get("Condition report PDF (optional value)") or "")).name
+    report_link = (
+        f'<p class="report-link"><a href="{quote(report_name)}" style="color:#a45e43;text-decoration:underline;text-underline-offset:3px" target="_blank" rel="noopener noreferrer">View condition, testing &amp; repairs report (PDF) &#8599;&#65038;</a></p>'
+        if report_name and (folder / report_name).is_file()
+        else ""
+    )
     cover = data.get("Cover image") or ""
     images = [cover] if cover else []
     images.extend(image for image in data.get("Additional images", []) if image and image not in images)
@@ -176,7 +183,7 @@ def product_page(data: dict, folder: Path) -> str:
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f3ee"><meta name="description" content="{esc(description[:240])}"><link rel="icon" type="image/png" href="../../favicon-collapsed.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet"><title>{title} — Reboot Archive</title>
 <style>:root{{--paper:#f5f3ee;--ink:#242622;--muted:#797a73;--line:#dcd9d1;--rust:#a45e43;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',Arial,sans-serif}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans)}}a{{color:inherit;text-decoration:none}}.announcement{{height:34px;background:#292b26;color:#f5f3ee;display:grid;place-items:center;font-size:9px;letter-spacing:.16em;text-transform:uppercase}}.nav{{height:76px;padding:0 7.2%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}}.brand{{display:flex;align-items:center;gap:10px}}.brand img{{width:34px;height:34px;object-fit:cover;border-radius:9px}}.brand strong{{display:block;font:600 17px var(--serif)}}.brand span span{{font:9px var(--sans);letter-spacing:.16em;text-transform:uppercase;display:block;margin-top:3px;color:var(--muted)}}.nav-links{{display:flex;gap:36px;font-size:10px;text-transform:uppercase;letter-spacing:.14em}}.nav-links a:hover{{color:var(--rust)}}main{{padding:54px 7.2% 90px}}.crumb{{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}}.layout{{display:grid;grid-template-columns:1.05fr .95fr;gap:7%;margin-top:26px;align-items:start}}.gallery{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}.gallery img{{width:100%;aspect-ratio:1/1;object-fit:contain;background:#e9e6df;padding:12px}}.gallery img:first-child{{grid-column:1/-1;aspect-ratio:1.12/1}}.photo-empty{{min-height:380px;grid-column:1/-1;background:#e5e4dc;display:grid;place-items:center;text-align:center;padding:24px;font:24px var(--serif);color:#858879}}.eyebrow{{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust)}}h1{{font:500 clamp(36px,4vw,54px)/1.08 var(--serif);letter-spacing:-.04em;margin:14px 0}}.id{{font-size:9px;color:var(--muted);letter-spacing:.12em}}.price{{font:500 20px var(--serif);margin:20px 0}}.sold{{display:inline-block;background:#e7ded5;padding:7px 10px;font-size:8px;letter-spacing:.15em;text-transform:uppercase}}.description{{font-size:12px;line-height:1.9;color:#62645e;border-top:1px solid var(--line);padding-top:17px;margin-top:22px}}.description p{{margin:0 0 12px}}dl{{margin:22px 0;border-top:1px solid var(--line)}}dl div{{display:grid;grid-template-columns:120px 1fr;padding:11px 0;border-bottom:1px solid var(--line);font-size:10px}}dt{{color:var(--muted);text-transform:uppercase;letter-spacing:.1em}}dd{{margin:0}}.ebay-button{{display:flex;justify-content:space-between;align-items:center;margin-top:27px;padding:17px 20px;background:var(--ink);color:white;text-transform:uppercase;letter-spacing:.13em;font-size:9px;transition:.2s}}.ebay-button:hover{{background:var(--rust)}}.availability{{font-size:10px;color:var(--muted)}}.category{{font-size:9px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}}footer{{border-top:1px solid var(--line);padding:25px 7.2%;font-size:9px;color:var(--muted)}}@media(max-width:760px){{.nav{{padding:0 5%;height:68px}}.nav-links{{gap:14px;font-size:8px}}.nav-links a:nth-child(2){{display:none}}main{{padding:36px 6% 65px}}.layout{{grid-template-columns:1fr;gap:34px}}.gallery img:first-child{{aspect-ratio:1.1/1}}.photo-empty{{min-height:280px}}}}</style></head>
 <body><div class="announcement">A second life for the objects that changed everything</div><header class="nav"><a class="brand" href="../../index.html"><img src="../../favicon-collapsed.png" alt=""><span><strong>Reboot Archive</strong><span>Vintage Apple, reimagined</span></span></a><nav class="nav-links" aria-label="Main navigation"><a href="../../collections.html">The collection</a><a href="../../story.html">Our story</a><a href="../../explore.html">Explore</a></nav></header>
-<main><a class="crumb" href="../../{'archive.html' if archived else 'collections.html'}">← Back to the {'archive' if archived else 'collection'}</a><div class="layout"><div class="gallery">{gallery}</div><section><div class="eyebrow">{category} · {series}</div><h1>{title}</h1><div class="id">PRODUCT {product_id}</div>{sold_badge}{f'<p class="availability">Sold {sold_date}</p>' if archived and sold_date else ''}{price_html}<dl>{''.join(specs)}</dl><div class="description">{description_html}</div>{ebay_button}</section></div></main><footer>Reboot Archive · Objects with a past, ready for what’s next.</footer></body></html>'''
+<main><a class="crumb" href="../../{'archive.html' if archived else 'collections.html'}">← Back to the {'archive' if archived else 'collection'}</a><div class="layout"><div class="gallery">{gallery}</div><section><div class="eyebrow">{category} · {series}</div><h1>{title}</h1><div class="id">PRODUCT {product_id}</div>{sold_badge}{f'<p class="availability">Sold {sold_date}</p>' if archived and sold_date else ''}{price_html}<dl>{''.join(specs)}</dl><div class="description">{description_html}</div>{report_link}{ebay_button}</section></div></main><footer>Reboot Archive · Objects with a past, ready for what’s next.</footer></body></html>'''
 
 
 def collection_card(data: dict) -> str:
@@ -258,6 +265,7 @@ def new_record(product_id: str, active: bool) -> dict:
         "RAM (optional value)": None,
         "Price (in GBP)": None,
         "eBay link": "",
+        "Condition report PDF (optional value)": "",
         "Status": "available",
         "Active": active,
     }
@@ -343,38 +351,78 @@ def copy_image(source_text: str, folder: Path, target_name: str) -> str:
     return filename
 
 
+def choose_files(title: str, filetypes: list[tuple[str, str]], multiple: bool = False) -> list[str]:
+    try:
+        import tkinter as tk
+        from tkinter import filedialog
+    except ImportError as error:
+        raise RuntimeError("The native file picker requires Python's Tkinter support.") from error
+
+    try:
+        window = tk.Tk()
+    except tk.TclError as error:
+        raise RuntimeError(f"Could not open the native file picker: {error}") from error
+    window.withdraw()
+    try:
+        window.attributes("-topmost", True)
+        options = {"title": title, "filetypes": filetypes, "initialdir": str(ROOT)}
+        selected = filedialog.askopenfilenames(**options) if multiple else filedialog.askopenfilename(**options)
+        return list(selected) if multiple else ([selected] if selected else [])
+    except tk.TclError as error:
+        raise RuntimeError(f"Could not open the native file picker: {error}") from error
+    finally:
+        window.destroy()
+
+
+def copy_report(source_text: str, folder: Path) -> str:
+    source = Path(source_text).expanduser()
+    if not source.is_file():
+        raise ValueError(f"PDF file not found: {source}")
+    if source.suffix.lower() != ".pdf":
+        raise ValueError("The condition report must be a PDF file.")
+    target = folder / "condition-report.pdf"
+    if source.resolve() != target.resolve():
+        shutil.copy2(source, target)
+    return target.name
+
+
 def ask_images(data: dict, folder: Path, editing: bool) -> None:
     current = data.get("Cover image", "")
-    prompt = "Cover image file path (Enter keeps current, - clears)" if editing else "Cover image file path (optional)"
-    path = input(f"{prompt}{f' [{current}]' if current else ''}: ").strip()
-    if path == "-":
-        data["Cover image"] = ""
-    elif path:
+    if editing:
+        answer = input(f"Cover image [{current or 'none'}]: Enter keeps current, C chooses a file, - clears: ").strip().lower()
+        if answer == "-":
+            data["Cover image"] = ""
+            path = ""
+        elif answer in {"c", "choose", "y", "yes"}:
+            paths = choose_files("Choose cover image", [("Images", "*.png *.jpg *.jpeg *.webp *.gif"), ("All files", "*.*")])
+            path = paths[0] if paths else ""
+        else:
+            path = ""
+    else:
+        paths = choose_files("Choose cover image", [("Images", "*.png *.jpg *.jpeg *.webp *.gif"), ("All files", "*.*")])
+        path = paths[0] if paths else ""
+    if path:
         try:
             data["Cover image"] = copy_image(path, folder, "cover")
         except ValueError as error:
             print(error, "Keeping the existing cover image.")
-    elif not editing:
+    elif not editing and not current:
         data["Cover image"] = ""
 
     if editing:
         current_images = data.get("Additional images", [])
-        action = input("Additional image paths: Enter keeps current, - clears, or enter paths one per line and finish with a blank line: ").strip()
+        action = input("Additional images: Enter keeps current, - clears, or C chooses files: ").strip().lower()
         if not action:
             return
         if action == "-":
             data["Additional images"] = []
             return
-        paths = [action]
+        if action not in {"c", "choose", "y", "yes"}:
+            return
+        paths = choose_files("Choose additional images", [("Images", "*.png *.jpg *.jpeg *.webp *.gif"), ("All files", "*.*")], multiple=True)
     else:
         current_images = []
-        paths = []
-        print("Additional image file paths (one per line; blank line when finished):")
-    while True:
-        line = input("Additional image path: ").strip()
-        if not line:
-            break
-        paths.append(line)
+        paths = choose_files("Choose additional images", [("Images", "*.png *.jpg *.jpeg *.webp *.gif"), ("All files", "*.*")], multiple=True)
     copied = []
     for index, source in enumerate(paths, 1):
         try:
@@ -399,6 +447,24 @@ def complete_assisted(data: dict, folder: Path, editing: bool = False) -> dict:
         data["RAM (optional value)"] = None
     data["Price (in GBP)"] = ask_price(data.get("Price (in GBP)"))
     data["eBay link"] = ask_text("eBay link", data.get("eBay link", ""), required=not editing)
+    if editing:
+        report_action = input("Condition/testing/repairs PDF: Enter keeps current, C chooses a file, - clears: ").strip().lower()
+        if report_action == "-":
+            data["Condition report PDF (optional value)"] = ""
+            report_path = ""
+        elif report_action in {"c", "choose", "y", "yes"}:
+            chosen = choose_files("Choose condition, testing & repairs report PDF", [("PDF files", "*.pdf")])
+            report_path = chosen[0] if chosen else ""
+        else:
+            report_path = ""
+    else:
+        chosen = choose_files("Choose condition, testing & repairs report PDF (optional)", [("PDF files", "*.pdf")])
+        report_path = chosen[0] if chosen else ""
+    if report_path:
+        try:
+            data["Condition report PDF (optional value)"] = copy_report(report_path, folder)
+        except ValueError as error:
+            print(error, "Skipping the PDF report.")
     data["Status"] = choose("Status", STATUSES, data.get("Status") if editing else None)
     ask_images(data, folder, editing)
     if not editing:
@@ -504,7 +570,71 @@ def regenerate_listing() -> None:
     if not folder.is_dir():
         print(f"Cannot regenerate: listing folder not found: {folder}")
         return
-    atomic_text(folder / "listing.html", product_page(current, folder))
+    data = read_json(folder / "listing.json")
+    if not isinstance(data, dict):
+        print(f"Cannot regenerate: listing.json is missing or invalid for {product_id}.")
+        return
+    changed = False
+    if not data.get("Condition report PDF (optional value)") and (folder / "condition-report.pdf").is_file():
+        data["Condition report PDF (optional value)"] = "condition-report.pdf"
+        changed = True
+    missing_fields = [
+        ("Title", "Title"),
+        ("Category", "Category"),
+        ("Device Series", "Device Series"),
+        ("Device Model", "Device Model"),
+        ("Description", "Description"),
+        ("Condition", "Condition"),
+        ("Storage (optional value)", "Storage (optional value)"),
+        ("RAM (optional value)", "RAM (optional value)"),
+        ("Price (in GBP)", "Price (in GBP)"),
+        ("eBay link", "eBay link"),
+        ("Cover image", "Cover image file path"),
+        ("Condition report PDF (optional value)", "Condition/testing/repairs PDF path"),
+    ]
+    missing = [(key, label) for key, label in missing_fields if data.get(key) in (None, "")]
+    if missing:
+        print("Some listing values are blank. Enter a value when prompted, or press Enter to leave it out.")
+        for key, label in missing:
+            if key == "Cover image":
+                selected = choose_files("Choose cover image", [("Images", "*.png *.jpg *.jpeg *.webp *.gif"), ("All files", "*.*")])
+                answer = selected[0] if selected else ""
+            elif key == "Condition report PDF (optional value)":
+                selected = choose_files("Choose condition, testing & repairs report PDF", [("PDF files", "*.pdf")])
+                answer = selected[0] if selected else ""
+            else:
+                answer = input(f"{label}: ").strip()
+            if not answer:
+                continue
+            if key == "Price (in GBP)":
+                try:
+                    amount = Decimal(answer.replace("£", "").replace(",", ""))
+                    if amount < 0:
+                        raise InvalidOperation
+                    data[key] = float(amount.quantize(Decimal("0.01")))
+                except InvalidOperation:
+                    print("Invalid price; leaving it blank.")
+                    continue
+            elif key == "Cover image":
+                try:
+                    data[key] = copy_image(answer, folder, "cover")
+                except ValueError as error:
+                    print(error, "Leaving the cover image blank.")
+                    continue
+            elif key == "Condition report PDF (optional value)":
+                try:
+                    data[key] = copy_report(answer, folder)
+                except ValueError as error:
+                    print(error, "Leaving the PDF report blank.")
+                    continue
+            else:
+                data[key] = answer
+            changed = True
+    if changed:
+        data["Product ID"] = product_id
+        write_json(folder / "listing.json", data)
+        atomic_text(folder / "description.txt", str(data.get("Description") or ""))
+    atomic_text(folder / "listing.html", product_page(data, folder))
     rebuild_catalog_and_collection()
     print(f"Regenerated {product_id} from its current listing.json.")
 
