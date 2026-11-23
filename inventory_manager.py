@@ -19,6 +19,7 @@ INVENTORY = ROOT / "inventory"
 CATALOG = INVENTORY / "catalog.json"
 SEQUENCE = INVENTORY / "sequence.json"
 COLLECTIONS = ROOT / "collections.html"
+ARCHIVE = ROOT / "archive.html"
 ID_RE = re.compile(r"^RA(\d+)$")
 SERIES = ["iPhone", "iPad", "Mac", "iPod", "other"]
 CATEGORIES = ["Desktop", "Portable", "Music", "Accessories", "Other"]
@@ -70,9 +71,14 @@ def ensure_setup() -> None:
         write_json(SEQUENCE, {"Last issued": 0})
     if not COLLECTIONS.exists():
         raise RuntimeError(f"Website collections page not found: {COLLECTIONS}")
+    if not ARCHIVE.exists():
+        raise RuntimeError(f"Website archive page not found: {ARCHIVE}")
     source = COLLECTIONS.read_text(encoding="utf-8")
     if "<!-- INVENTORY:START -->" not in source or "<!-- INVENTORY:END -->" not in source:
         raise RuntimeError("Collections page is missing inventory markers; refusing to overwrite its product grid.")
+    archive_source = ARCHIVE.read_text(encoding="utf-8")
+    if "<!-- ARCHIVE:START -->" not in archive_source or "<!-- ARCHIVE:END -->" not in archive_source:
+        raise RuntimeError("Archive page is missing archive markers; refusing to overwrite its listing grid.")
     if ".visual img{" not in source:
         source = source.replace(
             ".visual svg{",
@@ -142,6 +148,8 @@ def product_page(data: dict, folder: Path) -> str:
     model = esc(data.get("Device Model", ""))
     condition = esc(data.get("Condition", ""))
     status = str(data.get("Status", "available")).lower()
+    archived = bool(data.get("Archived", False))
+    sold_date = esc(data.get("Date sold", ""))
     description = str(data.get("Description") or "")
     ebay_url = esc(data.get("eBay link", ""))
     cover = data.get("Cover image") or ""
@@ -160,15 +168,15 @@ def product_page(data: dict, folder: Path) -> str:
         value = data.get(key)
         if value not in (None, ""):
             specs.append(f"<div><dt>{esc(label)}</dt><dd>{esc(value)}</dd></div>")
-    sold_badge = '<span class="sold">Sold</span>' if status == "sold" else ""
-    ebay_button = f'<a class="ebay-button" href="{ebay_url}" target="_blank" rel="noopener noreferrer">View on eBay <span aria-hidden="true">&#8599;&#65038;</span></a>' if ebay_url else '<p class="availability">eBay link not added yet.</p>'
+    sold_badge = '<span class="sold">Sold</span>' if status == "sold" or archived else ""
+    ebay_button = "<p class=\"availability\">This listing has been archived.</p>" if archived else (f'<a class="ebay-button" href="{ebay_url}" target="_blank" rel="noopener noreferrer">View on eBay <span aria-hidden="true">&#8599;&#65038;</span></a>' if ebay_url else '<p class="availability">eBay link not added yet.</p>')
     price_value = data.get("Price (in GBP)")
     price_html = f'<p class="price">{money(price_value)}</p>' if price_value not in (None, "") else '<p class="price">Price on eBay</p>'
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f3ee"><meta name="description" content="{esc(description[:240])}"><link rel="icon" type="image/png" href="../../favicon-collapsed.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet"><title>{title} — Reboot Archive</title>
 <style>:root{{--paper:#f5f3ee;--ink:#242622;--muted:#797a73;--line:#dcd9d1;--rust:#a45e43;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',Arial,sans-serif}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans)}}a{{color:inherit;text-decoration:none}}.announcement{{height:34px;background:#292b26;color:#f5f3ee;display:grid;place-items:center;font-size:9px;letter-spacing:.16em;text-transform:uppercase}}.nav{{height:76px;padding:0 7.2%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}}.brand{{display:flex;align-items:center;gap:10px}}.brand img{{width:34px;height:34px;object-fit:cover;border-radius:9px}}.brand strong{{display:block;font:600 17px var(--serif)}}.brand span span{{font:9px var(--sans);letter-spacing:.16em;text-transform:uppercase;display:block;margin-top:3px;color:var(--muted)}}.nav-links{{display:flex;gap:36px;font-size:10px;text-transform:uppercase;letter-spacing:.14em}}.nav-links a:hover{{color:var(--rust)}}main{{padding:54px 7.2% 90px}}.crumb{{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}}.layout{{display:grid;grid-template-columns:1.05fr .95fr;gap:7%;margin-top:26px;align-items:start}}.gallery{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}.gallery img{{width:100%;aspect-ratio:1/1;object-fit:contain;background:#e9e6df;padding:12px}}.gallery img:first-child{{grid-column:1/-1;aspect-ratio:1.12/1}}.photo-empty{{min-height:380px;grid-column:1/-1;background:#e5e4dc;display:grid;place-items:center;text-align:center;padding:24px;font:24px var(--serif);color:#858879}}.eyebrow{{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust)}}h1{{font:500 clamp(36px,4vw,54px)/1.08 var(--serif);letter-spacing:-.04em;margin:14px 0}}.id{{font-size:9px;color:var(--muted);letter-spacing:.12em}}.price{{font:500 20px var(--serif);margin:20px 0}}.sold{{display:inline-block;background:#e7ded5;padding:7px 10px;font-size:8px;letter-spacing:.15em;text-transform:uppercase}}.description{{font-size:12px;line-height:1.9;color:#62645e;border-top:1px solid var(--line);padding-top:17px;margin-top:22px}}.description p{{margin:0 0 12px}}dl{{margin:22px 0;border-top:1px solid var(--line)}}dl div{{display:grid;grid-template-columns:120px 1fr;padding:11px 0;border-bottom:1px solid var(--line);font-size:10px}}dt{{color:var(--muted);text-transform:uppercase;letter-spacing:.1em}}dd{{margin:0}}.ebay-button{{display:flex;justify-content:space-between;align-items:center;margin-top:27px;padding:17px 20px;background:var(--ink);color:white;text-transform:uppercase;letter-spacing:.13em;font-size:9px;transition:.2s}}.ebay-button:hover{{background:var(--rust)}}.availability{{font-size:10px;color:var(--muted)}}.category{{font-size:9px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}}footer{{border-top:1px solid var(--line);padding:25px 7.2%;font-size:9px;color:var(--muted)}}@media(max-width:760px){{.nav{{padding:0 5%;height:68px}}.nav-links{{gap:14px;font-size:8px}}.nav-links a:nth-child(2){{display:none}}main{{padding:36px 6% 65px}}.layout{{grid-template-columns:1fr;gap:34px}}.gallery img:first-child{{aspect-ratio:1.1/1}}.photo-empty{{min-height:280px}}}}</style></head>
 <body><div class="announcement">A second life for the objects that changed everything</div><header class="nav"><a class="brand" href="../../index.html"><img src="../../favicon-collapsed.png" alt=""><span><strong>Reboot Archive</strong><span>Vintage Apple, reimagined</span></span></a><nav class="nav-links" aria-label="Main navigation"><a href="../../collections.html">The collection</a><a href="../../story.html">Our story</a><a href="../../explore.html">Explore</a></nav></header>
-<main><a class="crumb" href="../../collections.html">← Back to the collection</a><div class="layout"><div class="gallery">{gallery}</div><section><div class="eyebrow">{category} · {series}</div><h1>{title}</h1><div class="id">PRODUCT {product_id}</div>{sold_badge}{price_html}<dl>{''.join(specs)}</dl><div class="description">{description_html}</div>{ebay_button}</section></div></main><footer>Reboot Archive · Objects with a past, ready for what’s next.</footer></body></html>'''
+<main><a class="crumb" href="../../{'archive.html' if archived else 'collections.html'}">← Back to the {'archive' if archived else 'collection'}</a><div class="layout"><div class="gallery">{gallery}</div><section><div class="eyebrow">{category} · {series}</div><h1>{title}</h1><div class="id">PRODUCT {product_id}</div>{sold_badge}{f'<p class="availability">Sold {sold_date}</p>' if archived and sold_date else ''}{price_html}<dl>{''.join(specs)}</dl><div class="description">{description_html}</div>{ebay_button}</section></div></main><footer>Reboot Archive · Objects with a past, ready for what’s next.</footer></body></html>'''
 
 
 def collection_card(data: dict) -> str:
@@ -191,8 +199,16 @@ def collection_card(data: dict) -> str:
     return f'<a class="card" data-product-id="{esc(product_id)}" data-category="{esc(category)}" href="inventory/{quote(product_id)}/listing.html"><div class="visual">{badge}{media}</div><div class="details"><div>{title}<small>{subline}</small></div><span class="price">{esc(price)}</span></div></a>'
 
 
+def archive_card(data: dict) -> str:
+    card = collection_card(data)
+    sold_date = esc(data.get("Date sold", "Date not recorded"))
+    card = card.replace('<span class="tag">Curated vintage</span>', '<span class="tag">Sold</span>')
+    return card.replace('</div></a>', f'<small class="sold-date">Sold {sold_date}</small></div></a>')
+
+
 def rebuild_catalog_and_collection() -> None:
-    active = [item for item in all_listings() if item.get("Active", False)]
+    active = [item for item in all_listings() if item.get("Active", False) and not item.get("Archived", False)]
+    archived = sorted((item for item in all_listings() if item.get("Archived", False)), key=lambda item: str(item.get("Date sold", "")), reverse=True)
     entries = []
     for item in active:
         product_id = str(item.get("Product ID", ""))
@@ -218,6 +234,14 @@ def rebuild_catalog_and_collection() -> None:
     source = source[:start] + cards + source[end:]
     atomic_text(COLLECTIONS, source)
 
+    archive_source = ARCHIVE.read_text(encoding="utf-8")
+    start_marker, end_marker = "<!-- ARCHIVE:START -->", "<!-- ARCHIVE:END -->"
+    start = archive_source.index(start_marker) + len(start_marker)
+    end = archive_source.index(end_marker, start)
+    cards = "\n" + "\n".join(archive_card(item) for item in archived) + "\n" if archived else '\n<div class="empty">No past listings in the archive just yet.</div>\n'
+    archive_source = archive_source[:start] + cards + archive_source[end:]
+    atomic_text(ARCHIVE, archive_source)
+
 
 def new_record(product_id: str, active: bool) -> dict:
     return {
@@ -241,6 +265,9 @@ def new_record(product_id: str, active: bool) -> dict:
 
 def save_listing(data: dict) -> None:
     product_id = str(data["Product ID"])
+    if data.get("Archived"):
+        data["Status"] = "sold"
+        data["Active"] = False
     folder = INVENTORY / product_id
     folder.mkdir(parents=True, exist_ok=True)
     data["Description"] = str(data.get("Description") or "")
@@ -430,12 +457,56 @@ def set_visibility(active: bool) -> None:
     current = select_listing()
     if not current:
         return
+    if active and current.get("Archived"):
+        print(f"{current['Product ID']} is archived and cannot be reactivated in the current listing catalog.")
+        return
     if bool(current.get("Active")) == active:
         print(f"{current['Product ID']} is already {'active' if active else 'inactive'}.")
         return
     current["Active"] = active
     save_listing(current)
     print(f"{current['Product ID']} is now {'visible in' if active else 'removed from'} the website catalog.")
+
+
+def archive_listing() -> None:
+    current = select_listing()
+    if not current:
+        return
+    if current.get("Archived"):
+        print(f"{current['Product ID']} is already in The Archive.")
+        return
+    while True:
+        sold_date = input("Date sold (YYYY-MM-DD): ").strip()
+        try:
+            from datetime import date
+            date.fromisoformat(sold_date)
+            break
+        except ValueError:
+            print("Enter a valid date in YYYY-MM-DD format.")
+    current["Status"] = "sold"
+    current["Active"] = False
+    current["Archived"] = True
+    current["Date sold"] = sold_date
+    folder = INVENTORY / current["Product ID"]
+    save_listing(current)
+    print(f"Archived {current['Product ID']} (sold {sold_date}) in {folder}.")
+
+
+def regenerate_listing() -> None:
+    current = select_listing()
+    if not current:
+        return
+    product_id = str(current.get("Product ID", ""))
+    if not ID_RE.fullmatch(product_id):
+        print("Cannot regenerate: this listing has an invalid product ID.")
+        return
+    folder = INVENTORY / product_id
+    if not folder.is_dir():
+        print(f"Cannot regenerate: listing folder not found: {folder}")
+        return
+    atomic_text(folder / "listing.html", product_page(current, folder))
+    rebuild_catalog_and_collection()
+    print(f"Regenerated {product_id} from its current listing.json.")
 
 
 def print_menu() -> None:
@@ -446,7 +517,9 @@ def print_menu() -> None:
     print("4. Deactivate a listing")
     print("5. Reactivate a listing")
     print("6. List inventory")
-    print("7. Exit")
+    print("7. Archive a sold listing")
+    print("8. Regenerate a listing from JSON")
+    print("9. Exit")
 
 
 def main() -> int:
@@ -468,9 +541,13 @@ def main() -> int:
             elif choice == "6":
                 select_listing()
             elif choice == "7":
+                archive_listing()
+            elif choice == "8":
+                regenerate_listing()
+            elif choice == "9":
                 return 0
             else:
-                print("Choose a number from 1 to 7.")
+                print("Choose a number from 1 to 9.")
     except (OSError, RuntimeError, ValueError) as error:
         print(f"Inventory manager: {error}", file=sys.stderr)
         return 1

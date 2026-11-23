@@ -24,6 +24,8 @@
   "RAM (optional value)": null,
   "Price (in GBP)": 21.5,
   "eBay link": "https://www.ebay.co.uk/itm/960171182958",
-  "Status": "available",
-  "Active": false
+  "Status": "sold",
+  "Active": false,
+  "Archived": true,
+  "Date sold": "2026-11-21"
 }
