@@ -1575,7 +1575,9 @@
       const timeline = document.querySelector("#timeline"),
         jump = document.querySelector(".year-jumps"),
         filters = document.querySelector(".family-filters");
-      const years = [...new Set(models.map((m) => m[2].slice(0, 4)))].sort();
+      const years = [
+        ...new Set([...models.map((m) => m[2].slice(0, 4)), "2022"]),
+      ].sort();
       years.forEach((y) => {
         const a = document.createElement("a");
         a.href = `#year-${y}`;
@@ -1645,6 +1647,14 @@
           });
         timeline.append(era);
       });
+      const endEra = document.querySelector("#year-2022");
+      endEra.querySelector(".era-heading h2").textContent =
+        "2022 · End of the line";
+      const endEntry = document.createElement("article");
+      endEntry.className = "entry";
+      endEntry.dataset.family = "endpoint";
+      endEntry.innerHTML = `<div class="entry-card"><div class="entry-copy"><div class="entry-top"><h3>iPod discontinued</h3><span class="entry-date">10 May 2022</span></div><p class="entry-blurb">Apple announced that iPod touch would remain available while supplies lasted, closing the iPod story after more than twenty years.</p><p class="entry-blurb"><a href="https://www.apple.com/ne/newsroom/2022/05/the-music-lives-on/">Apple’s announcement · The music lives on</a></p></div></div>`;
+      endEra.append(endEntry);
       // Resolve a model-specific Wikimedia file only as its entry approaches the viewport; no neighbouring-generation fallback.
       function markImageMissing(img) {
         img.remove();
