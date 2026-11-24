@@ -1,0 +1,133 @@
+/* Shared responsive navigation enhancement. The default desktop nav remains unchanged. */
+.nav {
+  position: relative;
+}
+
+/* Override older narrow-screen rules that hid selected destinations. */
+.nav .nav-links a {
+  display: block;
+  white-space: nowrap;
+}
+
+.menu-toggle {
+  display: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--line, #d8d5cc);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink, #292b26);
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+
+.menu-toggle:hover {
+  background: var(--ink, #292b26);
+  color: var(--paper, #f5f3ee);
+}
+
+.menu-toggle:focus-visible,
+.nav-links a:focus-visible {
+  outline: 2px solid var(--rust, #a95336);
+  outline-offset: 3px;
+}
+
+.menu-toggle-icon,
+.menu-toggle-icon::before,
+.menu-toggle-icon::after {
+  display: block;
+  width: 16px;
+  height: 1px;
+  background: currentColor;
+  transition:
+    transform 0.22s ease,
+    opacity 0.18s ease;
+}
+
+.menu-toggle-icon {
+  position: relative;
+}
+
+.menu-toggle-icon::before,
+.menu-toggle-icon::after {
+  position: absolute;
+  left: 0;
+  content: "";
+}
+
+.menu-toggle-icon::before {
+  top: -5px;
+}
+
+.menu-toggle-icon::after {
+  top: 5px;
+}
+
+.nav-menu-collapsed .menu-toggle {
+  display: inline-grid;
+  flex: 0 0 auto;
+}
+
+.nav-menu-collapsed .nav-links {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 10px);
+  right: 5%;
+  display: grid;
+  min-width: min(272px, 90vw);
+  gap: 0;
+  padding: 8px 0;
+  border: 1px solid var(--line, #d8d5cc);
+  background: var(--paper, #f5f3ee);
+  box-shadow: 0 16px 34px rgb(41 43 38 / 14%);
+  font-size: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  visibility: hidden;
+  transition:
+    opacity 0.2s ease,
+    transform 0.24s ease,
+    visibility 0s linear 0.24s;
+}
+
+.nav-menu-collapsed .nav-links a {
+  display: block;
+  padding: 13px 18px;
+  white-space: nowrap;
+}
+
+.nav-menu-collapsed.is-menu-open .nav-links {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.nav-menu-collapsed.is-menu-open .menu-toggle-icon {
+  background: transparent;
+}
+
+.nav-menu-collapsed.is-menu-open .menu-toggle-icon::before {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.nav-menu-collapsed.is-menu-open .menu-toggle-icon::after {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-toggle,
+  .menu-toggle-icon,
+  .menu-toggle-icon::before,
+  .menu-toggle-icon::after,
+  .nav-menu-collapsed .nav-links {
+    transition: none;
+  }
+}

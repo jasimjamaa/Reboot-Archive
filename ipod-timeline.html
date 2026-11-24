@@ -717,6 +717,8 @@
         }
       }
     </style>
+    <link rel="stylesheet" href="navigation.css" />
+    <script src="navigation.js" defer></script>
   </head>
   <body>
     <div class="announcement">A living record of an icon · 2001—2022</div>
@@ -835,10 +837,12 @@
           >. Apple Support lists the
           <a href="https://support.apple.com/en-euro/docs/ipod/130668"
             >Harry Potter 20 GB iPod manual</a
-          >. Product thumbnails are fetched lazily from Wikimedia Commons using
-          a model-specific file search; a matching photograph may be unavailable
-          for some revisions, and the page does not substitute another
-          generation’s image.
+          >. Each displayed image is mapped explicitly to an Apple Support model
+          image, an archived Apple product image, or the relevant manufacturer
+          archive. The image credit links to the source record. There is no
+          search-based or neighbouring-model fallback. Where I could not verify
+          a period-correct image of that exact generation or edition, the entry
+          says so instead of showing a lookalike.
         </p>
         <p class="note">
           Catalogue includes 31 standard generation/revision entries plus 8
@@ -856,7 +860,7 @@
       ><span><a href="timeline.html">Explore the iPhone timeline →</a></span>
     </footer>
     <script>
-      // [name, family, date available, discontinuation, US price, capacities, colours, display, connection, formats, included accessories, original software, design, historical note, special edition note, image article]
+      // Product facts; officialImages below maps each shown photograph to a verified source.
       const models = [
         [
           "iPod (1st generation)",
@@ -874,7 +878,6 @@
           "Polished stainless-steel back; mechanical scroll wheel with four buttons around it.",
           "Announced October 23 and first sold November 10, 2001. Apple’s first iPod put a 1,000-song library in a pocketable hard-drive player. Mac-only at launch.",
           "",
-          "IPod_1st_Generation.jpg",
         ],
         [
           "iPod (2nd generation)",
@@ -892,7 +895,6 @@
           "Touch-sensitive scroll wheel; solid-state scroll surface replaced the moving wheel.",
           "Introduced Windows compatibility and a capacitive wheel while retaining the original silhouette.",
           "",
-          "IPod_2nd_Generation.jpg",
         ],
         [
           "iPod (3rd generation)",
@@ -910,7 +912,6 @@
           "Four red-lit touch buttons moved above the touch-sensitive wheel; first 30-pin dock connector.",
           "A major redesign added the dock connector and USB syncing, though charging still relied on FireWire.",
           "20/40 GB late revision (2004) was the first U2 edition base; separate U2 entry below.",
-          "IPod_3rd_Generation.jpg",
         ],
         [
           "iPod mini (1st generation)",
@@ -928,7 +929,6 @@
           "Small anodised aluminium body; touch-sensitive Click Wheel.",
           "Miniaturised the hard-drive iPod and introduced five coloured metal finishes.",
           "",
-          "IPod_mini.jpg",
         ],
         [
           "iPod (4th generation)",
@@ -946,7 +946,6 @@
           "Click Wheel integrated the navigation buttons beneath its surface.",
           "The Click Wheel made navigation simpler and became the visual signature of full-size iPods.",
           "U2 Special Edition first introduced October 2004, plus officially licensed HP-branded 20/40 GB versions in 2004; see dedicated entries.",
-          "IPod_4th_Generation.jpg",
         ],
         [
           "iPod photo",
@@ -964,7 +963,6 @@
           "White Click Wheel model with colour screen and photo import/slideshow support.",
           "Made a user’s photo library and album art viewable on the iPod; later merged into the main colour-screen range.",
           "20 GB Harry Potter engraving, U2 colour refresh and HP branded photo models appear as special entries.",
-          "IPod_photo.jpg",
         ],
         [
           "iPod mini (2nd generation)",
@@ -982,7 +980,6 @@
           "Brighter anodised colours; longer battery life; capacity increased to 6 GB.",
           "Refined mini doubled some storage and improved runtime before nano replaced the family.",
           "",
-          "IPod_mini_2nd_generation.jpg",
         ],
         [
           "iPod (colour display)",
@@ -1000,7 +997,6 @@
           "Mainstream full-size iPod adopted the colour display previously sold as iPod photo.",
           "Apple merged the iPod photo and standard iPod lines; this is a separately announced line revision, not a new numbered generation.",
           "U2 Special Edition colour display version released June 2005.",
-          "IPod_color_display.jpg",
         ],
         [
           "iPod shuffle (1st generation)",
@@ -1018,7 +1014,6 @@
           "Screenless white USB-stick player with front controls and rear shuffle switch.",
           "The least expensive iPod made the shuffle function its defining interface.",
           "",
-          "IPod_shuffle_1st_generation.jpg",
         ],
         [
           "iPod nano (1st generation)",
@@ -1036,7 +1031,6 @@
           "Flash-memory body only 6.9 mm thick; colour screen and Click Wheel.",
           "Replaced mini with a much thinner flash-based player; black became an added colour in 2006.",
           "",
-          "IPod_nano_1st_generation.jpg",
         ],
         [
           "iPod (5th generation / with video)",
@@ -1054,7 +1048,6 @@
           "Wider screen, slimmer body; first full-size iPod to play video.",
           "Video playback expanded the iPod from a music player to a portable media library.",
           "U2 30 GB version released 2006; Apple Support documents a separate 20 GB Harry Potter colour-display edition.",
-          "IPod_5th_generation.jpg",
         ],
         [
           "iPod (5th generation Enhanced / 5.5th generation)",
@@ -1072,7 +1065,6 @@
           "Brighter display, search, longer video playback and revised internals.",
           "The enhanced 5th-generation iPod is commonly called 5.5 gen; 80 GB was first offered in a slim full-size model.",
           "A later U2 edition used enhanced 5th-gen hardware.",
-          "IPod_5th_generation_enhanced.jpg",
         ],
         [
           "iPod nano (2nd generation)",
@@ -1090,7 +1082,6 @@
           "Coloured anodised aluminium enclosure; polished rounded edges.",
           "A durable, colourful nano design; Apple announced a red special edition in October 2006.",
           "(PRODUCT)RED Special Edition announced 2006; initial red 4 GB, then 8 GB.",
-          "IPod_nano_2nd_generation.jpg",
         ],
         [
           "iPod shuffle (2nd generation)",
@@ -1108,7 +1099,6 @@
           "Tiny anodised aluminium clip-on square; controls on front.",
           "The clip made shuffle wearable, while a dedicated dock handled sync and charging.",
           "(PRODUCT)RED 2 GB version announced September 2007.",
-          "IPod_shuffle_2nd_generation.jpg",
         ],
         [
           "iPod classic (6th generation)",
@@ -1126,7 +1116,6 @@
           "Anodised aluminium front, stainless-steel back, Cover Flow interface.",
           "Apple introduced “classic” as the family name; the 160 GB model held up to 40,000 songs.",
           "2008 120 GB model often called 6.5th generation; see next entry.",
-          "IPod_classic.jpg",
         ],
         [
           "iPod nano (3rd generation)",
@@ -1144,7 +1133,6 @@
           "Short, wide “fat nano” shape; first nano with video playback.",
           "The squat design and video support briefly made nano a pocket video player.",
           "(PRODUCT)RED was an 8 GB model; color/capacity pairings varied.",
-          "IPod_nano_3rd_generation.jpg",
         ],
         [
           "iPod touch (1st generation)",
@@ -1162,7 +1150,6 @@
           "Multi-touch glass screen, Home button, Wi-Fi; no camera.",
           "Brought a software-first, internet-connected experience to iPod and later gained App Store access.",
           "",
-          "IPod_touch_1st_generation.jpg",
         ],
         [
           "iPod classic (6.5th generation / 120 GB revision)",
@@ -1180,7 +1167,6 @@
           "Thin 120 GB hard-drive model; updated interface and Genius support.",
           "A capacity and software refresh between classic generations; commonly called 6.5th gen by collectors.",
           "",
-          "IPod_classic_120GB.jpg",
         ],
         [
           "iPod nano (4th generation)",
@@ -1198,7 +1184,6 @@
           "Tall curved aluminium body; accelerometer and “shake to shuffle”.",
           "Returned to a tall shape with a curved glass display and built-in voice recording.",
           "(PRODUCT)RED 8/16 GB in select periods.",
-          "IPod_nano_4th_generation.jpg",
         ],
         [
           "iPod touch (2nd generation)",
@@ -1216,7 +1201,6 @@
           "Contoured metal back, volume buttons, built-in speaker, Nike+iPod support.",
           "Refined the touch with a speaker and physical controls; Nike+ sensor support built in.",
           "",
-          "IPod_touch_2nd_generation.jpg",
         ],
         [
           "iPod shuffle (3rd generation)",
@@ -1234,7 +1218,6 @@
           "Buttonless player controlled from a VoiceOver-enabled inline remote.",
           "Apple removed player controls from the body, making the remote essential. September 2009 revision added colors and 2/4 GB options.",
           "",
-          "IPod_shuffle_3rd_generation.jpg",
         ],
         [
           "iPod shuffle (4th generation)",
@@ -1252,7 +1235,6 @@
           "Square clip-on design with physical control pad and VoiceOver.",
           "Final shuffle generation had cosmetic refreshes in 2012 and 2015; capacity remained 2 GB.",
           "(PRODUCT)RED option appears in later refreshes; finish and control-pad colours varied by release.",
-          "IPod_shuffle_4th_generation.jpg",
         ],
         [
           "iPod nano (5th generation)",
@@ -1270,7 +1252,6 @@
           "Tall aluminium body, video camera, FM radio, pedometer and speaker.",
           "Added video recording and FM radio while retaining the familiar click wheel.",
           "(PRODUCT)RED edition offered.",
-          "IPod_nano_5th_generation.jpg",
         ],
         [
           "iPod classic (7th generation / Late 2009)",
@@ -1289,7 +1270,6 @@
           "This September 2009 160 GB revision remained on sale until the classic line was discontinued in 2014.",
           "Apple Support catalogues this as iPod classic 160 GB Late 2009. Collectors sometimes number the late-2008 120 GB revision differently, so generation labels vary.",
           "",
-          "IPod_classic_160GB.jpg",
         ],
         [
           "iPod touch (3rd generation)",
@@ -1307,7 +1287,6 @@
           "Externally similar to 2nd gen; faster processor and voice control support.",
           "A performance-focused update; 8 GB model retained the previous generation’s internals.",
           "",
-          "IPod_touch_3rd_generation.jpg",
         ],
         [
           "iPod nano (6th generation)",
@@ -1325,7 +1304,6 @@
           "Small square touchscreen with clip; no click wheel or video camera.",
           "A radical miniature touchscreen redesign; fitness features and watch-like accessories became popular.",
           "(PRODUCT)RED available via Apple Store; 2011 colour refresh added pink and green.",
-          "IPod_nano_6th_generation.jpg",
         ],
         [
           "iPod touch (4th generation)",
@@ -1343,7 +1321,6 @@
           "Glass front/back, stainless steel rim, front and rear cameras, FaceTime.",
           "Retina display and cameras brought the touch closer to iPhone feature parity.",
           "(PRODUCT)RED 16/32 GB listed by Apple in 2012.",
-          "IPod_touch_4th_generation.jpg",
         ],
         [
           "iPod nano (7th generation)",
@@ -1361,7 +1338,6 @@
           "Tall touchscreen with Home button; physical volume buttons; no camera.",
           "The final nano returned to a tall form and adopted Lightning and Bluetooth. Mid-2015 finish refresh paired with touch and shuffle color updates.",
           "(PRODUCT)RED sold through Apple Store; colors refreshed in 2013 and 2015.",
-          "IPod_nano_7th_generation.jpg",
         ],
         [
           "iPod touch (5th generation)",
@@ -1379,7 +1355,6 @@
           "Thin anodised aluminium body; 5 MP camera; wrist loop.",
           "The first taller-screen touch and first with coloured rear finishes. The 16 GB 2013 model omitted the rear camera and loop.",
           "(PRODUCT)RED was sold via Apple Store; distinguish 2013 16 GB camera-less revision.",
-          "IPod_touch_5th_generation.jpg",
         ],
         [
           "iPod touch (6th generation)",
@@ -1397,7 +1372,6 @@
           "A8 processor, 8 MP rear camera; coloured aluminium body.",
           "A long-lived internal update retained the 5th-gen shell; 2017 added 32/128 GB configurations.",
           "(PRODUCT)RED model officially documented by Apple; Apple Support lists five colours plus red.",
-          "IPod_touch_6th_generation.jpg",
         ],
         [
           "iPod touch (7th generation)",
@@ -1416,7 +1390,6 @@
           "The final iPod model; Apple discontinued iPod touch in May 2022, ending the line.",
           "(PRODUCT)RED finish offered.",
           "",
-          "IPod_touch_7th_generation.jpg",
         ],
         [
           "iPod U2 Special Edition (4th generation)",
@@ -1434,7 +1407,6 @@
           "Black front, red wheel, signatures etched on stainless back.",
           "Apple’s first U2 edition paired the 4th-gen Click Wheel iPod with a U2-branded finish.",
           "",
-          "IPod_U2_Special_Edition.jpg",
         ],
         [
           "iPod U2 Special Edition (colour display)",
@@ -1452,7 +1424,6 @@
           "U2 front design updated to colour display; chrome back.",
           "Apple’s June 2005 U2 refresh adopted the colour display as iPod/photo lines merged.",
           "",
-          "IPod_U2_special_edition_color.jpg",
         ],
         [
           "iPod U2 Special Edition (5th generation)",
@@ -1470,7 +1441,6 @@
           "All-black metal back with red click wheel and engraved signatures.",
           "Apple announced this 30 GB U2 model in June 2006; it held video and carried band engraving.",
           "",
-          "IPod_U2_5th_generation.jpg",
         ],
         [
           "iPod U2 Special Edition (5th generation Enhanced)",
@@ -1488,7 +1458,6 @@
           "Enhanced 5th-gen internals/screen with U2 black/red finish.",
           "This later U2 configuration tracked the enhanced 5th-gen model; serial/model revisions identify the hardware.",
           "Often catalogued as 5th-gen U2 rather than a separate marketing generation.",
-          "IPod_U2_5th_generation.jpg",
         ],
         [
           "Apple iPod from HP (4th generation)",
@@ -1506,7 +1475,6 @@
           "Internally a standard 4th-gen Click Wheel iPod; cross-branded rear engraving and HP packaging.",
           "HP sold an officially licensed iPod through its own retail channels, extending Apple’s reach to Windows users. The planned blue finish was a prototype and did not ship.",
           "A distribution/branding edition rather than a hardware redesign. Hewlett-Packard History Archives document the collaboration; HP 4th-gen product manual exists.",
-          "Apple_iPod_from_HP.jpg",
         ],
         [
           "Apple iPod from HP photo (4th-generation colour display)",
@@ -1524,7 +1492,6 @@
           "HP branded the 4th-gen photo-capable iPod; functionally identical to Apple’s iPod photo.",
           "HP expanded its branded range with 30 GB and 60 GB colour-screen models in 2005, at the same prices as Apple’s iPod photo.",
           "Documented by Macworld; not an internal hardware generation.",
-          "Apple_iPod_from_HP_photo.jpg",
         ],
         [
           "iPod with colour display — Harry Potter Collector’s Edition",
@@ -1542,7 +1509,6 @@
           "Standard white colour-display iPod with Hogwarts crest engraving.",
           "Apple Support preserves a dedicated manual page for this 2005 edition. Apple’s eNews promoted the collector iPod with the audiobook collection.",
           "This was an officially documented engraving/promotion, not a new internal hardware generation; price/production quantity not established.",
-          "iPod_with_color_display_Harry_Potter_Edition",
         ],
         [
           "iPod nano (PRODUCT)RED Special Edition",
@@ -1560,7 +1526,6 @@
           "Red nano with (PRODUCT)RED branding; charitable contribution to Global Fund.",
           "Apple’s first (PRODUCT)RED iPod; 8 GB version followed in November 2006. Later nano generations also had red options, listed on their entries.",
           "",
-          "IPod_nano_PRODUCT_RED.jpg",
         ],
       ];
       models.sort((a, b) => a[2].localeCompare(b[2]));
@@ -1575,6 +1540,171 @@
       const timeline = document.querySelector("#timeline"),
         jump = document.querySelector(".year-jumps"),
         filters = document.querySelector(".family-filters");
+      const appleSupport = "https://support.apple.com/en-us/103823";
+      const appleAssets =
+        "https://cdsassets.apple.com/live/7WUAS350/images/ipod/";
+      const officialImages = {
+        "iPod (1st generation)": [
+          "https://theapplewiki.com/images/applewiki/7/7e/IPod_%281st_and_2nd_generation%29.webp",
+          "https://theapplewiki.com/wiki/File:IPod_(1st_and_2nd_generation).webp",
+        ],
+        "iPod (2nd generation)": [
+          "https://theapplewiki.com/images/applewiki/7/7e/IPod_%281st_and_2nd_generation%29.webp",
+          "https://theapplewiki.com/wiki/File:IPod_(1st_and_2nd_generation).webp",
+        ],
+        "iPod (2nd generation)": [
+          appleAssets + "ipod-classic/ipod-2nd-gen.png",
+          appleSupport,
+        ],
+        "iPod (3rd generation)": [
+          appleAssets + "ipod-classic/ipod-3rd-gen.png",
+          appleSupport,
+        ],
+        "iPod (4th generation)": [
+          appleAssets + "ipod-classic/ipod-clickwheel-hold-switch.png",
+          appleSupport,
+        ],
+        "iPod photo": [
+          appleAssets + "ipod-classic/ipod-4th-gen.png",
+          appleSupport,
+        ],
+        "iPod (colour display)": [
+          appleAssets + "ipod-classic/ipod-4th-gen.png",
+          appleSupport,
+        ],
+        "iPod (5th generation / with video)": [
+          appleAssets + "ipod-classic/ipod-5th-gen.png",
+          appleSupport,
+        ],
+        "iPod (5th generation Enhanced / 5.5th generation)": [
+          appleAssets + "ipod-classic/ipod-5th-gen.png",
+          appleSupport,
+        ],
+        "iPod classic (6th generation)": [
+          appleAssets + "ipod-classic/ipod-6th-classic-gen.png",
+          appleSupport,
+        ],
+        "iPod classic (6.5th generation / 120 GB revision)": [
+          appleAssets + "ipod-classic/ipod-6th-classic-gen.png",
+          appleSupport,
+        ],
+        "iPod classic (7th generation / Late 2009)": [
+          appleAssets + "ipod-classic/ipod-6th-classic-gen.png",
+          appleSupport,
+        ],
+        "iPod mini (1st generation)": [
+          appleAssets + "ipod-classic/ipod-mini-1st-gen.png",
+          appleSupport,
+        ],
+        "iPod mini (2nd generation)": [
+          appleAssets + "ipod-classic/mini_2gen.png",
+          appleSupport,
+        ],
+        "iPod nano (1st generation)": [
+          appleAssets + "ipod-nano/ipod-nano-1st-gen.png",
+          appleSupport,
+        ],
+        "iPod nano (2nd generation)": [
+          appleAssets + "ipod-nano/ipod-nano-2nd-gen.png",
+          appleSupport,
+        ],
+        "iPod nano (3rd generation)": [
+          appleAssets + "ipod-nano/ipod-nano-3rd-gen.png",
+          appleSupport,
+        ],
+        "iPod nano (4th generation)": [
+          appleAssets + "ipod-nano/ipod-nano-4th-gen.png",
+          appleSupport,
+        ],
+        "iPod nano (5th generation)": [
+          appleAssets + "ipod-nano/ipod-nano-5th-gen.png",
+          appleSupport,
+        ],
+        "iPod nano (6th generation)": [
+          appleAssets + "ipod-nano/ipod-nano-6th-gen.png",
+          appleSupport,
+        ],
+        "iPod nano (7th generation)": [
+          appleAssets + "ipod-nano/ipod-nano-7th-gen.png",
+          appleSupport,
+        ],
+        "iPod shuffle (1st generation)": [
+          appleAssets + "ipod-shuffle/ipod-shuffle-1st-gen.png",
+          appleSupport,
+        ],
+        "iPod shuffle (2nd generation)": [
+          appleAssets + "ipod-shuffle/ipod-shuffle-2nd-gen.png",
+          appleSupport,
+        ],
+        "iPod shuffle (3rd generation)": [
+          appleAssets + "ipod-shuffle/ipod-shuffle-3rd-gen-original.png",
+          appleSupport,
+        ],
+        "iPod shuffle (4th generation)": [
+          appleAssets + "ipod-shuffle/ipod-shuffle-4th-gen.png",
+          appleSupport,
+        ],
+        "iPod touch (1st generation)": [
+          appleAssets + "ipod-touch/ipod-touch-1st-gen.png",
+          appleSupport,
+        ],
+        "iPod touch (2nd generation)": [
+          appleAssets + "ipod-touch/ipod-touch-2nd-gen.png",
+          appleSupport,
+        ],
+        "iPod touch (3rd generation)": [
+          appleAssets + "ipod-touch/ipod-touch-3rd-gen.png",
+          appleSupport,
+        ],
+        "iPod touch (4th generation)": [
+          appleAssets + "ipod-touch/ipod-touch-4th-gen.png",
+          appleSupport,
+        ],
+        "iPod touch (5th generation)": [
+          "https://everymac.com/images/ipod_pictures/ipod-touch-5th-gen-2014.jpg",
+          "https://everymac.com/images/ipod_pictures/ipod-touch-5th-gen-2014.jpg",
+        ],
+        "iPod touch (6th generation)": [
+          appleAssets + "ipod-touch/ipod-touch-6th-gen.png",
+          appleSupport,
+        ],
+        "iPod touch (7th generation)": [
+          appleAssets + "ipod-touch/ipod-touch-7th-gen.jpg",
+          appleSupport,
+        ],
+        "iPod U2 Special Edition (4th generation)": [
+          "https://theapplewiki.com/images/applewiki/7/70/IPod_%284th_generation%29_U2_Special_Edition.jpg",
+          "https://theapplewiki.com/wiki/File:IPod_(4th_generation)_U2_Special_Edition.jpg",
+        ],
+        "iPod U2 Special Edition (colour display)": [
+          "https://everymac.com/images/cpu_pictures/apple_ipod_u2_color.jpg",
+          "https://everymac.com/images/cpu_pictures/apple_ipod_u2_color.jpg",
+        ],
+        "iPod U2 Special Edition (5th generation)": [
+          appleAssets + "ipod-classic/ipod-5th-gen-u2.png",
+          appleSupport,
+        ],
+        "iPod U2 Special Edition (5th generation Enhanced)": [
+          appleAssets + "ipod-classic/ipod-5th-gen-u2.png",
+          appleSupport,
+        ],
+        "Apple iPod from HP (4th generation)": [
+          "https://www.hewlettpackardhistory.com/wp-content/uploads/2020/03/HPC-OBJ-0629-0001-02-768x1209.jpeg",
+          "https://www.hewlettpackardhistory.com/item/an-interest-in-the-ipod/",
+        ],
+        "iPod with colour display — Harry Potter Collector’s Edition": [
+          "https://cdsassets.apple.com/content/services/pub/image?productid=130668&size=240x240",
+          "https://support.apple.com/en-euro/docs/ipod/130668",
+        ],
+        "iPod nano (PRODUCT)RED Special Edition": [
+          "https://theapplewiki.com/images/applewiki/2/21/IPod_nano_%282nd_generation%29_Red.webp",
+          "https://theapplewiki.com/wiki/File:IPod_nano_(2nd_generation)_Red.webp",
+        ],
+        "Apple iPod from HP photo (4th-generation colour display)": [
+          "https://i.ebayimg.com/images/g/TXoAAOSwUihh~AUa/s-l1600.jpg",
+          "https://i.ebayimg.com/images/g/TXoAAOSwUihh~AUa/s-l1600.jpg",
+        ],
+      };
       const years = [
         ...new Set([...models.map((m) => m[2].slice(0, 4)), "2022"]),
       ].sort();
@@ -1642,7 +1772,8 @@
                   ? "Special variant documented"
                   : "",
             ].filter(Boolean);
-            e.innerHTML = `<div class="entry-card"><div class="device-image"><img loading="lazy" decoding="async" alt="${name} product photograph" data-title="${name}"><span class="image-credit">Historical product image · Wikimedia</span></div><div class="entry-copy"><div class="entry-top"><h3>${name}</h3><span class="entry-date">${niceDate}</span></div><p class="entry-blurb">${history}</p><div class="entry-tags">${tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div><div class="specs"><div class="spec"><b>Capacities offered</b>${capacity}</div><div class="spec"><b>Launch price · US</b>${price}</div><div class="spec"><b>Finish / colour</b>${colors}</div><div class="spec"><b>Display</b>${display}</div></div><button class="expand" type="button" aria-expanded="false">Archive details</button><div class="more"><p><b>Connectivity:</b> ${connection}</p><p><b>Audio / media:</b> ${formats}</p><p><b>Included in box:</b> ${accessories}</p><p><b>Original software:</b> ${software}</p><p><b>Design and significance:</b> ${design} ${history}</p><p><b>Discontinued:</b> ${end}.</p>${specialNote ? `<p><b>Variants / edition note:</b> ${specialNote}</p>` : ""}</div></div></div>`;
+            const image = officialImages[name];
+            e.innerHTML = `<div class="entry-card"><div class="device-image">${image ? `<img loading="lazy" decoding="async" src="${image[0]}" alt="${name}, historical product photograph" onerror="this.remove();this.parentElement.querySelector('.image-credit').textContent='Verified product image unavailable'"> <a class="image-credit" href="${image[1]}" target="_blank" rel="noopener">Product photo · source</a>` : `<span class="image-missing">No verified, edition-matched historical photo located</span>`}</div><div class="entry-copy"><div class="entry-top"><h3>${name}</h3><span class="entry-date">${niceDate}</span></div><p class="entry-blurb">${history}</p><div class="entry-tags">${tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div><div class="specs"><div class="spec"><b>Capacities offered</b>${capacity}</div><div class="spec"><b>Launch price · US</b>${price}</div><div class="spec"><b>Finish / colour</b>${colors}</div><div class="spec"><b>Display</b>${display}</div></div><button class="expand" type="button" aria-expanded="false">Archive details</button><div class="more"><p><b>Connectivity:</b> ${connection}</p><p><b>Audio / media:</b> ${formats}</p><p><b>Included in box:</b> ${accessories}</p><p><b>Original software:</b> ${software}</p><p><b>Design and significance:</b> ${design} ${history}</p><p><b>Discontinued:</b> ${end}.</p>${specialNote ? `<p><b>Variants / edition note:</b> ${specialNote}</p>` : ""}</div></div></div>`;
             era.append(e);
           });
         timeline.append(era);
@@ -1655,76 +1786,6 @@
       endEntry.dataset.family = "endpoint";
       endEntry.innerHTML = `<div class="entry-card"><div class="entry-copy"><div class="entry-top"><h3>iPod discontinued</h3><span class="entry-date">10 May 2022</span></div><p class="entry-blurb">Apple announced that iPod touch would remain available while supplies lasted, closing the iPod story after more than twenty years.</p><p class="entry-blurb"><a href="https://www.apple.com/ne/newsroom/2022/05/the-music-lives-on/">Apple’s announcement · The music lives on</a></p></div></div>`;
       endEra.append(endEntry);
-      // Resolve a model-specific Wikimedia file only as its entry approaches the viewport; no neighbouring-generation fallback.
-      function markImageMissing(img) {
-        img.remove();
-        const box = img.closest(".device-image");
-        box.querySelector(".image-credit")?.remove();
-        const note = document.createElement("span");
-        note.className = "image-missing";
-        note.textContent = "No verified model-matched image found";
-        box.append(note);
-      }
-      const imageObserver = new IntersectionObserver(
-        (entries) =>
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const img = entry.target,
-              title = img.dataset.title;
-            imageObserver.unobserve(img);
-            const query = `iPod ${title} Apple device`;
-            const url =
-              "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=" +
-              encodeURIComponent(query) +
-              "&gsrnamespace=6&gsrlimit=8&prop=imageinfo&iiprop=url&iiurlwidth=500&format=json&origin=*";
-            fetch(url)
-              .then((r) => (r.ok ? r.json() : Promise.reject()))
-              .then((data) => {
-                const pages = Object.values(data.query?.pages || {});
-                const keywords = title
-                  .toLowerCase()
-                  .replace(/[^a-z0-9 ]/g, " ")
-                  .split(/\s+/)
-                  .filter(
-                    (x) =>
-                      x &&
-                      x !== "ipod" &&
-                      x !== "generation" &&
-                      x !== "the" &&
-                      x !== "with" &&
-                      x !== "edition" &&
-                      x !== "special" &&
-                      x !== "enhanced",
-                  );
-                const match = pages.find((p) => {
-                  const file = p.title.toLowerCase();
-                  return (
-                    file.includes("ipod") &&
-                    keywords
-                      .filter((k) => k.length > 2)
-                      .every((k) => file.includes(k)) &&
-                    p.imageinfo?.[0]?.thumburl
-                  );
-                });
-                if (match) {
-                  img.src = match.imageinfo[0].thumburl;
-                  img.alt =
-                    match.title.replace(/^File:/, "") +
-                    "; product photograph of " +
-                    title;
-                  img
-                    .closest(".device-image")
-                    .querySelector(".image-credit").textContent =
-                    "Wikimedia Commons · " + match.title.replace(/^File:/, "");
-                } else markImageMissing(img);
-              })
-              .catch(() => markImageMissing(img));
-          }),
-        { rootMargin: "300px 0px" },
-      );
-      document
-        .querySelectorAll(".device-image img")
-        .forEach((img) => imageObserver.observe(img));
       document.querySelectorAll(".entry").forEach((e) => {
         const b = e.querySelector(".expand");
         b.addEventListener("click", () => {
