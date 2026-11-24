@@ -1,81 +1,1777 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f3ee">
-<meta name="description" content="An interactive archive of the Apple iPod: every family, generation and documented special edition from 2001 to 2022."><link rel="icon" type="image/png" href="favicon-collapsed.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-<title>iPod Timeline — Reboot Archive</title>
-<style>
-:root{--paper:#f5f3ee;--ink:#242622;--muted:#797a73;--line:#dcd9d1;--rust:#a45e43;--sage:#c9cbb9;--serif:"Playfair Display",Georgia,serif;--sans:"DM Sans",Arial,sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:170px}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}.announcement{height:34px;background:#292b26;color:var(--paper);display:grid;place-items:center;font-size:9px;letter-spacing:.16em;text-transform:uppercase}.nav{height:76px;padding:0 7.2%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:var(--paper)}.brand{display:flex;align-items:center;gap:10px}.brand img{width:34px;height:34px;object-fit:cover;border-radius:9px}.brand strong{display:block;font:600 17px var(--serif)}.brand span span{font:9px var(--sans);letter-spacing:.16em;text-transform:uppercase;display:block;margin-top:3px;color:var(--muted)}.nav-links{display:flex;gap:24px;font-size:9px;text-transform:uppercase;letter-spacing:.12em}.nav-links a:hover,.nav-links a[aria-current]{color:var(--rust)}.intro{padding:76px 7.2% 48px;display:grid;grid-template-columns:1fr .72fr;align-items:end;gap:40px}.eyebrow{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:11px}.eyebrow:before{content:"";width:28px;height:1px;background:currentColor}h1{font:500 clamp(48px,6.1vw,78px)/1.03 var(--serif);letter-spacing:-.05em;margin:17px 0 12px}.intro p{max-width:440px;color:#686a63;font-size:12px;line-height:1.9;margin:0 0 7px}.sticky{position:sticky;top:0;z-index:10;background:#f5f3eef2;backdrop-filter:blur(12px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.control-row{padding:10px 7.2%;display:flex;align-items:center;gap:18px}.year-readout{min-width:104px;font:500 21px var(--serif);color:var(--rust)}.progress-wrap{height:2px;background:var(--line);flex:1;position:relative}.progress-bar{position:absolute;inset:0 auto 0 0;width:0;background:var(--rust);transition:width .15s}.year-jumps{display:flex;gap:6px;overflow:auto;scrollbar-width:none}.year-jumps a{border:1px solid var(--line);padding:7px 9px;font-size:8px;color:var(--muted);white-space:nowrap}.year-jumps a:hover,.year-jumps a:focus-visible{background:var(--ink);color:white}.family-filters{padding:9px 7.2%;border-top:1px solid var(--line);display:flex;gap:7px;overflow:auto;scrollbar-width:none}.filter{border:1px solid var(--line);background:transparent;padding:7px 10px;font-size:8px;letter-spacing:.11em;text-transform:uppercase;white-space:nowrap;cursor:pointer}.filter:hover,.filter[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}.timeline{position:relative;padding:25px 7.2% 90px;overflow:hidden}.timeline:before{content:"";position:absolute;left:50%;top:30px;bottom:70px;width:1px;background:var(--line)}.timeline:after{content:"";position:absolute;left:calc(50% - 2px);top:30px;width:5px;height:var(--progress,0%);max-height:calc(100% - 100px);background:var(--rust);border-radius:5px;opacity:.7}.era{position:relative;z-index:1}.era-heading{display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;gap:18px;margin:42px 0 22px}.era-heading h2{font:500 33px var(--serif);letter-spacing:-.04em;margin:0;color:var(--rust);text-align:center;background:var(--paper);padding:4px 0}.era-heading:before,.era-heading:after{content:"";height:1px;background:var(--line)}.entry{position:relative;width:calc(50% - 48px);margin:0 0 26px}.entry:nth-of-type(even){margin-left:calc(50% + 48px)}.entry:before{content:"";position:absolute;top:26px;width:9px;height:9px;border-radius:50%;background:var(--rust);border:4px solid var(--paper);box-shadow:0 0 0 1px var(--rust)}.entry:nth-of-type(odd):before{left:-55px}.entry:nth-of-type(even):before{right:-55px}.entry-card{border:1px solid var(--line);background:#f8f7f2;display:grid;grid-template-columns:40% 1fr;min-height:250px;transition:transform .25s,border-color .25s}.entry:nth-of-type(even) .entry-card{grid-template-columns:1fr 40%}.entry:nth-of-type(even) .device-image{order:2}.entry-card:hover{transform:translateY(-3px);border-color:#b9a89d}.special .entry-card{border-color:#b47a60;background:#f8f4ee}.device-image{min-height:250px;background:#e9e6df;display:grid;place-items:center;overflow:hidden;position:relative}.entry:nth-of-type(3n) .device-image{background:#e2e3db}.entry:nth-of-type(3n+2) .device-image{background:#e8dfd7}.special .device-image{background:#e8dfd7}.device-image img{width:100%;height:100%;min-height:250px;object-fit:contain;padding:15px;filter:drop-shadow(0 12px 10px #35352b20)}.image-credit{position:absolute;bottom:8px;left:10px;font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:#73736c}.entry-copy{padding:18px 18px 15px;min-width:0}.entry-top{display:flex;justify-content:space-between;gap:8px;align-items:start}.entry h3{font:500 21px/1.15 var(--serif);letter-spacing:-.025em;margin:0}.entry-date{font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);white-space:nowrap;margin-top:3px}.entry-blurb{font-size:10px;line-height:1.65;color:#686a63;margin:10px 0 13px}.entry-tags{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 10px}.tag{background:#eeebe4;color:#686a63;padding:5px 7px;font-size:7px;letter-spacing:.1em;text-transform:uppercase}.special .tag{background:#ead9cd;color:#82452f}.specs{border-top:1px solid var(--line);padding-top:9px;display:grid;grid-template-columns:1fr 1fr;gap:8px}.spec{font-size:8px;line-height:1.45;color:var(--muted)}.spec b{display:block;font-size:7px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink);font-weight:600;margin-bottom:2px}.expand{margin-top:11px;padding:0;border:0;border-bottom:1px solid var(--line);background:none;font-size:8px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}.expand:focus-visible,.nav a:focus-visible,.year-jumps a:focus-visible,.filter:focus-visible{outline:2px solid var(--rust);outline-offset:3px}.more{display:none;border-top:1px solid var(--line);padding-top:10px;margin-top:10px;font-size:9px;line-height:1.75;color:#686a63}.more p{margin:0 0 8px}.more p:last-child{margin-bottom:0}.entry[aria-expanded=true] .more{display:block}.entry[aria-expanded=true] .expand:after{content:" −"}.entry[aria-expanded=false] .expand:after{content:" +"}.entry[hidden]{display:none}.sources{padding:32px 7.2%;border-top:1px solid var(--line);background:#e5e4dc;font-size:10px;color:#686a63;line-height:1.8}.sources h2{font:500 25px var(--serif);color:var(--ink);margin:0 0 10px}.sources a{color:var(--rust);text-decoration:underline}.footer{padding:35px 7.2%;display:flex;justify-content:space-between;align-items:center;font-size:9px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}.footer a:hover{color:var(--rust)}
-.image-missing{position:absolute;left:12px;right:12px;bottom:15px;text-align:center;font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:#77766e}
- .image-missing{position:absolute;left:12px;right:12px;bottom:15px;text-align:center;font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:#77766e}
-@media(max-width:900px){.intro{padding-left:5%;padding-right:5%}.control-row,.family-filters{padding-left:5%;padding-right:5%}.timeline{padding-left:5%;padding-right:5%}.entry{width:calc(50% - 35px)}.entry:nth-of-type(even){margin-left:calc(50% + 35px)}.entry-card,.entry:nth-of-type(even) .entry-card{grid-template-columns:1fr}.entry:nth-of-type(even) .device-image{order:0}.device-image,.device-image img{min-height:210px;height:210px}.entry-copy{padding:15px}.entry:nth-of-type(odd):before{left:-42px}.entry:nth-of-type(even):before{right:-42px}}
-@media(max-width:620px){html{scroll-padding-top:150px}.announcement{height:29px;font-size:8px}.nav{height:64px;padding:0 5%}.brand strong{font-size:15px}.brand img{width:30px;height:30px}.nav-links{gap:10px}.nav-links a{font-size:7px}.nav-links a:nth-child(1),.nav-links a:nth-child(2){display:none}.intro{display:block;padding:47px 6% 30px}.intro p{margin-top:15px}.control-row{padding:8px 5%;gap:10px}.year-readout{min-width:68px;font-size:17px}.year-jumps a{padding:6px 8px}.family-filters{padding:8px 5%;gap:5px}.filter{padding:6px 8px;font-size:7px}.timeline{padding:12px 5% 60px}.timeline:before{left:18px;top:20px;bottom:55px}.timeline:after{left:16px;top:20px;max-height:calc(100% - 75px)}.era-heading{grid-template-columns:18px 65px 1fr;gap:10px;margin:33px 0 17px}.era-heading h2{text-align:left;font-size:27px;padding:2px 0}.era-heading:before{display:none}.entry,.entry:nth-of-type(even){width:auto;margin:0 0 17px 39px}.entry:before,.entry:nth-of-type(odd):before,.entry:nth-of-type(even):before{left:-28px;right:auto;top:21px}.entry-card,.entry:nth-of-type(even) .entry-card{grid-template-columns:34% 1fr;min-height:0}.entry:nth-of-type(even) .device-image{order:0}.device-image,.device-image img{min-height:178px;height:178px}.device-image img{padding:7px}.entry-copy{padding:12px 11px}.entry h3{font-size:17px}.entry-date{font-size:7px}.entry-blurb{font-size:9px;line-height:1.55;margin:7px 0 9px}.specs{gap:6px}.spec{font-size:7px}.spec b{font-size:6px}.tag{font-size:6px;padding:4px 5px}.expand{font-size:7px;margin-top:9px}.image-credit{display:none}.sources{padding:25px 6%}.footer{padding:24px 5%;display:block;line-height:2.2}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
-</style>
-</head>
-<body>
-<div class="announcement">A living record of an icon · 2001—2022</div>
-<header class="nav"><a class="brand" href="index.html"><img src="favicon-collapsed.png" alt=""><span><strong>Reboot Archive</strong><span>Vintage Apple, reimagined</span></span></a><nav class="nav-links" aria-label="Main navigation"><a href="collections.html">The collection</a><a href="story.html">Our story</a><a href="explore.html">Explore</a><a href="timeline.html">iPhone timeline</a><a href="ipod-timeline.html" aria-current="page">iPod timeline</a></nav></header>
-<main><section class="intro"><div><div class="eyebrow">An interactive chronology</div><h1>iPod,<br>in its time.</h1></div><p>From 1,000 songs in your pocket to a touch-screen music library. Explore every iPod family, generation and documented special edition in the archive. Open an entry for capacities, colours, accessories, software and the details that distinguish each model.</p></section>
-<div class="sticky"><div class="control-row" aria-label="Timeline navigation"><div class="year-readout" aria-live="polite">2001</div><div class="progress-wrap" aria-hidden="true"><div class="progress-bar"></div></div><nav class="year-jumps" aria-label="Jump to year"></nav></div><nav class="family-filters" aria-label="Filter iPod family"></nav></div><section class="timeline" id="timeline" aria-label="iPod history timeline"></section>
-<section class="sources"><h2>Scope and archival notes</h2><p>This timeline counts each separately marketed generation and meaningful hardware revision once. Capacity and colour options appear as variants within that model; they are not duplicated as separate generations. U2 models and the Harry Potter engraved iPod are shown as special-edition entries because Apple documented those offers. (PRODUCT)RED availability is listed under the corresponding model. Apple’s personalised laser engraving service could put customer-selected text on otherwise standard iPods; custom engravings and third-party modifications are not treated as Apple special editions.</p><p>Dates distinguish announcement from first availability where sources report both. Prices are original US launch prices and can differ by configuration. Early firmware versions were not always consistently recorded in Apple’s public documents; “varies / not stated” is used where appropriate. Bundled accessories also differed across markets and model revisions.</p><p>Sources: <a href="https://support.apple.com/en-us/103823">Apple Support: Identify your iPod model</a>; <a href="https://www.apple.com/newsroom/archive/ipod/">Apple Newsroom iPod archive</a>; <a href="https://everymac.com/systems/apple/ipod/index-ipod-specs.html">EveryMac / EveryiPod technical catalogue</a>; Apple’s original <a href="https://www.apple.com/newsroom/2001/10/23Apple-Presents-iPod/">iPod announcement</a> and individual announcements for <a href="https://www.apple.com/newsroom/2005/01/11Apple-Introduces-iPod-shuffle/">shuffle</a>, <a href="https://www.apple.com/newsroom/2005/09/07Apple-Introduces-iPod-nano/">nano</a>, <a href="https://www.apple.com/newsroom/2007/09/05Apple-Unveils-iPod-touch/">touch</a>, <a href="https://www.apple.com/newsroom/2007/09/05Apple-Introduces-New-iPod-classic/">classic</a>, <a href="https://www.apple.com/newsroom/2006/06/06Apple-Introduces-the-New-U2-iPod/">U2 edition</a>, and <a href="https://www.apple.com/ie/newsroom/2006/10/13Apple-Announces-iPod-nano-PRODUCT-RED-Special-Edition/">(PRODUCT)RED</a>. The HP-branded releases are corroborated by <a href="https://www.hewlettpackardhistory.com/item/an-interest-in-the-ipod/">Hewlett-Packard History Archives</a> and <a href="https://www.macworld.com/article/175246/ipodphotohp.html">Macworld’s HP photo iPod report</a>. Apple Support lists the <a href="https://support.apple.com/en-euro/docs/ipod/130668">Harry Potter 20 GB iPod manual</a>. Product thumbnails are fetched lazily from Wikimedia Commons using a model-specific file search; a matching photograph may be unavailable for some revisions, and the page does not substitute another generation’s image.</p><p class="note">Catalogue includes 31 standard generation/revision entries plus 8 identifiable special-edition or partner-branded entries: four U2 models, two HP-branded releases, the Harry Potter engraved edition, and the first (PRODUCT)RED nano. Later (PRODUCT)RED colourways are listed under each compatible model rather than counted as additional hardware generations. Custom engravings and third-party modifications are excluded.</p></section></main>
-<footer class="footer"><a href="index.html">← Back to Reboot Archive</a><span><a href="timeline.html">Explore the iPhone timeline →</a></span></footer>
-<script>
-// [name, family, date available, discontinuation, US price, capacities, colours, display, connection, formats, included accessories, original software, design, historical note, special edition note, image article]
-const models=[
-['iPod (1st generation)','classic','2001-11-10','2002-07-17','$399','5 GB','White front, mechanical scroll wheel','2 in monochrome LCD','FireWire 400','MP3, WAV, AIFF','Earbud headphones, FireWire cable, power adapter, iTunes CD','iPod Software 1.0','Polished stainless-steel back; mechanical scroll wheel with four buttons around it.','Announced October 23 and first sold November 10, 2001. Apple’s first iPod put a 1,000-song library in a pocketable hard-drive player. Mac-only at launch.','','IPod_1st_Generation.jpg'],
-['iPod (2nd generation)','classic','2002-07-17','2003-04-28','$399 (10 GB); $499 (20 GB)','10, 20 GB','White front','2 in monochrome LCD','FireWire 400; Windows sync via Musicmatch','MP3, WAV, AIFF','Earbud headphones, cables, adapter, iTunes CD','iPod Software 1.2','Touch-sensitive scroll wheel; solid-state scroll surface replaced the moving wheel.','Introduced Windows compatibility and a capacitive wheel while retaining the original silhouette.','','IPod_2nd_Generation.jpg'],
-['iPod (3rd generation)','classic','2003-04-28','2004-07-19','$299 (10 GB); $399 (15 GB); $499 (30 GB)','10, 15, 20, 30, 40 GB across revisions','White front','2 in monochrome LCD','30-pin dock connector; USB 2.0 sync; FireWire charging','MP3, WAV, AIFF, Audible','Earbuds, dock, USB/FireWire cables; adapter varied by bundle','iPod Software 2.0','Four red-lit touch buttons moved above the touch-sensitive wheel; first 30-pin dock connector.','A major redesign added the dock connector and USB syncing, though charging still relied on FireWire.','20/40 GB late revision (2004) was the first U2 edition base; separate U2 entry below.','IPod_3rd_Generation.jpg'],
-['iPod mini (1st generation)','mini','2004-02-20','2005-02-23','$249','4 GB','Silver, gold, pink, blue, green','1.67 in grayscale','USB 2.0 / FireWire via 30-pin connector','MP3, WAV, AIFF, Audible','Earbuds, belt clip, USB and FireWire cables, power adapter','iPod Software 1.0','Small anodised aluminium body; touch-sensitive Click Wheel.','Miniaturised the hard-drive iPod and introduced five coloured metal finishes.','','IPod_mini.jpg'],
-['iPod (4th generation)','classic','2004-07-19','2005-06-28','$299 (20 GB); $399 (40 GB)','20, 40 GB','White','2 in monochrome LCD','USB 2.0 / FireWire via dock connector','MP3, WAV, AIFF, Audible, Apple Lossless','Earbuds, dock, cables, adapter (bundle dependent)','iPod Software 3.0','Click Wheel integrated the navigation buttons beneath its surface.','The Click Wheel made navigation simpler and became the visual signature of full-size iPods.','U2 Special Edition first introduced October 2004, plus officially licensed HP-branded 20/40 GB versions in 2004; see dedicated entries.','IPod_4th_Generation.jpg'],
-['iPod photo','classic','2004-10-26','2005-06-28','$499 (40 GB); $599 (60 GB); later 30 GB revision $349','40, 60 GB; 30 GB added February 2005','White','2 in colour LCD (220 × 176)','USB 2.0 / FireWire via dock connector','MP3, WAV, AIFF, Audible, Apple Lossless','Earbuds, dock, cables, adapter; camera connector optional','iPod Software 1.0 for photo','White Click Wheel model with colour screen and photo import/slideshow support.','Made a user’s photo library and album art viewable on the iPod; later merged into the main colour-screen range.','20 GB Harry Potter engraving, U2 colour refresh and HP branded photo models appear as special entries.','IPod_photo.jpg'],
-['iPod mini (2nd generation)','mini','2005-02-23','2005-09-07','$199 (4 GB); $249 (6 GB)','4, 6 GB','Silver, blue, pink, green; gold discontinued','1.67 in grayscale','USB 2.0 / FireWire via 30-pin connector','MP3, WAV, AIFF, Audible','Earbuds, belt clip, USB and FireWire cables, adapter','iPod Software 1.3','Brighter anodised colours; longer battery life; capacity increased to 6 GB.','Refined mini doubled some storage and improved runtime before nano replaced the family.','','IPod_mini_2nd_generation.jpg'],
-['iPod (colour display)','classic','2005-06-28','2005-10-12','$299 (20 GB); $399 (60 GB)','20, 60 GB','White','2 in colour LCD','USB 2.0 / FireWire via dock connector','MP3, WAV, AIFF, Audible, Apple Lossless','Earbuds, USB cable, adapter, iTunes CD','iPod Software 1.1','Mainstream full-size iPod adopted the colour display previously sold as iPod photo.','Apple merged the iPod photo and standard iPod lines; this is a separately announced line revision, not a new numbered generation.','U2 Special Edition colour display version released June 2005.','IPod_color_display.jpg'],
-['iPod shuffle (1st generation)','shuffle','2005-01-11','2006-09-12','$99 (512 MB); $149 (1 GB)','512 MB, 1 GB','White','No display','USB-A plug built in','MP3, WAV, AIFF','Earbuds, lanyard, iTunes CD','iPod shuffle software 1.0','Screenless white USB-stick player with front controls and rear shuffle switch.','The least expensive iPod made the shuffle function its defining interface.','','IPod_shuffle_1st_generation.jpg'],
-['iPod nano (1st generation)','nano','2005-09-07','2006-09-12','$199 (2 GB); $249 (4 GB); $299 (4 GB black later)','1, 2, 4 GB','White and black (black 4 GB later)','1.5 in colour LCD','USB 2.0 via 30-pin connector','MP3, WAV, AIFF, Audible','Earbuds, USB cable, iTunes CD','iPod Software 1.0','Flash-memory body only 6.9 mm thick; colour screen and Click Wheel.','Replaced mini with a much thinner flash-based player; black became an added colour in 2006.','','IPod_nano_1st_generation.jpg'],
-['iPod (5th generation / with video)','classic','2005-10-12','2006-09-12','$299 (30 GB); $399 (60 GB)','30, 60 GB','White, black','2.5 in colour LCD (320 × 240)','USB 2.0 sync; FireWire charging via dock','MP3, WAV, AIFF, Audible, Apple Lossless, video formats','Earbuds, USB cable, adapter, case varied by capacity','iPod Software 1.0','Wider screen, slimmer body; first full-size iPod to play video.','Video playback expanded the iPod from a music player to a portable media library.','U2 30 GB version released 2006; Apple Support documents a separate 20 GB Harry Potter colour-display edition.','IPod_5th_generation.jpg'],
-['iPod (5th generation Enhanced / 5.5th generation)','classic','2006-09-12','2007-09-05','$249 (30 GB); $349 (80 GB)','30, 80 GB','White, black','2.5 in brighter colour LCD','USB 2.0 sync; FireWire charging via dock','MP3, WAV, AIFF, Audible, Apple Lossless, AAC, video','Earbuds, USB cable, adapter','iPod Software 1.2','Brighter display, search, longer video playback and revised internals.','The enhanced 5th-generation iPod is commonly called 5.5 gen; 80 GB was first offered in a slim full-size model.','A later U2 edition used enhanced 5th-gen hardware.','IPod_5th_generation_enhanced.jpg'],
-['iPod nano (2nd generation)','nano','2006-09-25','2007-09-05','$149 (2 GB); $199 (4 GB); $249 (8 GB)','2, 4, 8 GB','Silver, green, blue, pink; black 8 GB; (PRODUCT)RED 4/8 GB','1.5 in colour LCD','USB 2.0 via 30-pin connector','MP3, WAV, AIFF, Audible','Earbuds, USB cable, dock adapter, iTunes CD','iPod Software 1.1','Coloured anodised aluminium enclosure; polished rounded edges.','A durable, colourful nano design; Apple announced a red special edition in October 2006.','(PRODUCT)RED Special Edition announced 2006; initial red 4 GB, then 8 GB.','IPod_nano_2nd_generation.jpg'],
-['iPod shuffle (2nd generation)','shuffle','2006-09-12','2007-09-05','$79 (1 GB); $49 (shuffle / 1 GB after Jan 2007)','1, 2 GB','Silver; 2007 colours: blue, pink, green, orange; (PRODUCT)RED 2007; 2 GB late model','No display','USB via included dock','MP3, WAV, AIFF','Earbuds, clip, dock','iPod shuffle software 1.0','Tiny anodised aluminium clip-on square; controls on front.','The clip made shuffle wearable, while a dedicated dock handled sync and charging.','(PRODUCT)RED 2 GB version announced September 2007.','IPod_shuffle_2nd_generation.jpg'],
-['iPod classic (6th generation)','classic','2007-09-05','2008-09-09','$249 (80 GB); $349 (160 GB)','80, 160 GB','Silver, black','2.5 in colour LCD','USB 2.0 via 30-pin dock connector','MP3, WAV, AIFF, Audible, Apple Lossless, AAC','Earbuds, USB cable, adapter','iPod Software 1.0','Anodised aluminium front, stainless-steel back, Cover Flow interface.','Apple introduced “classic” as the family name; the 160 GB model held up to 40,000 songs.','2008 120 GB model often called 6.5th generation; see next entry.','IPod_classic.jpg'],
-['iPod nano (3rd generation)','nano','2007-09-05','2008-09-09','$149 (4 GB); $199 (8 GB)','4, 8 GB','Silver, black, blue, green, PRODUCT(RED); 8 GB colors; iTunes engraving','2 in colour LCD (320 × 240)','USB 2.0 via 30-pin connector','MP3, WAV, AIFF, Audible, video','Earbuds, USB cable, adapter, stand varies','iPod Software 1.0','Short, wide “fat nano” shape; first nano with video playback.','The squat design and video support briefly made nano a pocket video player.','(PRODUCT)RED was an 8 GB model; color/capacity pairings varied.','IPod_nano_3rd_generation.jpg'],
-['iPod touch (1st generation)','touch','2007-09-14','2008-09-09','$299 (8 GB); $399 (16 GB); 32 GB later $499','8, 16, 32 GB','Black front, chrome back','3.5 in multi-touch widescreen','Wi-Fi; 30-pin USB sync','MP3, WAV, AIFF, Audible, AAC','Earbuds, USB cable, stand, adapter varies by pack/market','iPhone OS 1','Multi-touch glass screen, Home button, Wi-Fi; no camera.','Brought a software-first, internet-connected experience to iPod and later gained App Store access.','','IPod_touch_1st_generation.jpg'],
-['iPod classic (6.5th generation / 120 GB revision)','classic','2008-09-09','2009-09-09','$249','120 GB','Silver, black','2.5 in colour LCD','USB 2.0 via 30-pin dock connector','MP3, WAV, AIFF, Audible, Apple Lossless, AAC, video','Earbuds, USB cable, adapter','iPod Software 2.0','Thin 120 GB hard-drive model; updated interface and Genius support.','A capacity and software refresh between classic generations; commonly called 6.5th gen by collectors.','','IPod_classic_120GB.jpg'],
-['iPod nano (4th generation)','nano','2008-09-09','2009-09-09','$149 (8 GB); $199 (16 GB)','8, 16 GB','Silver, black, purple, blue, green, yellow, orange, pink, (PRODUCT)RED','2 in colour LCD','USB 2.0 via 30-pin connector','MP3, WAV, AIFF, Audible, AAC, video','Earbuds, USB cable, adapter','iPod Software 1.0','Tall curved aluminium body; accelerometer and “shake to shuffle”.','Returned to a tall shape with a curved glass display and built-in voice recording.','(PRODUCT)RED 8/16 GB in select periods.','IPod_nano_4th_generation.jpg'],
-['iPod touch (2nd generation)','touch','2008-09-09','2009-09-09','$229 (8 GB); $299 (16 GB); $399 (32 GB)','8, 16, 32 GB','Black front, silver curved back','3.5 in multi-touch widescreen','Wi-Fi; Bluetooth; 30-pin USB sync','MP3, WAV, AIFF, Audible, AAC','Earbuds, USB cable','iPhone OS 2.1','Contoured metal back, volume buttons, built-in speaker, Nike+iPod support.','Refined the touch with a speaker and physical controls; Nike+ sensor support built in.','','IPod_touch_2nd_generation.jpg'],
-['iPod shuffle (3rd generation)','shuffle','2009-03-11','2010-09-01','$59 (2 GB); $79 (4 GB)','2, 4 GB','Silver, black; pink, blue, green added September 2009; polished stainless-steel 4 GB Apple Store edition','No display','USB via dock; inline headphone remote','MP3, WAV, AIFF, Audible','Apple Earphones with Remote, USB cable','iPod shuffle software 1.0','Buttonless player controlled from a VoiceOver-enabled inline remote.','Apple removed player controls from the body, making the remote essential. September 2009 revision added colors and 2/4 GB options.','','IPod_shuffle_3rd_generation.jpg'],
-['iPod shuffle (4th generation)','shuffle','2010-09-01','2017-07-27','$49 (2 GB); $59 (2 GB later pricing)','2 GB','2010: silver, blue, green, orange, pink; 2012 palette added slate, purple, yellow and PRODUCT(RED); 2015: silver, gold, blue, pink, space gray plus red','No display','USB via headphone-jack control pad; VoiceOver','MP3, WAV, AIFF, Audible','Apple Earphones, USB cable','iPod shuffle software 1.0','Square clip-on design with physical control pad and VoiceOver.','Final shuffle generation had cosmetic refreshes in 2012 and 2015; capacity remained 2 GB.','(PRODUCT)RED option appears in later refreshes; finish and control-pad colours varied by release.','IPod_shuffle_4th_generation.jpg'],
-['iPod nano (5th generation)','nano','2009-09-09','2010-09-01','$149 (8 GB); $179 (16 GB)','8, 16 GB','Silver, black, purple, blue, green, yellow, orange, pink, (PRODUCT)RED','2.2 in colour LCD','USB 2.0 via 30-pin connector','MP3, WAV, AIFF, Audible, AAC, video','Earbuds, USB cable, adapter','iPod Software 1.0','Tall aluminium body, video camera, FM radio, pedometer and speaker.','Added video recording and FM radio while retaining the familiar click wheel.','(PRODUCT)RED edition offered.','IPod_nano_5th_generation.jpg'],
-['iPod classic (7th generation / Late 2009)','classic','2009-09-09','2014-09-09','$249','160 GB','Silver, black','2.5 in colour LCD','USB 2.0 via 30-pin dock connector','MP3, WAV, AIFF, Audible, Apple Lossless, AAC, video','Earbuds, USB cable, adapter','iPod Software 2.0.4','Thicker 160 GB hard-drive body (compared with 2008 thin 120 GB).','This September 2009 160 GB revision remained on sale until the classic line was discontinued in 2014.','Apple Support catalogues this as iPod classic 160 GB Late 2009. Collectors sometimes number the late-2008 120 GB revision differently, so generation labels vary.','','IPod_classic_160GB.jpg'],
-['iPod touch (3rd generation)','touch','2009-09-09','2010-09-01','$199 (8 GB); $299 (32 GB); $399 (64 GB)','8, 32, 64 GB','Black front, chrome back','3.5 in multi-touch widescreen','Wi-Fi; Bluetooth; 30-pin USB sync','MP3, WAV, AIFF, Audible, AAC','Earbuds, USB cable','iPhone OS 3.1','Externally similar to 2nd gen; faster processor and voice control support.','A performance-focused update; 8 GB model retained the previous generation’s internals.','','IPod_touch_3rd_generation.jpg'],
-['iPod nano (6th generation)','nano','2010-09-01','2012-09-12','$149 (8 GB); $179 (16 GB)','8, 16 GB','Silver, graphite, blue, green, orange, pink, (PRODUCT)RED; 2011 colors refresh','1.54 in multi-touch display','USB 2.0 via 30-pin connector','MP3, WAV, AIFF, Audible, AAC','Earphones, USB cable','iPod Software 1.0','Small square touchscreen with clip; no click wheel or video camera.','A radical miniature touchscreen redesign; fitness features and watch-like accessories became popular.','(PRODUCT)RED available via Apple Store; 2011 colour refresh added pink and green.','IPod_nano_6th_generation.jpg'],
-['iPod touch (4th generation)','touch','2010-09-08','2012-09-12','$229 (8 GB); $299 (32 GB); $399 (64 GB)','8, 16, 32, 64 GB across revisions','Black, white (2011); (PRODUCT)RED from 2012','3.5 in Retina display','Wi-Fi; Bluetooth; 30-pin USB sync','MP3, WAV, AIFF, Audible, AAC','Apple Earphones, USB cable','iOS 4','Glass front/back, stainless steel rim, front and rear cameras, FaceTime.','Retina display and cameras brought the touch closer to iPhone feature parity.','(PRODUCT)RED 16/32 GB listed by Apple in 2012.','IPod_touch_4th_generation.jpg'],
-['iPod nano (7th generation)','nano','2012-10-12','2017-07-27','$149 (16 GB)','16 GB','Slate (2012), space gray (2013), silver, purple, blue, green, yellow, pink, (PRODUCT)RED; 2015 colors refresh','2.5 in multi-touch display','Bluetooth; Lightning connector; Nike+ support','MP3, WAV, AIFF, Audible, AAC, video','Apple EarPods, Lightning cable','iPod Software 1.0','Tall touchscreen with Home button; physical volume buttons; no camera.','The final nano returned to a tall form and adopted Lightning and Bluetooth. Mid-2015 finish refresh paired with touch and shuffle color updates.','(PRODUCT)RED sold through Apple Store; colors refreshed in 2013 and 2015.','IPod_nano_7th_generation.jpg'],
-['iPod touch (5th generation)','touch','2012-10-11','2015-06-30','$299 (32 GB); $399 (64 GB); 16 GB model added 2013 at $229','16, 32, 64 GB','Black/slate, white/silver, blue, yellow, pink, (PRODUCT)RED; 2013 16 GB model limited finishes','4 in Retina display','Wi-Fi; Bluetooth; Lightning connector','MP3, WAV, AIFF, Audible, AAC, video','Apple EarPods, Lightning cable, loop on selected colours','iOS 6','Thin anodised aluminium body; 5 MP camera; wrist loop.','The first taller-screen touch and first with coloured rear finishes. The 16 GB 2013 model omitted the rear camera and loop.','(PRODUCT)RED was sold via Apple Store; distinguish 2013 16 GB camera-less revision.','IPod_touch_5th_generation.jpg'],
-['iPod touch (6th generation)','touch','2015-07-15','2019-05-28','$199 (16 GB); $249 (32 GB); $299 (64 GB); 128 GB later $399','16, 32, 64, 128 GB','Space gray, silver, gold, blue, pink, (PRODUCT)RED','4 in Retina display','Wi-Fi; Bluetooth; Lightning connector','MP3, WAV, AIFF, Audible, AAC, video','Apple EarPods, Lightning cable','iOS 8.4','A8 processor, 8 MP rear camera; coloured aluminium body.','A long-lived internal update retained the 5th-gen shell; 2017 added 32/128 GB configurations.','(PRODUCT)RED model officially documented by Apple; Apple Support lists five colours plus red.','IPod_touch_6th_generation.jpg'],
-['iPod touch (7th generation)','touch','2019-05-28','2022-05-10','$199 (32 GB); $299 (128 GB); $399 (256 GB)','32, 128, 256 GB','Space gray, white, gold, blue, pink, (PRODUCT)RED','4 in Retina display','Wi-Fi; Bluetooth; Lightning connector','MP3, WAV, AIFF, Audible, AAC, video','Apple EarPods, Lightning cable','iOS 12.3','A10 Fusion; retains 4-inch screen and 3.5 mm headphone jack.','The final iPod model; Apple discontinued iPod touch in May 2022, ending the line.','(PRODUCT)RED finish offered.','','IPod_touch_7th_generation.jpg'],
-['iPod U2 Special Edition (4th generation)','special','2004-10-26','2005-06-28','$349','20 GB','Black front, red Click Wheel, engraved band signatures','2 in monochrome LCD','30-pin dock connector; USB 2.0 / FireWire','MP3, WAV, AIFF, Audible, Apple Lossless','Earbuds, dock, cables, adapter; $50 Complete U2 coupon','iPod Software 3.x','Black front, red wheel, signatures etched on stainless back.','Apple’s first U2 edition paired the 4th-gen Click Wheel iPod with a U2-branded finish.','','IPod_U2_Special_Edition.jpg'],
-['iPod U2 Special Edition (colour display)','special','2005-06-28','2005-10-12','$329','20 GB','Black front, red Click Wheel, engraved band signatures','2 in colour LCD','30-pin dock connector; USB 2.0 / FireWire','MP3, WAV, AIFF, Audible, Apple Lossless, AAC','Earbuds, USB cable, adapter; Complete U2 coupon','iPod Software 1.1','U2 front design updated to colour display; chrome back.','Apple’s June 2005 U2 refresh adopted the colour display as iPod/photo lines merged.','','IPod_U2_special_edition_color.jpg'],
-['iPod U2 Special Edition (5th generation)','special','2006-06-06','2006-09-12','$329','30 GB','All-black stainless-steel enclosure, red Click Wheel, band signatures','2.5 in colour LCD','USB 2.0 sync; 30-pin dock','MP3, WAV, AIFF, Audible, Apple Lossless, AAC, video','Earbuds, USB cable, case, dock insert; exclusive U2 video coupon','iPod Software 1.x','All-black metal back with red click wheel and engraved signatures.','Apple announced this 30 GB U2 model in June 2006; it held video and carried band engraving.','','IPod_U2_5th_generation.jpg'],
-['iPod U2 Special Edition (5th generation Enhanced)','special','2006-09-12','2007-09-05','$279 (after price reduction)','30 GB','Black, red Click Wheel, band signatures','2.5 in brighter colour LCD','USB 2.0 sync; 30-pin dock','MP3, WAV, AIFF, Audible, Apple Lossless, AAC, video','Earbuds, USB cable, case, dock insert; U2 video coupon','iPod Software 1.2','Enhanced 5th-gen internals/screen with U2 black/red finish.','This later U2 configuration tracked the enhanced 5th-gen model; serial/model revisions identify the hardware.','Often catalogued as 5th-gen U2 rather than a separate marketing generation.','IPod_U2_5th_generation.jpg'],
-['Apple iPod from HP (4th generation)','special','2004-08-27','Not stated; HP partnership ended 2005','$299 (20 GB); $399 (40 GB)','20, 40 GB','White front; HP logo etched beside Apple mark on back','2 in monochrome LCD','USB 2.0 / FireWire via 30-pin connector','MP3, WAV, AIFF, Audible, Apple Lossless','Standard 4th-gen accessories; HP supplied manuals and HP support','iPod Software 3.x / Windows setup','Internally a standard 4th-gen Click Wheel iPod; cross-branded rear engraving and HP packaging.','HP sold an officially licensed iPod through its own retail channels, extending Apple’s reach to Windows users. The planned blue finish was a prototype and did not ship.','A distribution/branding edition rather than a hardware redesign. Hewlett-Packard History Archives document the collaboration; HP 4th-gen product manual exists.','Apple_iPod_from_HP.jpg'],
-['Apple iPod from HP photo (4th-generation colour display)','special','2005-04-12','Not stated; HP partnership ended 2005','$349 (30 GB); $449 (60 GB)','30, 60 GB','White front; HP logo etched on back','2 in colour LCD','USB 2.0 / FireWire via 30-pin connector','MP3, WAV, AIFF, Audible, Apple Lossless, AAC, photo','USB cable and HP Total Care one-year support; bundle otherwise model dependent','iPod Software for colour-display iPod','HP branded the 4th-gen photo-capable iPod; functionally identical to Apple’s iPod photo.','HP expanded its branded range with 30 GB and 60 GB colour-screen models in 2005, at the same prices as Apple’s iPod photo.','Documented by Macworld; not an internal hardware generation.','Apple_iPod_from_HP_photo.jpg'],
-['iPod with colour display — Harry Potter Collector’s Edition','special','2005-09-07','Not independently documented','$Not separately documented','20 GB','White; Hogwarts crest engraved on rear','2 in colour LCD','30-pin dock connector; USB 2.0 / FireWire','MP3, WAV, AIFF, Audible, Apple Lossless','Bundled/promoted with The Complete Harry Potter audiobooks; exact pack varied','iPod Software for 4th-gen colour iPod','Standard white colour-display iPod with Hogwarts crest engraving.','Apple Support preserves a dedicated manual page for this 2005 edition. Apple’s eNews promoted the collector iPod with the audiobook collection.','This was an officially documented engraving/promotion, not a new internal hardware generation; price/production quantity not established.','iPod_with_color_display_Harry_Potter_Edition'],
-['iPod nano (PRODUCT)RED Special Edition','special','2006-10-13','Model-specific / variable','$199 (4 GB); $249 (8 GB)','4, 8 GB','Red anodised aluminium','1.5 in colour LCD','30-pin USB 2.0','MP3, WAV, AIFF, Audible','Earbuds, USB cable, dock adapter, iTunes CD','iPod Software 1.1','Red nano with (PRODUCT)RED branding; charitable contribution to Global Fund.','Apple’s first (PRODUCT)RED iPod; 8 GB version followed in November 2006. Later nano generations also had red options, listed on their entries.','','IPod_nano_PRODUCT_RED.jpg']
-];
-models.sort((a,b)=>a[2].localeCompare(b[2]));
-const familyLabels={classic:'Classic / full-size',mini:'mini',nano:'nano',shuffle:'shuffle',touch:'touch',special:'Special editions'};
-const timeline=document.querySelector('#timeline'), jump=document.querySelector('.year-jumps'), filters=document.querySelector('.family-filters');
-const years=[...new Set(models.map(m=>m[2].slice(0,4)))].sort();
-years.forEach(y=>{const a=document.createElement('a');a.href=`#year-${y}`;a.textContent=y;jump.append(a)});
-['all','classic','mini','nano','shuffle','touch','special'].forEach(f=>{const b=document.createElement('button');b.className='filter';b.type='button';b.dataset.family=f;b.setAttribute('aria-pressed',String(f==='all'));b.textContent=f==='all'?'All models':familyLabels[f];filters.append(b)});
-years.forEach(year=>{const era=document.createElement('section');era.className='era';era.id=`year-${year}`;era.innerHTML=`<header class="era-heading"><h2>${year}</h2></header>`;models.filter(m=>m[2].startsWith(year)).forEach(m=>{const [name,family,date,end,price,capacity,colors,display,connection,formats,accessories,software,design,history,specialNote]=m;const e=document.createElement('article');e.className='entry'+(family==='special'?' special':'');e.dataset.family=family;e.id='model-'+name.toLowerCase().replace(/[^a-z0-9]+/g,'-');e.setAttribute('aria-expanded','false');const niceDate=new Date(date+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});const tags=[familyLabels[family],family==='special'?'Official special edition':(specialNote?'Special variant documented':'')].filter(Boolean);e.innerHTML=`<div class="entry-card"><div class="device-image"><img loading="lazy" decoding="async" alt="${name} product photograph" data-title="${name}"><span class="image-credit">Historical product image · Wikimedia</span></div><div class="entry-copy"><div class="entry-top"><h3>${name}</h3><span class="entry-date">${niceDate}</span></div><p class="entry-blurb">${history}</p><div class="entry-tags">${tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div><div class="specs"><div class="spec"><b>Capacities offered</b>${capacity}</div><div class="spec"><b>Launch price · US</b>${price}</div><div class="spec"><b>Finish / colour</b>${colors}</div><div class="spec"><b>Display</b>${display}</div></div><button class="expand" type="button" aria-expanded="false">Archive details</button><div class="more"><p><b>Connectivity:</b> ${connection}</p><p><b>Audio / media:</b> ${formats}</p><p><b>Included in box:</b> ${accessories}</p><p><b>Original software:</b> ${software}</p><p><b>Design and significance:</b> ${design} ${history}</p><p><b>Discontinued:</b> ${end}.</p>${specialNote?`<p><b>Variants / edition note:</b> ${specialNote}</p>`:''}</div></div></div>`;era.append(e)});timeline.append(era)});
-// Resolve a model-specific Wikimedia file only as its entry approaches the viewport; no neighbouring-generation fallback.
-function markImageMissing(img){img.remove();const box=img.closest('.device-image');box.querySelector('.image-credit')?.remove();const note=document.createElement('span');note.className='image-missing';note.textContent='No verified model-matched image found';box.append(note)}
-const imageObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;const img=entry.target,title=img.dataset.title;imageObserver.unobserve(img);const query=`iPod ${title} Apple device`;const url='https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch='+encodeURIComponent(query)+'&gsrnamespace=6&gsrlimit=8&prop=imageinfo&iiprop=url&iiurlwidth=500&format=json&origin=*';fetch(url).then(r=>r.ok?r.json():Promise.reject()).then(data=>{const pages=Object.values(data.query?.pages||{});const keywords=title.toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(x=>x&&x!=='ipod'&&x!=='generation'&&x!=='the'&&x!=='with'&&x!=='edition'&&x!=='special'&&x!=='enhanced');const match=pages.find(p=>{const file=p.title.toLowerCase();return file.includes('ipod')&&keywords.filter(k=>k.length>2).every(k=>file.includes(k))&&p.imageinfo?.[0]?.thumburl});if(match){img.src=match.imageinfo[0].thumburl;img.alt=match.title.replace(/^File:/,'')+'; product photograph of '+title;img.closest('.device-image').querySelector('.image-credit').textContent='Wikimedia Commons · '+match.title.replace(/^File:/,'')}else markImageMissing(img)}).catch(()=>markImageMissing(img))}),{rootMargin:'300px 0px'});document.querySelectorAll('.device-image img').forEach(img=>imageObserver.observe(img));
-document.querySelectorAll('.entry').forEach(e=>{const b=e.querySelector('.expand');b.addEventListener('click',()=>{const open=e.getAttribute('aria-expanded')==='true';e.setAttribute('aria-expanded',String(!open));b.setAttribute('aria-expanded',String(!open))})});
-filters.addEventListener('click',ev=>{const b=ev.target.closest('button[data-family]');if(!b)return;filters.querySelectorAll('.filter').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));const family=b.dataset.family;document.querySelectorAll('.entry').forEach(e=>e.hidden=family!=='all'&&e.dataset.family!==family);document.querySelectorAll('.era').forEach(era=>era.hidden=!era.querySelector('.entry:not([hidden])'));});
-const readout=document.querySelector('.year-readout'),bar=document.querySelector('.progress-bar'),timelineEl=document.querySelector('.timeline');let ticking=false;function update(){const rect=timelineEl.getBoundingClientRect(),total=timelineEl.offsetHeight-innerHeight,passed=Math.max(0,Math.min(total,-rect.top)),pct=total>0?passed/total:0;bar.style.width=(pct*100)+'%';timelineEl.style.setProperty('--progress',(pct*100)+'%');const active=[...document.querySelectorAll('.era:not([hidden])')].filter(s=>s.getBoundingClientRect().top<innerHeight*.45).pop();if(active)readout.textContent=active.querySelector('h2').textContent;ticking=false}window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(update);ticking=true}},{passive:true});window.addEventListener('resize',update);filters.addEventListener('click',()=>requestAnimationFrame(update));update();
-</script>
-</body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f5f3ee" />
+    <meta
+      name="description"
+      content="An interactive archive of the Apple iPod: every family, generation and documented special edition from 2001 to 2022."
+    />
+    <link rel="icon" type="image/png" href="favicon-collapsed.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>iPod Timeline — Reboot Archive</title>
+    <style>
+      :root {
+        --paper: #f5f3ee;
+        --ink: #242622;
+        --muted: #797a73;
+        --line: #dcd9d1;
+        --rust: #a45e43;
+        --sage: #c9cbb9;
+        --serif: "Playfair Display", Georgia, serif;
+        --sans: "DM Sans", Arial, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 170px;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font: inherit;
+        color: inherit;
+      }
+      .announcement {
+        height: 34px;
+        background: #292b26;
+        color: var(--paper);
+        display: grid;
+        place-items: center;
+        font-size: 9px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .nav {
+        height: 76px;
+        padding: 0 7.2%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+        background: var(--paper);
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand img {
+        width: 34px;
+        height: 34px;
+        object-fit: cover;
+        border-radius: 9px;
+      }
+      .brand strong {
+        display: block;
+        font: 600 17px var(--serif);
+      }
+      .brand span span {
+        font: 9px var(--sans);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+      }
+      .nav-links {
+        display: flex;
+        gap: 24px;
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+      .nav-links a:hover,
+      .nav-links a[aria-current] {
+        color: var(--rust);
+      }
+      .intro {
+        padding: 76px 7.2% 48px;
+        display: grid;
+        grid-template-columns: 1fr 0.72fr;
+        align-items: end;
+        gap: 40px;
+      }
+      .eyebrow {
+        font-size: 9px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--rust);
+        display: flex;
+        align-items: center;
+        gap: 11px;
+      }
+      .eyebrow:before {
+        content: "";
+        width: 28px;
+        height: 1px;
+        background: currentColor;
+      }
+      h1 {
+        font: 500 clamp(48px, 6.1vw, 78px)/1.03 var(--serif);
+        letter-spacing: -0.05em;
+        margin: 17px 0 12px;
+      }
+      .intro p {
+        max-width: 440px;
+        color: #686a63;
+        font-size: 12px;
+        line-height: 1.9;
+        margin: 0 0 7px;
+      }
+      .sticky {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: #f5f3eef2;
+        backdrop-filter: blur(12px);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .control-row {
+        padding: 10px 7.2%;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .year-readout {
+        min-width: 104px;
+        font: 500 21px var(--serif);
+        color: var(--rust);
+      }
+      .progress-wrap {
+        height: 2px;
+        background: var(--line);
+        flex: 1;
+        position: relative;
+      }
+      .progress-bar {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 0;
+        background: var(--rust);
+        transition: width 0.15s;
+      }
+      .year-jumps {
+        display: flex;
+        gap: 6px;
+        overflow: auto;
+        scrollbar-width: none;
+      }
+      .year-jumps a {
+        border: 1px solid var(--line);
+        padding: 7px 9px;
+        font-size: 8px;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+      .year-jumps a:hover,
+      .year-jumps a:focus-visible {
+        background: var(--ink);
+        color: white;
+      }
+      .family-filters {
+        padding: 9px 7.2%;
+        border-top: 1px solid var(--line);
+        display: flex;
+        gap: 7px;
+        overflow: auto;
+        scrollbar-width: none;
+      }
+      .filter {
+        border: 1px solid var(--line);
+        background: transparent;
+        padding: 7px 10px;
+        font-size: 8px;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+      .filter:hover,
+      .filter[aria-pressed="true"] {
+        background: var(--ink);
+        color: #fff;
+        border-color: var(--ink);
+      }
+      .timeline {
+        position: relative;
+        padding: 25px 7.2% 90px;
+        overflow: hidden;
+      }
+      .timeline:before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 30px;
+        bottom: 70px;
+        width: 1px;
+        background: var(--line);
+      }
+      .timeline:after {
+        content: "";
+        position: absolute;
+        left: calc(50% - 2px);
+        top: 30px;
+        width: 5px;
+        height: var(--progress, 0%);
+        max-height: calc(100% - 100px);
+        background: var(--rust);
+        border-radius: 5px;
+        opacity: 0.7;
+      }
+      .era {
+        position: relative;
+        z-index: 1;
+      }
+      .era-heading {
+        display: grid;
+        grid-template-columns: 1fr 70px 1fr;
+        align-items: center;
+        gap: 18px;
+        margin: 42px 0 22px;
+      }
+      .era-heading h2 {
+        font: 500 33px var(--serif);
+        letter-spacing: -0.04em;
+        margin: 0;
+        color: var(--rust);
+        text-align: center;
+        background: var(--paper);
+        padding: 4px 0;
+      }
+      .era-heading:before,
+      .era-heading:after {
+        content: "";
+        height: 1px;
+        background: var(--line);
+      }
+      .entry {
+        position: relative;
+        width: calc(50% - 48px);
+        margin: 0 0 26px;
+      }
+      .entry:nth-of-type(even) {
+        margin-left: calc(50% + 48px);
+      }
+      .entry:before {
+        content: "";
+        position: absolute;
+        top: 26px;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--rust);
+        border: 4px solid var(--paper);
+        box-shadow: 0 0 0 1px var(--rust);
+      }
+      .entry:nth-of-type(odd):before {
+        left: -55px;
+      }
+      .entry:nth-of-type(even):before {
+        right: -55px;
+      }
+      .entry-card {
+        border: 1px solid var(--line);
+        background: #f8f7f2;
+        display: grid;
+        grid-template-columns: 40% 1fr;
+        min-height: 250px;
+        transition:
+          transform 0.25s,
+          border-color 0.25s;
+      }
+      .entry:nth-of-type(even) .entry-card {
+        grid-template-columns: 1fr 40%;
+      }
+      .entry:nth-of-type(even) .device-image {
+        order: 2;
+      }
+      .entry-card:hover {
+        transform: translateY(-3px);
+        border-color: #b9a89d;
+      }
+      .special .entry-card {
+        border-color: #b47a60;
+        background: #f8f4ee;
+      }
+      .device-image {
+        min-height: 250px;
+        background: #e9e6df;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        position: relative;
+      }
+      .entry:nth-of-type(3n) .device-image {
+        background: #e2e3db;
+      }
+      .entry:nth-of-type(3n + 2) .device-image {
+        background: #e8dfd7;
+      }
+      .special .device-image {
+        background: #e8dfd7;
+      }
+      .device-image img {
+        width: 100%;
+        height: 100%;
+        min-height: 250px;
+        object-fit: contain;
+        padding: 15px;
+        filter: drop-shadow(0 12px 10px #35352b20);
+      }
+      .image-credit {
+        position: absolute;
+        bottom: 8px;
+        left: 10px;
+        font-size: 7px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #73736c;
+      }
+      .entry-copy {
+        padding: 18px 18px 15px;
+        min-width: 0;
+      }
+      .entry-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        align-items: start;
+      }
+      .entry h3 {
+        font: 500 21px/1.15 var(--serif);
+        letter-spacing: -0.025em;
+        margin: 0;
+      }
+      .entry-date {
+        font-size: 8px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--rust);
+        white-space: nowrap;
+        margin-top: 3px;
+      }
+      .entry-blurb {
+        font-size: 10px;
+        line-height: 1.65;
+        color: #686a63;
+        margin: 10px 0 13px;
+      }
+      .entry-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin: 0 0 10px;
+      }
+      .tag {
+        background: #eeebe4;
+        color: #686a63;
+        padding: 5px 7px;
+        font-size: 7px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .special .tag {
+        background: #ead9cd;
+        color: #82452f;
+      }
+      .specs {
+        border-top: 1px solid var(--line);
+        padding-top: 9px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .spec {
+        font-size: 8px;
+        line-height: 1.45;
+        color: var(--muted);
+      }
+      .spec b {
+        display: block;
+        font-size: 7px;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--ink);
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+      .expand {
+        margin-top: 11px;
+        padding: 0;
+        border: 0;
+        border-bottom: 1px solid var(--line);
+        background: none;
+        font-size: 8px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+      .expand:focus-visible,
+      .nav a:focus-visible,
+      .year-jumps a:focus-visible,
+      .filter:focus-visible {
+        outline: 2px solid var(--rust);
+        outline-offset: 3px;
+      }
+      .more {
+        display: none;
+        border-top: 1px solid var(--line);
+        padding-top: 10px;
+        margin-top: 10px;
+        font-size: 9px;
+        line-height: 1.75;
+        color: #686a63;
+      }
+      .more p {
+        margin: 0 0 8px;
+      }
+      .more p:last-child {
+        margin-bottom: 0;
+      }
+      .entry[aria-expanded="true"] .more {
+        display: block;
+      }
+      .entry[aria-expanded="true"] .expand:after {
+        content: " −";
+      }
+      .entry[aria-expanded="false"] .expand:after {
+        content: " +";
+      }
+      .entry[hidden] {
+        display: none;
+      }
+      .sources {
+        padding: 32px 7.2%;
+        border-top: 1px solid var(--line);
+        background: #e5e4dc;
+        font-size: 10px;
+        color: #686a63;
+        line-height: 1.8;
+      }
+      .sources h2 {
+        font: 500 25px var(--serif);
+        color: var(--ink);
+        margin: 0 0 10px;
+      }
+      .sources a {
+        color: var(--rust);
+        text-decoration: underline;
+      }
+      .footer {
+        padding: 35px 7.2%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 9px;
+        color: var(--muted);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .footer a:hover {
+        color: var(--rust);
+      }
+      .image-missing {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 15px;
+        text-align: center;
+        font-size: 7px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #77766e;
+      }
+      .image-missing {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 15px;
+        text-align: center;
+        font-size: 7px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #77766e;
+      }
+      @media (max-width: 900px) {
+        .intro {
+          padding-left: 5%;
+          padding-right: 5%;
+        }
+        .control-row,
+        .family-filters {
+          padding-left: 5%;
+          padding-right: 5%;
+        }
+        .timeline {
+          padding-left: 5%;
+          padding-right: 5%;
+        }
+        .entry {
+          width: calc(50% - 35px);
+        }
+        .entry:nth-of-type(even) {
+          margin-left: calc(50% + 35px);
+        }
+        .entry-card,
+        .entry:nth-of-type(even) .entry-card {
+          grid-template-columns: 1fr;
+        }
+        .entry:nth-of-type(even) .device-image {
+          order: 0;
+        }
+        .device-image,
+        .device-image img {
+          min-height: 210px;
+          height: 210px;
+        }
+        .entry-copy {
+          padding: 15px;
+        }
+        .entry:nth-of-type(odd):before {
+          left: -42px;
+        }
+        .entry:nth-of-type(even):before {
+          right: -42px;
+        }
+      }
+      @media (max-width: 620px) {
+        html {
+          scroll-padding-top: 150px;
+        }
+        .announcement {
+          height: 29px;
+          font-size: 8px;
+        }
+        .nav {
+          height: 64px;
+          padding: 0 5%;
+        }
+        .brand strong {
+          font-size: 15px;
+        }
+        .brand img {
+          width: 30px;
+          height: 30px;
+        }
+        .nav-links {
+          gap: 10px;
+        }
+        .nav-links a {
+          font-size: 7px;
+        }
+        .nav-links a:nth-child(1),
+        .nav-links a:nth-child(2) {
+          display: none;
+        }
+        .intro {
+          display: block;
+          padding: 47px 6% 30px;
+        }
+        .intro p {
+          margin-top: 15px;
+        }
+        .control-row {
+          padding: 8px 5%;
+          gap: 10px;
+        }
+        .year-readout {
+          min-width: 68px;
+          font-size: 17px;
+        }
+        .year-jumps a {
+          padding: 6px 8px;
+        }
+        .family-filters {
+          padding: 8px 5%;
+          gap: 5px;
+        }
+        .filter {
+          padding: 6px 8px;
+          font-size: 7px;
+        }
+        .timeline {
+          padding: 12px 5% 60px;
+        }
+        .timeline:before {
+          left: 18px;
+          top: 20px;
+          bottom: 55px;
+        }
+        .timeline:after {
+          left: 16px;
+          top: 20px;
+          max-height: calc(100% - 75px);
+        }
+        .era-heading {
+          grid-template-columns: 18px 65px 1fr;
+          gap: 10px;
+          margin: 33px 0 17px;
+        }
+        .era-heading h2 {
+          text-align: left;
+          font-size: 27px;
+          padding: 2px 0;
+        }
+        .era-heading:before {
+          display: none;
+        }
+        .entry,
+        .entry:nth-of-type(even) {
+          width: auto;
+          margin: 0 0 17px 39px;
+        }
+        .entry:before,
+        .entry:nth-of-type(odd):before,
+        .entry:nth-of-type(even):before {
+          left: -28px;
+          right: auto;
+          top: 21px;
+        }
+        .entry-card,
+        .entry:nth-of-type(even) .entry-card {
+          grid-template-columns: 34% 1fr;
+          min-height: 0;
+        }
+        .entry:nth-of-type(even) .device-image {
+          order: 0;
+        }
+        .device-image,
+        .device-image img {
+          min-height: 178px;
+          height: 178px;
+        }
+        .device-image img {
+          padding: 7px;
+        }
+        .entry-copy {
+          padding: 12px 11px;
+        }
+        .entry h3 {
+          font-size: 17px;
+        }
+        .entry-date {
+          font-size: 7px;
+        }
+        .entry-blurb {
+          font-size: 9px;
+          line-height: 1.55;
+          margin: 7px 0 9px;
+        }
+        .specs {
+          gap: 6px;
+        }
+        .spec {
+          font-size: 7px;
+        }
+        .spec b {
+          font-size: 6px;
+        }
+        .tag {
+          font-size: 6px;
+          padding: 4px 5px;
+        }
+        .expand {
+          font-size: 7px;
+          margin-top: 9px;
+        }
+        .image-credit {
+          display: none;
+        }
+        .sources {
+          padding: 25px 6%;
+        }
+        .footer {
+          padding: 24px 5%;
+          display: block;
+          line-height: 2.2;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *:before,
+        *:after {
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="announcement">A living record of an icon · 2001—2022</div>
+    <header class="nav">
+      <a class="brand" href="index.html"
+        ><img src="favicon-collapsed.png" alt="" /><span
+          ><strong>Reboot Archive</strong
+          ><span>Vintage Apple, reimagined</span></span
+        ></a
+      >
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="collections.html">The collection</a
+        ><a href="story.html">Our story</a><a href="explore.html">Explore</a
+        ><a href="timeline.html">iPhone timeline</a
+        ><a href="ipod-timeline.html" aria-current="page">iPod timeline</a>
+      </nav>
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <div class="eyebrow">An interactive chronology</div>
+          <h1>iPod,<br />in its time.</h1>
+        </div>
+        <p>
+          From 1,000 songs in your pocket to a touch-screen music library.
+          Explore every iPod family, generation and documented special edition
+          in the archive. Open an entry for capacities, colours, accessories,
+          software and the details that distinguish each model.
+        </p>
+      </section>
+      <div class="sticky">
+        <div class="control-row" aria-label="Timeline navigation">
+          <div class="year-readout" aria-live="polite">2001</div>
+          <div class="progress-wrap" aria-hidden="true">
+            <div class="progress-bar"></div>
+          </div>
+          <nav class="year-jumps" aria-label="Jump to year"></nav>
+        </div>
+        <nav class="family-filters" aria-label="Filter iPod family"></nav>
+      </div>
+      <section
+        class="timeline"
+        id="timeline"
+        aria-label="iPod history timeline"
+      ></section>
+      <section class="sources">
+        <h2>Scope and archival notes</h2>
+        <p>
+          This timeline counts each separately marketed generation and
+          meaningful hardware revision once. Capacity and colour options appear
+          as variants within that model; they are not duplicated as separate
+          generations. U2 models and the Harry Potter engraved iPod are shown as
+          special-edition entries because Apple documented those offers.
+          (PRODUCT)RED availability is listed under the corresponding model.
+          Apple’s personalised laser engraving service could put
+          customer-selected text on otherwise standard iPods; custom engravings
+          and third-party modifications are not treated as Apple special
+          editions.
+        </p>
+        <p>
+          Dates distinguish announcement from first availability where sources
+          report both. Prices are original US launch prices and can differ by
+          configuration. Early firmware versions were not always consistently
+          recorded in Apple’s public documents; “varies / not stated” is used
+          where appropriate. Bundled accessories also differed across markets
+          and model revisions.
+        </p>
+        <p>
+          Sources:
+          <a href="https://support.apple.com/en-us/103823"
+            >Apple Support: Identify your iPod model</a
+          >;
+          <a href="https://www.apple.com/newsroom/archive/ipod/"
+            >Apple Newsroom iPod archive</a
+          >;
+          <a
+            href="https://everymac.com/systems/apple/ipod/index-ipod-specs.html"
+            >EveryMac / EveryiPod technical catalogue</a
+          >; Apple’s original
+          <a
+            href="https://www.apple.com/newsroom/2001/10/23Apple-Presents-iPod/"
+            >iPod announcement</a
+          >
+          and individual announcements for
+          <a
+            href="https://www.apple.com/newsroom/2005/01/11Apple-Introduces-iPod-shuffle/"
+            >shuffle</a
+          >,
+          <a
+            href="https://www.apple.com/newsroom/2005/09/07Apple-Introduces-iPod-nano/"
+            >nano</a
+          >,
+          <a
+            href="https://www.apple.com/newsroom/2007/09/05Apple-Unveils-iPod-touch/"
+            >touch</a
+          >,
+          <a
+            href="https://www.apple.com/newsroom/2007/09/05Apple-Introduces-New-iPod-classic/"
+            >classic</a
+          >,
+          <a
+            href="https://www.apple.com/newsroom/2006/06/06Apple-Introduces-the-New-U2-iPod/"
+            >U2 edition</a
+          >, and
+          <a
+            href="https://www.apple.com/ie/newsroom/2006/10/13Apple-Announces-iPod-nano-PRODUCT-RED-Special-Edition/"
+            >(PRODUCT)RED</a
+          >. The HP-branded releases are corroborated by
+          <a
+            href="https://www.hewlettpackardhistory.com/item/an-interest-in-the-ipod/"
+            >Hewlett-Packard History Archives</a
+          >
+          and
+          <a href="https://www.macworld.com/article/175246/ipodphotohp.html"
+            >Macworld’s HP photo iPod report</a
+          >. Apple Support lists the
+          <a href="https://support.apple.com/en-euro/docs/ipod/130668"
+            >Harry Potter 20 GB iPod manual</a
+          >. Product thumbnails are fetched lazily from Wikimedia Commons using
+          a model-specific file search; a matching photograph may be unavailable
+          for some revisions, and the page does not substitute another
+          generation’s image.
+        </p>
+        <p class="note">
+          Catalogue includes 31 standard generation/revision entries plus 8
+          identifiable special-edition or partner-branded entries: four U2
+          models, two HP-branded releases, the Harry Potter engraved edition,
+          and the first (PRODUCT)RED nano. Later (PRODUCT)RED colourways are
+          listed under each compatible model rather than counted as additional
+          hardware generations. Custom engravings and third-party modifications
+          are excluded.
+        </p>
+      </section>
+    </main>
+    <footer class="footer">
+      <a href="index.html">← Back to Reboot Archive</a
+      ><span><a href="timeline.html">Explore the iPhone timeline →</a></span>
+    </footer>
+    <script>
+      // [name, family, date available, discontinuation, US price, capacities, colours, display, connection, formats, included accessories, original software, design, historical note, special edition note, image article]
+      const models = [
+        [
+          "iPod (1st generation)",
+          "classic",
+          "2001-11-10",
+          "2002-07-17",
+          "$399",
+          "5 GB",
+          "White front, mechanical scroll wheel",
+          "2 in monochrome LCD",
+          "FireWire 400",
+          "MP3, WAV, AIFF",
+          "Earbud headphones, FireWire cable, power adapter, iTunes CD",
+          "iPod Software 1.0",
+          "Polished stainless-steel back; mechanical scroll wheel with four buttons around it.",
+          "Announced October 23 and first sold November 10, 2001. Apple’s first iPod put a 1,000-song library in a pocketable hard-drive player. Mac-only at launch.",
+          "",
+          "IPod_1st_Generation.jpg",
+        ],
+        [
+          "iPod (2nd generation)",
+          "classic",
+          "2002-07-17",
+          "2003-04-28",
+          "$399 (10 GB); $499 (20 GB)",
+          "10, 20 GB",
+          "White front",
+          "2 in monochrome LCD",
+          "FireWire 400; Windows sync via Musicmatch",
+          "MP3, WAV, AIFF",
+          "Earbud headphones, cables, adapter, iTunes CD",
+          "iPod Software 1.2",
+          "Touch-sensitive scroll wheel; solid-state scroll surface replaced the moving wheel.",
+          "Introduced Windows compatibility and a capacitive wheel while retaining the original silhouette.",
+          "",
+          "IPod_2nd_Generation.jpg",
+        ],
+        [
+          "iPod (3rd generation)",
+          "classic",
+          "2003-04-28",
+          "2004-07-19",
+          "$299 (10 GB); $399 (15 GB); $499 (30 GB)",
+          "10, 15, 20, 30, 40 GB across revisions",
+          "White front",
+          "2 in monochrome LCD",
+          "30-pin dock connector; USB 2.0 sync; FireWire charging",
+          "MP3, WAV, AIFF, Audible",
+          "Earbuds, dock, USB/FireWire cables; adapter varied by bundle",
+          "iPod Software 2.0",
+          "Four red-lit touch buttons moved above the touch-sensitive wheel; first 30-pin dock connector.",
+          "A major redesign added the dock connector and USB syncing, though charging still relied on FireWire.",
+          "20/40 GB late revision (2004) was the first U2 edition base; separate U2 entry below.",
+          "IPod_3rd_Generation.jpg",
+        ],
+        [
+          "iPod mini (1st generation)",
+          "mini",
+          "2004-02-20",
+          "2005-02-23",
+          "$249",
+          "4 GB",
+          "Silver, gold, pink, blue, green",
+          "1.67 in grayscale",
+          "USB 2.0 / FireWire via 30-pin connector",
+          "MP3, WAV, AIFF, Audible",
+          "Earbuds, belt clip, USB and FireWire cables, power adapter",
+          "iPod Software 1.0",
+          "Small anodised aluminium body; touch-sensitive Click Wheel.",
+          "Miniaturised the hard-drive iPod and introduced five coloured metal finishes.",
+          "",
+          "IPod_mini.jpg",
+        ],
+        [
+          "iPod (4th generation)",
+          "classic",
+          "2004-07-19",
+          "2005-06-28",
+          "$299 (20 GB); $399 (40 GB)",
+          "20, 40 GB",
+          "White",
+          "2 in monochrome LCD",
+          "USB 2.0 / FireWire via dock connector",
+          "MP3, WAV, AIFF, Audible, Apple Lossless",
+          "Earbuds, dock, cables, adapter (bundle dependent)",
+          "iPod Software 3.0",
+          "Click Wheel integrated the navigation buttons beneath its surface.",
+          "The Click Wheel made navigation simpler and became the visual signature of full-size iPods.",
+          "U2 Special Edition first introduced October 2004, plus officially licensed HP-branded 20/40 GB versions in 2004; see dedicated entries.",
+          "IPod_4th_Generation.jpg",
+        ],
+        [
+          "iPod photo",
+          "classic",
+          "2004-10-26",
+          "2005-06-28",
+          "$499 (40 GB); $599 (60 GB); later 30 GB revision $349",
+          "40, 60 GB; 30 GB added February 2005",
+          "White",
+          "2 in colour LCD (220 × 176)",
+          "USB 2.0 / FireWire via dock connector",
+          "MP3, WAV, AIFF, Audible, Apple Lossless",
+          "Earbuds, dock, cables, adapter; camera connector optional",
+          "iPod Software 1.0 for photo",
+          "White Click Wheel model with colour screen and photo import/slideshow support.",
+          "Made a user’s photo library and album art viewable on the iPod; later merged into the main colour-screen range.",
+          "20 GB Harry Potter engraving, U2 colour refresh and HP branded photo models appear as special entries.",
+          "IPod_photo.jpg",
+        ],
+        [
+          "iPod mini (2nd generation)",
+          "mini",
+          "2005-02-23",
+          "2005-09-07",
+          "$199 (4 GB); $249 (6 GB)",
+          "4, 6 GB",
+          "Silver, blue, pink, green; gold discontinued",
+          "1.67 in grayscale",
+          "USB 2.0 / FireWire via 30-pin connector",
+          "MP3, WAV, AIFF, Audible",
+          "Earbuds, belt clip, USB and FireWire cables, adapter",
+          "iPod Software 1.3",
+          "Brighter anodised colours; longer battery life; capacity increased to 6 GB.",
+          "Refined mini doubled some storage and improved runtime before nano replaced the family.",
+          "",
+          "IPod_mini_2nd_generation.jpg",
+        ],
+        [
+          "iPod (colour display)",
+          "classic",
+          "2005-06-28",
+          "2005-10-12",
+          "$299 (20 GB); $399 (60 GB)",
+          "20, 60 GB",
+          "White",
+          "2 in colour LCD",
+          "USB 2.0 / FireWire via dock connector",
+          "MP3, WAV, AIFF, Audible, Apple Lossless",
+          "Earbuds, USB cable, adapter, iTunes CD",
+          "iPod Software 1.1",
+          "Mainstream full-size iPod adopted the colour display previously sold as iPod photo.",
+          "Apple merged the iPod photo and standard iPod lines; this is a separately announced line revision, not a new numbered generation.",
+          "U2 Special Edition colour display version released June 2005.",
+          "IPod_color_display.jpg",
+        ],
+        [
+          "iPod shuffle (1st generation)",
+          "shuffle",
+          "2005-01-11",
+          "2006-09-12",
+          "$99 (512 MB); $149 (1 GB)",
+          "512 MB, 1 GB",
+          "White",
+          "No display",
+          "USB-A plug built in",
+          "MP3, WAV, AIFF",
+          "Earbuds, lanyard, iTunes CD",
+          "iPod shuffle software 1.0",
+          "Screenless white USB-stick player with front controls and rear shuffle switch.",
+          "The least expensive iPod made the shuffle function its defining interface.",
+          "",
+          "IPod_shuffle_1st_generation.jpg",
+        ],
+        [
+          "iPod nano (1st generation)",
+          "nano",
+          "2005-09-07",
+          "2006-09-12",
+          "$199 (2 GB); $249 (4 GB); $299 (4 GB black later)",
+          "1, 2, 4 GB",
+          "White and black (black 4 GB later)",
+          "1.5 in colour LCD",
+          "USB 2.0 via 30-pin connector",
+          "MP3, WAV, AIFF, Audible",
+          "Earbuds, USB cable, iTunes CD",
+          "iPod Software 1.0",
+          "Flash-memory body only 6.9 mm thick; colour screen and Click Wheel.",
+          "Replaced mini with a much thinner flash-based player; black became an added colour in 2006.",
+          "",
+          "IPod_nano_1st_generation.jpg",
+        ],
+        [
+          "iPod (5th generation / with video)",
+          "classic",
+          "2005-10-12",
+          "2006-09-12",
+          "$299 (30 GB); $399 (60 GB)",
+          "30, 60 GB",
+          "White, black",
+          "2.5 in colour LCD (320 × 240)",
+          "USB 2.0 sync; FireWire charging via dock",
+          "MP3, WAV, AIFF, Audible, Apple Lossless, video formats",
+          "Earbuds, USB cable, adapter, case varied by capacity",
+          "iPod Software 1.0",
+          "Wider screen, slimmer body; first full-size iPod to play video.",
+          "Video playback expanded the iPod from a music player to a portable media library.",
+          "U2 30 GB version released 2006; Apple Support documents a separate 20 GB Harry Potter colour-display edition.",
+          "IPod_5th_generation.jpg",
+        ],
+        [
+          "iPod (5th generation Enhanced / 5.5th generation)",
+          "classic",
+          "2006-09-12",
+          "2007-09-05",
+          "$249 (30 GB); $349 (80 GB)",
+          "30, 80 GB",
+          "White, black",
+          "2.5 in brighter colour LCD",
+          "USB 2.0 sync; FireWire charging via dock",
+          "MP3, WAV, AIFF, Audible, Apple Lossless, AAC, video",
+          "Earbuds, USB cable, adapter",
+          "iPod Software 1.2",
+          "Brighter display, search, longer video playback and revised internals.",
+          "The enhanced 5th-generation iPod is commonly called 5.5 gen; 80 GB was first offered in a slim full-size model.",
+          "A later U2 edition used enhanced 5th-gen hardware.",
+          "IPod_5th_generation_enhanced.jpg",
+        ],
+        [
+          "iPod nano (2nd generation)",
+          "nano",
+          "2006-09-25",
+          "2007-09-05",
+          "$149 (2 GB); $199 (4 GB); $249 (8 GB)",
+          "2, 4, 8 GB",
+          "Silver, green, blue, pink; black 8 GB; (PRODUCT)RED 4/8 GB",
+          "1.5 in colour LCD",
+          "USB 2.0 via 30-pin connector",
+          "MP3, WAV, AIFF, Audible",
+          "Earbuds, USB cable, dock adapter, iTunes CD",
+          "iPod Software 1.1",
+          "Coloured anodised aluminium enclosure; polished rounded edges.",
+          "A durable, colourful nano design; Apple announced a red special edition in October 2006.",
+          "(PRODUCT)RED Special Edition announced 2006; initial red 4 GB, then 8 GB.",
+          "IPod_nano_2nd_generation.jpg",
+        ],
+        [
+          "iPod shuffle (2nd generation)",
+          "shuffle",
+          "2006-09-12",
+          "2007-09-05",
+          "$79 (1 GB); $49 (shuffle / 1 GB after Jan 2007)",
+          "1, 2 GB",
+          "Silver; 2007 colours: blue, pink, green, orange; (PRODUCT)RED 2007; 2 GB late model",
+          "No display",
+          "USB via included dock",
+          "MP3, WAV, AIFF",
+          "Earbuds, clip, dock",
+          "iPod shuffle software 1.0",
+          "Tiny anodised aluminium clip-on square; controls on front.",
+          "The clip made shuffle wearable, while a dedicated dock handled sync and charging.",
+          "(PRODUCT)RED 2 GB version announced September 2007.",
+          "IPod_shuffle_2nd_generation.jpg",
+        ],
+        [
+          "iPod classic (6th generation)",
+          "classic",
+          "2007-09-05",
+          "2008-09-09",
+          "$249 (80 GB); $349 (160 GB)",
+          "80, 160 GB",
+          "Silver, black",
+          "2.5 in colour LCD",
+          "USB 2.0 via 30-pin dock connector",
+          "MP3, WAV, AIFF, Audible, Apple Lossless, AAC",
+          "Earbuds, USB cable, adapter",
+          "iPod Software 1.0",
+          "Anodised aluminium front, stainless-steel back, Cover Flow interface.",
+          "Apple introduced “classic” as the family name; the 160 GB model held up to 40,000 songs.",
+          "2008 120 GB model often called 6.5th generation; see next entry.",
+          "IPod_classic.jpg",
+        ],
+        [
+          "iPod nano (3rd generation)",
+          "nano",
+          "2007-09-05",
+          "2008-09-09",
+          "$149 (4 GB); $199 (8 GB)",
+          "4, 8 GB",
+          "Silver, black, blue, green, PRODUCT(RED); 8 GB colors; iTunes engraving",
+          "2 in colour LCD (320 × 240)",
+          "USB 2.0 via 30-pin connector",
+          "MP3, WAV, AIFF, Audible, video",
+          "Earbuds, USB cable, adapter, stand varies",
+          "iPod Software 1.0",
+          "Short, wide “fat nano” shape; first nano with video playback.",
+          "The squat design and video support briefly made nano a pocket video player.",
+          "(PRODUCT)RED was an 8 GB model; color/capacity pairings varied.",
+          "IPod_nano_3rd_generation.jpg",
+        ],
+        [
+          "iPod touch (1st generation)",
+          "touch",
+          "2007-09-14",
+          "2008-09-09",
+          "$299 (8 GB); $399 (16 GB); 32 GB later $499",
+          "8, 16, 32 GB",
+          "Black front, chrome back",
+          "3.5 in multi-touch widescreen",
+          "Wi-Fi; 30-pin USB sync",
+          "MP3, WAV, AIFF, Audible, AAC",
+          "Earbuds, USB cable, stand, adapter varies by pack/market",
+          "iPhone OS 1",
+          "Multi-touch glass screen, Home button, Wi-Fi; no camera.",
+          "Brought a software-first, internet-connected experience to iPod and later gained App Store access.",
+          "",
+          "IPod_touch_1st_generation.jpg",
+        ],
+        [
+          "iPod classic (6.5th generation / 120 GB revision)",
+          "classic",
+          "2008-09-09",
+          "2009-09-09",
+          "$249",
+          "120 GB",
+          "Silver, black",
+          "2.5 in colour LCD",
+          "USB 2.0 via 30-pin dock connector",
+          "MP3, WAV, AIFF, Audible, Apple Lossless, AAC, video",
+          "Earbuds, USB cable, adapter",
+          "iPod Software 2.0",
+          "Thin 120 GB hard-drive model; updated interface and Genius support.",
+          "A capacity and software refresh between classic generations; commonly called 6.5th gen by collectors.",
+          "",
+          "IPod_classic_120GB.jpg",
+        ],
+        [
+          "iPod nano (4th generation)",
+          "nano",
+          "2008-09-09",
+          "2009-09-09",
+          "$149 (8 GB); $199 (16 GB)",
+          "8, 16 GB",
+          "Silver, black, purple, blue, green, yellow, orange, pink, (PRODUCT)RED",
+          "2 in colour LCD",
+          "USB 2.0 via 30-pin connector",
+          "MP3, WAV, AIFF, Audible, AAC, video",
+          "Earbuds, USB cable, adapter",
+          "iPod Software 1.0",
+          "Tall curved aluminium body; accelerometer and “shake to shuffle”.",
+          "Returned to a tall shape with a curved glass display and built-in voice recording.",
+          "(PRODUCT)RED 8/16 GB in select periods.",
+          "IPod_nano_4th_generation.jpg",
+        ],
+        [
+          "iPod touch (2nd generation)",
+          "touch",
+          "2008-09-09",
+          "2009-09-09",
+          "$229 (8 GB); $299 (16 GB); $399 (32 GB)",
+          "8, 16, 32 GB",
+          "Black front, silver curved back",
+          "3.5 in multi-touch widescreen",
+          "Wi-Fi; Bluetooth; 30-pin USB sync",
+          "MP3, WAV, AIFF, Audible, AAC",
+          "Earbuds, USB cable",
+          "iPhone OS 2.1",
+          "Contoured metal back, volume buttons, built-in speaker, Nike+iPod support.",
+          "Refined the touch with a speaker and physical controls; Nike+ sensor support built in.",
+          "",
+          "IPod_touch_2nd_generation.jpg",
+        ],
+        [
+          "iPod shuffle (3rd generation)",
+          "shuffle",
+          "2009-03-11",
+          "2010-09-01",
+          "$59 (2 GB); $79 (4 GB)",
+          "2, 4 GB",
+          "Silver, black; pink, blue, green added September 2009; polished stainless-steel 4 GB Apple Store edition",
+          "No display",
+          "USB via dock; inline headphone remote",
+          "MP3, WAV, AIFF, Audible",
+          "Apple Earphones with Remote, USB cable",
+          "iPod shuffle software 1.0",
+          "Buttonless player controlled from a VoiceOver-enabled inline remote.",
+          "Apple removed player controls from the body, making the remote essential. September 2009 revision added colors and 2/4 GB options.",
+          "",
+          "IPod_shuffle_3rd_generation.jpg",
+        ],
+        [
+          "iPod shuffle (4th generation)",
+          "shuffle",
+          "2010-09-01",
+          "2017-07-27",
+          "$49 (2 GB); $59 (2 GB later pricing)",
+          "2 GB",
+          "2010: silver, blue, green, orange, pink; 2012 palette added slate, purple, yellow and PRODUCT(RED); 2015: silver, gold, blue, pink, space gray plus red",
+          "No display",
+          "USB via headphone-jack control pad; VoiceOver",
+          "MP3, WAV, AIFF, Audible",
+          "Apple Earphones, USB cable",
+          "iPod shuffle software 1.0",
+          "Square clip-on design with physical control pad and VoiceOver.",
+          "Final shuffle generation had cosmetic refreshes in 2012 and 2015; capacity remained 2 GB.",
+          "(PRODUCT)RED option appears in later refreshes; finish and control-pad colours varied by release.",
+          "IPod_shuffle_4th_generation.jpg",
+        ],
+        [
+          "iPod nano (5th generation)",
+          "nano",
+          "2009-09-09",
+          "2010-09-01",
+          "$149 (8 GB); $179 (16 GB)",
+          "8, 16 GB",
+          "Silver, black, purple, blue, green, yellow, orange, pink, (PRODUCT)RED",
+          "2.2 in colour LCD",
+          "USB 2.0 via 30-pin connector",
+          "MP3, WAV, AIFF, Audible, AAC, video",
+          "Earbuds, USB cable, adapter",
+          "iPod Software 1.0",
+          "Tall aluminium body, video camera, FM radio, pedometer and speaker.",
+          "Added video recording and FM radio while retaining the familiar click wheel.",
+          "(PRODUCT)RED edition offered.",
+          "IPod_nano_5th_generation.jpg",
+        ],
+        [
+          "iPod classic (7th generation / Late 2009)",
+          "classic",
+          "2009-09-09",
+          "2014-09-09",
+          "$249",
+          "160 GB",
+          "Silver, black",
+          "2.5 in colour LCD",
+          "USB 2.0 via 30-pin dock connector",
+          "MP3, WAV, AIFF, Audible, Apple Lossless, AAC, video",
+          "Earbuds, USB cable, adapter",
+          "iPod Software 2.0.4",
+          "Thicker 160 GB hard-drive body (compared with 2008 thin 120 GB).",
+          "This September 2009 160 GB revision remained on sale until the classic line was discontinued in 2014.",
+          "Apple Support catalogues this as iPod classic 160 GB Late 2009. Collectors sometimes number the late-2008 120 GB revision differently, so generation labels vary.",
+          "",
+          "IPod_classic_160GB.jpg",
+        ],
+        [
+          "iPod touch (3rd generation)",
+          "touch",
+          "2009-09-09",
+          "2010-09-01",
+          "$199 (8 GB); $299 (32 GB); $399 (64 GB)",
+          "8, 32, 64 GB",
+          "Black front, chrome back",
+          "3.5 in multi-touch widescreen",
+          "Wi-Fi; Bluetooth; 30-pin USB sync",
+          "MP3, WAV, AIFF, Audible, AAC",
+          "Earbuds, USB cable",
+          "iPhone OS 3.1",
+          "Externally similar to 2nd gen; faster processor and voice control support.",
+          "A performance-focused update; 8 GB model retained the previous generation’s internals.",
+          "",
+          "IPod_touch_3rd_generation.jpg",
+        ],
+        [
+          "iPod nano (6th generation)",
+          "nano",
+          "2010-09-01",
+          "2012-09-12",
+          "$149 (8 GB); $179 (16 GB)",
+          "8, 16 GB",
+          "Silver, graphite, blue, green, orange, pink, (PRODUCT)RED; 2011 colors refresh",
+          "1.54 in multi-touch display",
+          "USB 2.0 via 30-pin connector",
+          "MP3, WAV, AIFF, Audible, AAC",
+          "Earphones, USB cable",
+          "iPod Software 1.0",
+          "Small square touchscreen with clip; no click wheel or video camera.",
+          "A radical miniature touchscreen redesign; fitness features and watch-like accessories became popular.",
+          "(PRODUCT)RED available via Apple Store; 2011 colour refresh added pink and green.",
+          "IPod_nano_6th_generation.jpg",
+        ],
+        [
+          "iPod touch (4th generation)",
+          "touch",
+          "2010-09-08",
+          "2012-09-12",
+          "$229 (8 GB); $299 (32 GB); $399 (64 GB)",
+          "8, 16, 32, 64 GB across revisions",
+          "Black, white (2011); (PRODUCT)RED from 2012",
+          "3.5 in Retina display",
+          "Wi-Fi; Bluetooth; 30-pin USB sync",
+          "MP3, WAV, AIFF, Audible, AAC",
+          "Apple Earphones, USB cable",
+          "iOS 4",
+          "Glass front/back, stainless steel rim, front and rear cameras, FaceTime.",
+          "Retina display and cameras brought the touch closer to iPhone feature parity.",
+          "(PRODUCT)RED 16/32 GB listed by Apple in 2012.",
+          "IPod_touch_4th_generation.jpg",
+        ],
+        [
+          "iPod nano (7th generation)",
+          "nano",
+          "2012-10-12",
+          "2017-07-27",
+          "$149 (16 GB)",
+          "16 GB",
+          "Slate (2012), space gray (2013), silver, purple, blue, green, yellow, pink, (PRODUCT)RED; 2015 colors refresh",
+          "2.5 in multi-touch display",
+          "Bluetooth; Lightning connector; Nike+ support",
+          "MP3, WAV, AIFF, Audible, AAC, video",
+          "Apple EarPods, Lightning cable",
+          "iPod Software 1.0",
+          "Tall touchscreen with Home button; physical volume buttons; no camera.",
+          "The final nano returned to a tall form and adopted Lightning and Bluetooth. Mid-2015 finish refresh paired with touch and shuffle color updates.",
+          "(PRODUCT)RED sold through Apple Store; colors refreshed in 2013 and 2015.",
+          "IPod_nano_7th_generation.jpg",
+        ],
+        [
+          "iPod touch (5th generation)",
+          "touch",
+          "2012-10-11",
+          "2015-06-30",
+          "$299 (32 GB); $399 (64 GB); 16 GB model added 2013 at $229",
+          "16, 32, 64 GB",
+          "Black/slate, white/silver, blue, yellow, pink, (PRODUCT)RED; 2013 16 GB model limited finishes",
+          "4 in Retina display",
+          "Wi-Fi; Bluetooth; Lightning connector",
+          "MP3, WAV, AIFF, Audible, AAC, video",
+          "Apple EarPods, Lightning cable, loop on selected colours",
+          "iOS 6",
+          "Thin anodised aluminium body; 5 MP camera; wrist loop.",
+          "The first taller-screen touch and first with coloured rear finishes. The 16 GB 2013 model omitted the rear camera and loop.",
+          "(PRODUCT)RED was sold via Apple Store; distinguish 2013 16 GB camera-less revision.",
+          "IPod_touch_5th_generation.jpg",
+        ],
+        [
+          "iPod touch (6th generation)",
+          "touch",
+          "2015-07-15",
+          "2019-05-28",
+          "$199 (16 GB); $249 (32 GB); $299 (64 GB); 128 GB later $399",
+          "16, 32, 64, 128 GB",
+          "Space gray, silver, gold, blue, pink, (PRODUCT)RED",
+          "4 in Retina display",
+          "Wi-Fi; Bluetooth; Lightning connector",
+          "MP3, WAV, AIFF, Audible, AAC, video",
+          "Apple EarPods, Lightning cable",
+          "iOS 8.4",
+          "A8 processor, 8 MP rear camera; coloured aluminium body.",
+          "A long-lived internal update retained the 5th-gen shell; 2017 added 32/128 GB configurations.",
+          "(PRODUCT)RED model officially documented by Apple; Apple Support lists five colours plus red.",
+          "IPod_touch_6th_generation.jpg",
+        ],
+        [
+          "iPod touch (7th generation)",
+          "touch",
+          "2019-05-28",
+          "2022-05-10",
+          "$199 (32 GB); $299 (128 GB); $399 (256 GB)",
+          "32, 128, 256 GB",
+          "Space gray, white, gold, blue, pink, (PRODUCT)RED",
+          "4 in Retina display",
+          "Wi-Fi; Bluetooth; Lightning connector",
+          "MP3, WAV, AIFF, Audible, AAC, video",
+          "Apple EarPods, Lightning cable",
+          "iOS 12.3",
+          "A10 Fusion; retains 4-inch screen and 3.5 mm headphone jack.",
+          "The final iPod model; Apple discontinued iPod touch in May 2022, ending the line.",
+          "(PRODUCT)RED finish offered.",
+          "",
+          "IPod_touch_7th_generation.jpg",
+        ],
+        [
+          "iPod U2 Special Edition (4th generation)",
+          "special",
+          "2004-10-26",
+          "2005-06-28",
+          "$349",
+          "20 GB",
+          "Black front, red Click Wheel, engraved band signatures",
+          "2 in monochrome LCD",
+          "30-pin dock connector; USB 2.0 / FireWire",
+          "MP3, WAV, AIFF, Audible, Apple Lossless",
+          "Earbuds, dock, cables, adapter; $50 Complete U2 coupon",
+          "iPod Software 3.x",
+          "Black front, red wheel, signatures etched on stainless back.",
+          "Apple’s first U2 edition paired the 4th-gen Click Wheel iPod with a U2-branded finish.",
+          "",
+          "IPod_U2_Special_Edition.jpg",
+        ],
+        [
+          "iPod U2 Special Edition (colour display)",
+          "special",
+          "2005-06-28",
+          "2005-10-12",
+          "$329",
+          "20 GB",
+          "Black front, red Click Wheel, engraved band signatures",
+          "2 in colour LCD",
+          "30-pin dock connector; USB 2.0 / FireWire",
+          "MP3, WAV, AIFF, Audible, Apple Lossless, AAC",
+          "Earbuds, USB cable, adapter; Complete U2 coupon",
+          "iPod Software 1.1",
+          "U2 front design updated to colour display; chrome back.",
+          "Apple’s June 2005 U2 refresh adopted the colour display as iPod/photo lines merged.",
+          "",
+          "IPod_U2_special_edition_color.jpg",
+        ],
+        [
+          "iPod U2 Special Edition (5th generation)",
+          "special",
+          "2006-06-06",
+          "2006-09-12",
+          "$329",
+          "30 GB",
+          "All-black stainless-steel enclosure, red Click Wheel, band signatures",
+          "2.5 in colour LCD",
+          "USB 2.0 sync; 30-pin dock",
+          "MP3, WAV, AIFF, Audible, Apple Lossless, AAC, video",
+          "Earbuds, USB cable, case, dock insert; exclusive U2 video coupon",
+          "iPod Software 1.x",
+          "All-black metal back with red click wheel and engraved signatures.",
+          "Apple announced this 30 GB U2 model in June 2006; it held video and carried band engraving.",
+          "",
+          "IPod_U2_5th_generation.jpg",
+        ],
+        [
+          "iPod U2 Special Edition (5th generation Enhanced)",
+          "special",
+          "2006-09-12",
+          "2007-09-05",
+          "$279 (after price reduction)",
+          "30 GB",
+          "Black, red Click Wheel, band signatures",
+          "2.5 in brighter colour LCD",
+          "USB 2.0 sync; 30-pin dock",
+          "MP3, WAV, AIFF, Audible, Apple Lossless, AAC, video",
+          "Earbuds, USB cable, case, dock insert; U2 video coupon",
+          "iPod Software 1.2",
+          "Enhanced 5th-gen internals/screen with U2 black/red finish.",
+          "This later U2 configuration tracked the enhanced 5th-gen model; serial/model revisions identify the hardware.",
+          "Often catalogued as 5th-gen U2 rather than a separate marketing generation.",
+          "IPod_U2_5th_generation.jpg",
+        ],
+        [
+          "Apple iPod from HP (4th generation)",
+          "special",
+          "2004-08-27",
+          "Not stated; HP partnership ended 2005",
+          "$299 (20 GB); $399 (40 GB)",
+          "20, 40 GB",
+          "White front; HP logo etched beside Apple mark on back",
+          "2 in monochrome LCD",
+          "USB 2.0 / FireWire via 30-pin connector",
+          "MP3, WAV, AIFF, Audible, Apple Lossless",
+          "Standard 4th-gen accessories; HP supplied manuals and HP support",
+          "iPod Software 3.x / Windows setup",
+          "Internally a standard 4th-gen Click Wheel iPod; cross-branded rear engraving and HP packaging.",
+          "HP sold an officially licensed iPod through its own retail channels, extending Apple’s reach to Windows users. The planned blue finish was a prototype and did not ship.",
+          "A distribution/branding edition rather than a hardware redesign. Hewlett-Packard History Archives document the collaboration; HP 4th-gen product manual exists.",
+          "Apple_iPod_from_HP.jpg",
+        ],
+        [
+          "Apple iPod from HP photo (4th-generation colour display)",
+          "special",
+          "2005-04-12",
+          "Not stated; HP partnership ended 2005",
+          "$349 (30 GB); $449 (60 GB)",
+          "30, 60 GB",
+          "White front; HP logo etched on back",
+          "2 in colour LCD",
+          "USB 2.0 / FireWire via 30-pin connector",
+          "MP3, WAV, AIFF, Audible, Apple Lossless, AAC, photo",
+          "USB cable and HP Total Care one-year support; bundle otherwise model dependent",
+          "iPod Software for colour-display iPod",
+          "HP branded the 4th-gen photo-capable iPod; functionally identical to Apple’s iPod photo.",
+          "HP expanded its branded range with 30 GB and 60 GB colour-screen models in 2005, at the same prices as Apple’s iPod photo.",
+          "Documented by Macworld; not an internal hardware generation.",
+          "Apple_iPod_from_HP_photo.jpg",
+        ],
+        [
+          "iPod with colour display — Harry Potter Collector’s Edition",
+          "special",
+          "2005-09-07",
+          "Not independently documented",
+          "$Not separately documented",
+          "20 GB",
+          "White; Hogwarts crest engraved on rear",
+          "2 in colour LCD",
+          "30-pin dock connector; USB 2.0 / FireWire",
+          "MP3, WAV, AIFF, Audible, Apple Lossless",
+          "Bundled/promoted with The Complete Harry Potter audiobooks; exact pack varied",
+          "iPod Software for 4th-gen colour iPod",
+          "Standard white colour-display iPod with Hogwarts crest engraving.",
+          "Apple Support preserves a dedicated manual page for this 2005 edition. Apple’s eNews promoted the collector iPod with the audiobook collection.",
+          "This was an officially documented engraving/promotion, not a new internal hardware generation; price/production quantity not established.",
+          "iPod_with_color_display_Harry_Potter_Edition",
+        ],
+        [
+          "iPod nano (PRODUCT)RED Special Edition",
+          "special",
+          "2006-10-13",
+          "Model-specific / variable",
+          "$199 (4 GB); $249 (8 GB)",
+          "4, 8 GB",
+          "Red anodised aluminium",
+          "1.5 in colour LCD",
+          "30-pin USB 2.0",
+          "MP3, WAV, AIFF, Audible",
+          "Earbuds, USB cable, dock adapter, iTunes CD",
+          "iPod Software 1.1",
+          "Red nano with (PRODUCT)RED branding; charitable contribution to Global Fund.",
+          "Apple’s first (PRODUCT)RED iPod; 8 GB version followed in November 2006. Later nano generations also had red options, listed on their entries.",
+          "",
+          "IPod_nano_PRODUCT_RED.jpg",
+        ],
+      ];
+      models.sort((a, b) => a[2].localeCompare(b[2]));
+      const familyLabels = {
+        classic: "Classic / full-size",
+        mini: "mini",
+        nano: "nano",
+        shuffle: "shuffle",
+        touch: "touch",
+        special: "Special editions",
+      };
+      const timeline = document.querySelector("#timeline"),
+        jump = document.querySelector(".year-jumps"),
+        filters = document.querySelector(".family-filters");
+      const years = [...new Set(models.map((m) => m[2].slice(0, 4)))].sort();
+      years.forEach((y) => {
+        const a = document.createElement("a");
+        a.href = `#year-${y}`;
+        a.textContent = y;
+        jump.append(a);
+      });
+      ["all", "classic", "mini", "nano", "shuffle", "touch", "special"].forEach(
+        (f) => {
+          const b = document.createElement("button");
+          b.className = "filter";
+          b.type = "button";
+          b.dataset.family = f;
+          b.setAttribute("aria-pressed", String(f === "all"));
+          b.textContent = f === "all" ? "All models" : familyLabels[f];
+          filters.append(b);
+        },
+      );
+      years.forEach((year) => {
+        const era = document.createElement("section");
+        era.className = "era";
+        era.id = `year-${year}`;
+        era.innerHTML = `<header class="era-heading"><h2>${year}</h2></header>`;
+        models
+          .filter((m) => m[2].startsWith(year))
+          .forEach((m) => {
+            const [
+              name,
+              family,
+              date,
+              end,
+              price,
+              capacity,
+              colors,
+              display,
+              connection,
+              formats,
+              accessories,
+              software,
+              design,
+              history,
+              specialNote,
+            ] = m;
+            const e = document.createElement("article");
+            e.className = "entry" + (family === "special" ? " special" : "");
+            e.dataset.family = family;
+            e.id = "model-" + name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+            e.setAttribute("aria-expanded", "false");
+            const niceDate = new Date(date + "T12:00:00Z").toLocaleDateString(
+              "en-GB",
+              {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+                timeZone: "UTC",
+              },
+            );
+            const tags = [
+              familyLabels[family],
+              family === "special"
+                ? "Official special edition"
+                : specialNote
+                  ? "Special variant documented"
+                  : "",
+            ].filter(Boolean);
+            e.innerHTML = `<div class="entry-card"><div class="device-image"><img loading="lazy" decoding="async" alt="${name} product photograph" data-title="${name}"><span class="image-credit">Historical product image · Wikimedia</span></div><div class="entry-copy"><div class="entry-top"><h3>${name}</h3><span class="entry-date">${niceDate}</span></div><p class="entry-blurb">${history}</p><div class="entry-tags">${tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div><div class="specs"><div class="spec"><b>Capacities offered</b>${capacity}</div><div class="spec"><b>Launch price · US</b>${price}</div><div class="spec"><b>Finish / colour</b>${colors}</div><div class="spec"><b>Display</b>${display}</div></div><button class="expand" type="button" aria-expanded="false">Archive details</button><div class="more"><p><b>Connectivity:</b> ${connection}</p><p><b>Audio / media:</b> ${formats}</p><p><b>Included in box:</b> ${accessories}</p><p><b>Original software:</b> ${software}</p><p><b>Design and significance:</b> ${design} ${history}</p><p><b>Discontinued:</b> ${end}.</p>${specialNote ? `<p><b>Variants / edition note:</b> ${specialNote}</p>` : ""}</div></div></div>`;
+            era.append(e);
+          });
+        timeline.append(era);
+      });
+      // Resolve a model-specific Wikimedia file only as its entry approaches the viewport; no neighbouring-generation fallback.
+      function markImageMissing(img) {
+        img.remove();
+        const box = img.closest(".device-image");
+        box.querySelector(".image-credit")?.remove();
+        const note = document.createElement("span");
+        note.className = "image-missing";
+        note.textContent = "No verified model-matched image found";
+        box.append(note);
+      }
+      const imageObserver = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const img = entry.target,
+              title = img.dataset.title;
+            imageObserver.unobserve(img);
+            const query = `iPod ${title} Apple device`;
+            const url =
+              "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=" +
+              encodeURIComponent(query) +
+              "&gsrnamespace=6&gsrlimit=8&prop=imageinfo&iiprop=url&iiurlwidth=500&format=json&origin=*";
+            fetch(url)
+              .then((r) => (r.ok ? r.json() : Promise.reject()))
+              .then((data) => {
+                const pages = Object.values(data.query?.pages || {});
+                const keywords = title
+                  .toLowerCase()
+                  .replace(/[^a-z0-9 ]/g, " ")
+                  .split(/\s+/)
+                  .filter(
+                    (x) =>
+                      x &&
+                      x !== "ipod" &&
+                      x !== "generation" &&
+                      x !== "the" &&
+                      x !== "with" &&
+                      x !== "edition" &&
+                      x !== "special" &&
+                      x !== "enhanced",
+                  );
+                const match = pages.find((p) => {
+                  const file = p.title.toLowerCase();
+                  return (
+                    file.includes("ipod") &&
+                    keywords
+                      .filter((k) => k.length > 2)
+                      .every((k) => file.includes(k)) &&
+                    p.imageinfo?.[0]?.thumburl
+                  );
+                });
+                if (match) {
+                  img.src = match.imageinfo[0].thumburl;
+                  img.alt =
+                    match.title.replace(/^File:/, "") +
+                    "; product photograph of " +
+                    title;
+                  img
+                    .closest(".device-image")
+                    .querySelector(".image-credit").textContent =
+                    "Wikimedia Commons · " + match.title.replace(/^File:/, "");
+                } else markImageMissing(img);
+              })
+              .catch(() => markImageMissing(img));
+          }),
+        { rootMargin: "300px 0px" },
+      );
+      document
+        .querySelectorAll(".device-image img")
+        .forEach((img) => imageObserver.observe(img));
+      document.querySelectorAll(".entry").forEach((e) => {
+        const b = e.querySelector(".expand");
+        b.addEventListener("click", () => {
+          const open = e.getAttribute("aria-expanded") === "true";
+          e.setAttribute("aria-expanded", String(!open));
+          b.setAttribute("aria-expanded", String(!open));
+        });
+      });
+      filters.addEventListener("click", (ev) => {
+        const b = ev.target.closest("button[data-family]");
+        if (!b) return;
+        filters
+          .querySelectorAll(".filter")
+          .forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+        const family = b.dataset.family;
+        document
+          .querySelectorAll(".entry")
+          .forEach(
+            (e) => (e.hidden = family !== "all" && e.dataset.family !== family),
+          );
+        document
+          .querySelectorAll(".era")
+          .forEach(
+            (era) => (era.hidden = !era.querySelector(".entry:not([hidden])")),
+          );
+      });
+      const readout = document.querySelector(".year-readout"),
+        bar = document.querySelector(".progress-bar"),
+        timelineEl = document.querySelector(".timeline");
+      let ticking = false;
+      function update() {
+        const rect = timelineEl.getBoundingClientRect(),
+          total = timelineEl.offsetHeight - innerHeight,
+          passed = Math.max(0, Math.min(total, -rect.top)),
+          pct = total > 0 ? passed / total : 0;
+        bar.style.width = pct * 100 + "%";
+        timelineEl.style.setProperty("--progress", pct * 100 + "%");
+        const active = [...document.querySelectorAll(".era:not([hidden])")]
+          .filter((s) => s.getBoundingClientRect().top < innerHeight * 0.45)
+          .pop();
+        if (active)
+          readout.textContent = active.querySelector("h2").textContent;
+        ticking = false;
+      }
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!ticking) {
+            requestAnimationFrame(update);
+            ticking = true;
+          }
+        },
+        { passive: true },
+      );
+      window.addEventListener("resize", update);
+      filters.addEventListener("click", () => requestAnimationFrame(update));
+      update();
+    </script>
+  </body>
+</html>
