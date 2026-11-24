@@ -7,6 +7,7 @@ import html
 import json
 import re
 import shutil
+import subprocess
 import sys
 import tempfile
 from decimal import Decimal, InvalidOperation
@@ -351,27 +352,56 @@ def copy_image(source_text: str, folder: Path, target_name: str) -> str:
     return filename
 
 
-def choose_files(title: str, filetypes: list[tuple[str, str]], multiple: bool = False) -> list[str]:
-    try:
-        import tkinter as tk
-        from tkinter import filedialog
-    except ImportError as error:
-        raise RuntimeError("The native file picker requires Python's Tkinter support.") from error
+IMAGE_FILE_TYPES = ["public.image"]
+PDF_FILE_TYPES = ["com.adobe.pdf"]
 
-    try:
-        window = tk.Tk()
-    except tk.TclError as error:
-        raise RuntimeError(f"Could not open the native file picker: {error}") from error
-    window.withdraw()
-    try:
-        window.attributes("-topmost", True)
-        options = {"title": title, "filetypes": filetypes, "initialdir": str(ROOT)}
-        selected = filedialog.askopenfilenames(**options) if multiple else filedialog.askopenfilename(**options)
-        return list(selected) if multiple else ([selected] if selected else [])
-    except tk.TclError as error:
-        raise RuntimeError(f"Could not open the native file picker: {error}") from error
-    finally:
-        window.destroy()
+
+def choose_files(title: str, file_types: list[str], multiple: bool = False) -> list[str]:
+    """Open macOS's native picker, without loading Tk into this Python process.
+
+    ``choose file`` is backed by macOS Cocoa, rather than Tk's Tcl/Tk bridge.  A
+    cancelled dialog returns an empty list.  The text prompt is kept as a
+    dependable fallback for non-macOS systems or when GUI automation is
+    unavailable (for example over SSH).
+    """
+    if sys.platform == "darwin":
+        apple_types = ", ".join(f'"{file_type}"' for file_type in file_types)
+        chooser = (
+            f"choose file with prompt {json.dumps(title)} of type {{{apple_types}}} with multiple selections allowed"
+            if multiple
+            else f"{{choose file with prompt {json.dumps(title)} of type {{{apple_types}}}}}"
+        )
+        script = f'''try
+    set selectedFiles to {chooser}
+    set selectedPaths to ""
+    repeat with selectedFile in selectedFiles
+        set selectedPaths to selectedPaths & POSIX path of selectedFile & linefeed
+    end repeat
+    return selectedPaths
+on error number -128
+    return ""
+end try'''
+        try:
+            result = subprocess.run(
+                ["osascript", "-l", "AppleScript", "-e", script],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            return [path for path in result.stdout.splitlines() if path]
+        except (OSError, subprocess.CalledProcessError) as error:
+            print(f"Could not open the macOS file picker ({error}); using a typed path instead.")
+
+    plural = "s, one per line" if multiple else ""
+    print(f"{title}. Paste a file path{plural}, then press Enter on a blank line to finish.")
+    paths = []
+    while True:
+        path = input("File path (blank to finish): ").strip()
+        if not path:
+            return paths
+        paths.append(path)
+        if not multiple:
+            return paths
 
 
 def copy_report(source_text: str, folder: Path) -> str:
@@ -386,6 +416,25 @@ def copy_report(source_text: str, folder: Path) -> str:
     return target.name
 
 
+def choose_listing_images() -> list[str]:
+    """Collect any number of listing photographs in one or more picker rounds."""
+    print("Listing photos: choose images that will appear in the product listing. These are not the device report PDF.")
+    paths: list[str] = []
+    while True:
+        selected = choose_files(
+            "Select one or more photos for this product listing",
+            IMAGE_FILE_TYPES,
+            multiple=True,
+        )
+        paths.extend(path for path in selected if path not in paths)
+        if not selected:
+            print("No more listing photos selected.")
+            return paths
+        more = input("Add more listing photos? [Y/n]: ").strip().lower()
+        if more not in {"", "y", "yes"}:
+            return paths
+
+
 def ask_images(data: dict, folder: Path, editing: bool) -> None:
     current = data.get("Cover image", "")
     if editing:
@@ -394,12 +443,14 @@ def ask_images(data: dict, folder: Path, editing: bool) -> None:
             data["Cover image"] = ""
             path = ""
         elif answer in {"c", "choose", "y", "yes"}:
-            paths = choose_files("Choose cover image", [("Images", "*.png *.jpg *.jpeg *.webp *.gif"), ("All files", "*.*")])
+            print("Cover image: choose the main photograph used on the collection card and first in the listing gallery.")
+            paths = choose_files("Select the cover image for this product listing", IMAGE_FILE_TYPES)
             path = paths[0] if paths else ""
         else:
             path = ""
     else:
-        paths = choose_files("Choose cover image", [("Images", "*.png *.jpg *.jpeg *.webp *.gif"), ("All files", "*.*")])
+        print("Cover image: choose the main photograph used on the collection card and first in the listing gallery.")
+        paths = choose_files("Select the cover image for this product listing", IMAGE_FILE_TYPES)
         path = paths[0] if paths else ""
     if path:
         try:
@@ -411,7 +462,7 @@ def ask_images(data: dict, folder: Path, editing: bool) -> None:
 
     if editing:
         current_images = data.get("Additional images", [])
-        action = input("Additional images: Enter keeps current, - clears, or C chooses files: ").strip().lower()
+        action = input("Additional listing photos: Enter keeps current, - clears, or C chooses photos (repeat as needed): ").strip().lower()
         if not action:
             return
         if action == "-":
@@ -419,10 +470,10 @@ def ask_images(data: dict, folder: Path, editing: bool) -> None:
             return
         if action not in {"c", "choose", "y", "yes"}:
             return
-        paths = choose_files("Choose additional images", [("Images", "*.png *.jpg *.jpeg *.webp *.gif"), ("All files", "*.*")], multiple=True)
+        paths = choose_listing_images()
     else:
         current_images = []
-        paths = choose_files("Choose additional images", [("Images", "*.png *.jpg *.jpeg *.webp *.gif"), ("All files", "*.*")], multiple=True)
+        paths = choose_listing_images()
     copied = []
     for index, source in enumerate(paths, 1):
         try:
@@ -448,17 +499,19 @@ def complete_assisted(data: dict, folder: Path, editing: bool = False) -> dict:
     data["Price (in GBP)"] = ask_price(data.get("Price (in GBP)"))
     data["eBay link"] = ask_text("eBay link", data.get("eBay link", ""), required=not editing)
     if editing:
-        report_action = input("Condition/testing/repairs PDF: Enter keeps current, C chooses a file, - clears: ").strip().lower()
+        report_action = input("Device report PDF (condition, testing and repairs): Enter keeps current, C chooses the PDF, - clears: ").strip().lower()
         if report_action == "-":
             data["Condition report PDF (optional value)"] = ""
             report_path = ""
         elif report_action in {"c", "choose", "y", "yes"}:
-            chosen = choose_files("Choose condition, testing & repairs report PDF", [("PDF files", "*.pdf")])
+            print("Device report: choose the condition, testing and repairs PDF. Do not choose listing photos here.")
+            chosen = choose_files("Select the device report PDF", PDF_FILE_TYPES)
             report_path = chosen[0] if chosen else ""
         else:
             report_path = ""
     else:
-        chosen = choose_files("Choose condition, testing & repairs report PDF (optional)", [("PDF files", "*.pdf")])
+        print("Device report: choose the optional condition, testing and repairs PDF. Do not choose listing photos here.")
+        chosen = choose_files("Select the optional device report PDF", PDF_FILE_TYPES)
         report_path = chosen[0] if chosen else ""
     if report_path:
         try:
@@ -597,10 +650,12 @@ def regenerate_listing() -> None:
         print("Some listing values are blank. Enter a value when prompted, or press Enter to leave it out.")
         for key, label in missing:
             if key == "Cover image":
-                selected = choose_files("Choose cover image", [("Images", "*.png *.jpg *.jpeg *.webp *.gif"), ("All files", "*.*")])
+                print("Cover image: choose the main photograph for the product listing.")
+                selected = choose_files("Select the cover image for this product listing", IMAGE_FILE_TYPES)
                 answer = selected[0] if selected else ""
             elif key == "Condition report PDF (optional value)":
-                selected = choose_files("Choose condition, testing & repairs report PDF", [("PDF files", "*.pdf")])
+                print("Device report: choose the condition, testing and repairs PDF, not a listing photograph.")
+                selected = choose_files("Select the device report PDF", PDF_FILE_TYPES)
                 answer = selected[0] if selected else ""
             else:
                 answer = input(f"{label}: ").strip()

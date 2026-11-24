@@ -1,3 +1,14 @@
 {
-  "Listings": []
+  "Listings": [
+    {
+      "Product ID": "RA0002",
+      "Catalog URL": "inventory/RA0003/listing.html",
+      "Title": "iPhone SE (2nd Generation) – Black, 64GB, Good condition",
+      "Category": "Portable",
+      "Device Series": "iPhone",
+      "Device Model": "iPhone SE (2nd Generation)",
+      "Price (in GBP)": 50.0,
+      "Status": "available"
+    }
+  ]
 }
