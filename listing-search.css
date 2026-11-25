@@ -19,42 +19,58 @@
   padding: 11px 13px;
   font: 11px var(--sans);
 }
-.listing-search:focus { outline: 2px solid var(--rust); outline-offset: 2px; }
-.listing-filter { position: relative; z-index: 10; }
-.listing-filter-toggle, .listing-sort {
+.listing-search:focus {
+  outline: 2px solid var(--rust);
+  outline-offset: 2px;
+}
+.listing-filter {
+  position: relative;
+  z-index: 10;
+}
+.listing-filter.is-open {
+  flex-basis: 100%;
+}
+.listing-filter-toggle,
+.listing-sort {
   appearance: none;
   border: 1px solid var(--line);
   background: var(--paper);
   color: var(--ink);
   padding: 11px 13px;
   font: 9px var(--sans);
-  letter-spacing: .12em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
 }
-.listing-filter-toggle::after { content: " +"; margin-left: 7px; }
-.listing-filter.is-open .listing-filter-toggle::after { content: " −"; }
+.listing-filter-toggle::after {
+  content: " +";
+  margin-left: 7px;
+}
+.listing-filter.is-open .listing-filter-toggle::after {
+  content: " −";
+}
 .listing-filter-panel {
-  position: absolute;
-  z-index: 100;
+  position: static;
+  z-index: auto;
   pointer-events: auto;
-  right: 0;
-  top: calc(100% + 7px);
   width: min(310px, 88vw);
+  margin-top: 8px;
   padding: 16px;
   border: 1px solid var(--line);
   background: var(--paper);
   box-shadow: 0 12px 28px #24262220;
 }
-.listing-filter-panel label, .listing-filter-panel legend {
+.listing-filter-panel label,
+.listing-filter-panel legend {
   display: block;
   margin-bottom: 7px;
   font-size: 9px;
-  letter-spacing: .11em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
   color: var(--muted);
 }
-.listing-filter-panel select, .price-values input {
+.listing-filter-panel select,
+.price-values input {
   width: 100%;
   border: 1px solid var(--line);
   background: #fffefa;
@@ -62,17 +78,70 @@
   padding: 9px;
   font: 11px var(--sans);
 }
-.filter-group { border: 0; padding: 0; margin: 0 0 15px; }
-.filter-check { color: var(--ink) !important; font-size: 10px !important; letter-spacing: .04em !important; text-transform: none !important; cursor: pointer; }
-.filter-check input { accent-color: var(--rust); }
-.price-bound { display: grid; grid-template-columns: 1fr 72px; gap: 7px 9px; margin-top: 11px; align-items: center; }
-.price-bound .filter-check { grid-column: 1 / -1; }
-.price-bound input[type="range"] { width: 100%; accent-color: var(--rust); }
-.price-bound input:disabled { cursor: not-allowed; opacity: .45; }
-.listing-reset { border: 0; padding: 0; background: none; color: var(--rust); font: 9px var(--sans); letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
-.listing-count { margin-left: auto; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-.listing-empty { grid-column: 1 / -1; padding: 70px 20px; text-align: center; background: #e5e4dc; color: var(--muted); font: 500 22px var(--serif); }
+.filter-group {
+  border: 0;
+  padding: 0;
+  margin: 0 0 15px;
+}
+.filter-check {
+  color: var(--ink) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.04em !important;
+  text-transform: none !important;
+  cursor: pointer;
+}
+.filter-check input {
+  accent-color: var(--rust);
+}
+.price-bound {
+  display: grid;
+  grid-template-columns: 1fr 72px;
+  gap: 7px 9px;
+  margin-top: 11px;
+  align-items: center;
+}
+.price-bound .filter-check {
+  grid-column: 1 / -1;
+}
+.price-bound input[type="range"] {
+  width: 100%;
+  accent-color: var(--rust);
+}
+.price-bound input:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+.listing-reset {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--rust);
+  font: 9px var(--sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.listing-count {
+  margin-left: auto;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.listing-empty {
+  grid-column: 1 / -1;
+  padding: 70px 20px;
+  text-align: center;
+  background: #e5e4dc;
+  color: var(--muted);
+  font: 500 22px var(--serif);
+}
 @media (max-width: 760px) {
-  .listing-controls { padding: 16px 6%; }
-  .listing-count { width: 100%; margin-left: 0; }
+  .listing-controls {
+    padding: 16px 6%;
+  }
+  .listing-count {
+    width: 100%;
+    margin-left: 0;
+  }
 }

@@ -678,9 +678,8 @@
           <a href="https://www.apple.com/newsroom/archive/iphone/"
             >Apple Newsroom iPhone archive</a
           >, Apple product announcements and Apple technical specifications. For
-          historical product image thumbnails, this page requests the matching
-          model article image from Wikipedia’s public summary API (Wikimedia
-          sourced); images load lazily. Image provider: Wikimedia projects.
+          Historical product images use fixed, per-model records. Image and
+          source links are intentionally left blank for archive curation.
         </p>
         <p>
           Latest verified catalogue endpoint: iPhone 18 Pro and iPhone Duo,
@@ -1207,6 +1206,16 @@
         ],
         [
           "2026",
+          "iPhone 17e",
+          "2026-03-11",
+          "$699",
+          "iOS 26.3.1",
+          "6.1 in",
+          "MagSafe and Ceramic Shield 2",
+          "Apple’s C1X alongside A19, Apple Intelligence and a 48MP camera.",
+        ],
+        [
+          "2026",
           "iPhone 18 Pro",
           "2026-09-18",
           "$1,099",
@@ -1247,11 +1256,70 @@
           "Apple announced iPhone 17 on September 9, 2025; availability began September 19. It introduced ProMotion on the standard model.",
         "iPhone Air":
           "Apple introduced iPhone Air on September 9, 2025; availability began September 19. Its 6.5-inch display and thin titanium design established a distinct product branch.",
-        "iPhone 16e":
-          "Announced February 19, 2025 and available February 28. Its original US price was $599; it shipped with iOS 18.3.1.",
+        "iPhone 17e":
+          "Announced March 02, 2026 and available March 11. Its original US price was $699; it shipped with iOS 26.3.1.",
       };
       const timeline = document.querySelector("#timeline"),
         jump = document.querySelector(".year-jumps");
+      // Add image URL and attribution URL for each model as they are curated.
+      // Kept static so the page makes no image-lookup API requests at runtime.
+      const officialImages = {
+        "iPhone (1st generation)": ["https://cdsassets.apple.com/content/services/pub/image?productid=131510", "https://cdsassets.apple.com/content/services/pub/image?productid=131510"],
+        "iPhone 3G": ["https://cdsassets.apple.com/content/services/pub/image?productid=132035", "https://cdsassets.apple.com/content/services/pub/image?productid=132035"],
+        "iPhone 3GS": ["https://cdsassets.apple.com/content/services/pub/image?productid=132537", "https://cdsassets.apple.com/content/services/pub/image?productid=132537"],
+        "iPhone 4": ["https://cdsassets.apple.com/content/services/pub/image?productid=132927", "https://cdsassets.apple.com/content/services/pub/image?productid=132927"],
+        "iPhone 4s": ["https://cdsassets.apple.com/content/services/pub/image?productid=133476", "https://cdsassets.apple.com/content/services/pub/image?productid=133476"],
+        "iPhone 5": ["https://cdsassets.apple.com/content/services/pub/image?productid=133778", "https://cdsassets.apple.com/content/services/pub/image?productid=133778"],
+        "iPhone 5c": ["https://cdsassets.apple.com/content/services/pub/image?productid=134094", "https://cdsassets.apple.com/content/services/pub/image?productid=134094"],
+        "iPhone 5s": ["https://cdsassets.apple.com/content/services/pub/image?productid=134096", "https://cdsassets.apple.com/content/services/pub/image?productid=134096"],
+        "iPhone 6": ["https://cdsassets.apple.com/content/services/pub/image?productid=134711", "https://cdsassets.apple.com/content/services/pub/image?productid=134711"],
+        "iPhone 6 Plus": ["https://cdsassets.apple.com/content/services/pub/image?productid=134710", "https://cdsassets.apple.com/content/services/pub/image?productid=134710"],
+        "iPhone 6s": ["https://cdsassets.apple.com/content/services/pub/image?productid=500016", "https://cdsassets.apple.com/content/services/pub/image?productid=500016"],
+        "iPhone 6s Plus": ["https://cdsassets.apple.com/content/services/pub/image?productid=500040", "https://cdsassets.apple.com/content/services/pub/image?productid=500040"],
+        "iPhone SE (1st generation)": ["https://cdsassets.apple.com/content/services/pub/image?productid=501343", "https://cdsassets.apple.com/content/services/pub/image?productid=501343"],
+        "iPhone 7": ["https://cdsassets.apple.com/content/services/pub/image?productid=502272", "https://cdsassets.apple.com/content/services/pub/image?productid=502272"],
+        "iPhone 7 Plus": ["https://cdsassets.apple.com/content/services/pub/image?productid=502287", "https://cdsassets.apple.com/content/services/pub/image?productid=502287"],
+        "iPhone 8": ["https://cdsassets.apple.com/content/services/pub/image?productid=504266", "https://cdsassets.apple.com/content/services/pub/image?productid=504266"],
+        "iPhone 8 Plus": ["https://cdsassets.apple.com/content/services/pub/image?productid=504267", "https://cdsassets.apple.com/content/services/pub/image?productid=504267"],
+        "iPhone X": ["https://cdsassets.apple.com/content/services/pub/image?productid=504268", "https://cdsassets.apple.com/content/services/pub/image?productid=504268"],
+        "iPhone XS": ["https://cdsassets.apple.com/content/services/pub/image?productid=505753", "https://cdsassets.apple.com/content/services/pub/image?productid=505753"],
+        "iPhone XS Max": ["https://cdsassets.apple.com/content/services/pub/image?productid=505716", "https://cdsassets.apple.com/content/services/pub/image?productid=505716"],
+        "iPhone XR": ["https://cdsassets.apple.com/content/services/pub/image?productid=505602&", "https://cdsassets.apple.com/content/services/pub/image?productid=505602"],
+        "iPhone 11": ["https://cdsassets.apple.com/content/services/pub/image?productid=507882", "https://cdsassets.apple.com/content/services/pub/image?productid=507882"],
+        "iPhone 11 Pro": ["https://cdsassets.apple.com/content/services/pub/image?productid=507808", "https://cdsassets.apple.com/content/services/pub/image?productid=507808"],
+        "iPhone 11 Pro Max": ["https://cdsassets.apple.com/content/services/pub/image?productid=507845", "https://cdsassets.apple.com/content/services/pub/image?productid=507845"],
+        "iPhone SE (2nd generation)": ["https://cdsassets.apple.com/content/services/pub/image?productid=509370", "https://cdsassets.apple.com/content/services/pub/image?productid=509370"],
+        "iPhone 12 mini": ["https://cdsassets.apple.com/live/I2F2FLC5/iphone/iphone-12-mini.png", "https://cdsassets.apple.com/live/I2F2FLC5/iphone/iphone-12-mini.png"],
+        "iPhone 12": ["https://cdsassets.apple.com/content/services/pub/image?productid=300241", "https://cdsassets.apple.com/content/services/pub/image?productid=300241"],
+        "iPhone 12 Pro": ["https://cdsassets.apple.com/content/services/pub/image?productid=300242", "https://cdsassets.apple.com/content/services/pub/image?productid=300242"],
+        "iPhone 12 Pro Max": ["https://cdsassets.apple.com/content/services/pub/image?productid=300240", "https://cdsassets.apple.com/content/services/pub/image?productid=300240"],
+        "iPhone 13 mini": ["https://cdsassets.apple.com/content/services/pub/image?productid=300426", "https://cdsassets.apple.com/content/services/pub/image?productid=300426"],
+        "iPhone 13": ["https://cdsassets.apple.com/content/services/pub/image?productid=300428", "https://cdsassets.apple.com/content/services/pub/image?productid=300428"],
+        "iPhone 13 Pro": ["https://cdsassets.apple.com/content/services/pub/image?productid=300429", "https://cdsassets.apple.com/content/services/pub/image?productid=300429"],
+        "iPhone 13 Pro Max": ["https://cdsassets.apple.com/content/services/pub/image?productid=300430", "https://cdsassets.apple.com/content/services/pub/image?productid=300430"],
+        "iPhone SE (3rd generation)": ["https://cdsassets.apple.com/content/services/pub/image?productid=300865", "https://cdsassets.apple.com/content/services/pub/image?productid=300865"],
+        "iPhone 14": ["https://cdsassets.apple.com/content/services/pub/image?productid=300878", "https://cdsassets.apple.com/content/services/pub/image?productid=300878"],
+        "iPhone 14 Plus": ["https://cdsassets.apple.com/content/services/pub/image?productid=300879", "https://cdsassets.apple.com/content/services/pub/image?productid=300879"],
+        "iPhone 14 Pro": ["https://cdsassets.apple.com/content/services/pub/image?productid=300880", "https://cdsassets.apple.com/content/services/pub/image?productid=300880"],
+        "iPhone 14 Pro Max": ["https://cdsassets.apple.com/content/services/pub/image?productid=300881", "https://cdsassets.apple.com/content/services/pub/image?productid=300881"],
+        "iPhone 15": ["https://cdsassets.apple.com/content/services/pub/image?productid=300991", "https://cdsassets.apple.com/content/services/pub/image?productid=300991"],
+        "iPhone 15 Plus": ["https://cdsassets.apple.com/content/services/pub/image?productid=301004", "https://cdsassets.apple.com/content/services/pub/image?productid=301004"],
+        "iPhone 15 Pro": ["https://cdsassets.apple.com/content/services/pub/image?productid=300993", "https://cdsassets.apple.com/content/services/pub/image?productid=300993"],
+        "iPhone 15 Pro Max": ["https://cdsassets.apple.com/content/services/pub/image?productid=301003", "https://cdsassets.apple.com/content/services/pub/image?productid=301003"],
+        "iPhone 16": ["https://cdsassets.apple.com/content/services/pub/image?productid=301045", "https://cdsassets.apple.com/content/services/pub/image?productid=301045"],
+        "iPhone 16 Plus": ["https://cdsassets.apple.com/content/services/pub/image?productid=301046", "https://cdsassets.apple.com/content/services/pub/image?productid=301046"],
+        "iPhone 16 Pro": ["https://cdsassets.apple.com/content/services/pub/image?productid=301047", "https://cdsassets.apple.com/content/services/pub/image?productid=301047"],
+        "iPhone 16 Pro Max": ["https://cdsassets.apple.com/content/services/pub/image?productid=301048", "https://cdsassets.apple.com/content/services/pub/image?productid=301048"],
+        "iPhone 16e": ["https://cdsassets.apple.com/content/services/pub/image?productid=301076", "https://cdsassets.apple.com/content/services/pub/image?productid=301076"],
+        "iPhone 17": ["https://cdsassets.apple.com/content/services/pub/image?productid=301247", "https://cdsassets.apple.com/content/services/pub/image?productid=301247"],
+        "iPhone Air": ["https://cdsassets.apple.com/content/services/pub/image?productid=301244", "https://cdsassets.apple.com/content/services/pub/image?productid=301244"],
+        "iPhone 17 Pro": ["https://cdsassets.apple.com/content/services/pub/image?productid=301245", "https://cdsassets.apple.com/content/services/pub/image?productid=301245"],
+        "iPhone 17 Pro Max": ["https://cdsassets.apple.com/content/services/pub/image?productid=301246", "https://cdsassets.apple.com/content/services/pub/image?productid=301246"],
+        "iPhone 17e": ["https://cdsassets.apple.com/content/services/pub/image?productid=301285", "https://cdsassets.apple.com/content/services/pub/image?productid=301285"],
+        "iPhone 18 Pro": ["https://cdsassets.apple.com/content/services/pub/image?productid=301316", "https://cdsassets.apple.com/content/services/pub/image?productid=301316"],
+        "iPhone 18 Pro Max": ["https://cdsassets.apple.com/content/services/pub/image?productid=301317", "https://cdsassets.apple.com/content/services/pub/image?productid=301317"],
+        "iPhone Duo": ["https://cdsassets.apple.com/content/services/pub/image?productid=301318", "https://cdsassets.apple.com/content/services/pub/image?productid=301318"],
+      };
       const years = [...new Set(rows.map((r) => r[0]))];
       years.forEach((y) => {
         const a = document.createElement("a");
@@ -1281,40 +1349,12 @@
                 timeZone: "UTC",
               },
             );
-            e.innerHTML = `<div class="entry-card" tabindex="0" aria-label="Explore ${name}"><div class="device-image"><img loading="lazy" decoding="async" alt="${name} product image" data-title="${name}"><span class="image-credit">Wikimedia Commons · model reference</span></div><div class="entry-copy"><div class="entry-top"><h3>${name}</h3><span class="entry-date">${day}</span></div><p class="entry-blurb">${innovation}</p><div class="specs"><div class="spec"><b>Launch price · US</b>${price}${price.includes("*") ? " (with carrier contract)" : ""}</div><div class="spec"><b>Original software</b>${ios}</div><div class="spec"><b>Display</b>${display}</div><div class="spec"><b>Design signature</b>${design}</div></div><button class="expand" type="button" aria-expanded="false">Archive note</button><div class="more">${details[name] || innovation + " " + design + " Original launch configuration and price varied by storage and market."}</div></div></div>`;
+            const image = officialImages[name];
+            e.innerHTML = `<div class="entry-card" tabindex="0" aria-label="Explore ${name}"><div class="device-image">${image?.[0] ? `<img loading="lazy" decoding="async" src="${image[0]}" alt="${name}, historical product photograph" onerror="this.remove();this.parentElement.querySelector('.image-credit').textContent='Verified product image unavailable'">${image[1] ? ` <a class="image-credit" href="${image[1]}" target="_blank" rel="noopener">Product photo · source</a>` : '<span class="image-credit"></span>'}` : `<span class="image-credit"></span>`}</div><div class="entry-copy"><div class="entry-top"><h3>${name}</h3><span class="entry-date">${day}</span></div><p class="entry-blurb">${innovation}</p><div class="specs"><div class="spec"><b>Launch price · US</b>${price}${price.includes("*") ? " (with carrier contract)" : ""}</div><div class="spec"><b>Original software</b>${ios}</div><div class="spec"><b>Display</b>${display}</div><div class="spec"><b>Design signature</b>${design}</div></div><button class="expand" type="button" aria-expanded="false">Archive note</button><div class="more">${details[name] || innovation + " " + design + " Original launch configuration and price varied by storage and market."}</div></div></div>`;
             era.append(e);
           });
         timeline.append(era);
       });
-      // Model-specific article summaries provide genuine, externally hosted reference photographs; failures stay quiet rather than substituting another model.
-      const imageObserver = new IntersectionObserver(
-        (entries) =>
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const img = entry.target,
-              title = img.dataset.title;
-            imageObserver.unobserve(img);
-            fetch(
-              "https://en.wikipedia.org/api/rest_v1/page/summary/" +
-                encodeURIComponent(title),
-            )
-              .then((r) => (r.ok ? r.json() : Promise.reject()))
-              .then((d) => {
-                if (d.thumbnail?.source) {
-                  img.src = d.thumbnail.source;
-                  img.alt =
-                    (d.description ? d.description + ". " : "") +
-                    title +
-                    " product photograph";
-                } else img.remove();
-              })
-              .catch(() => img.remove());
-          }),
-        { rootMargin: "250px 0px" },
-      );
-      document
-        .querySelectorAll(".device-image img")
-        .forEach((img) => imageObserver.observe(img));
       document.querySelectorAll(".entry").forEach((e) => {
         const toggle = () => {
           const open = e.getAttribute("aria-expanded") === "true";

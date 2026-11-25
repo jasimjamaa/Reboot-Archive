@@ -285,9 +285,9 @@
       }
     </style>
     <link rel="stylesheet" href="navigation.css" />
-    <link rel="stylesheet" href="listing-search.css?v=2" />
+    <link rel="stylesheet" href="listing-search.css?v=3" />
     <script src="navigation.js" defer></script>
-    <script src="listing-search.js?v=6" defer></script>
+    <script src="listing-search.js?v=7" defer></script>
   </head>
   <body>
     <div class="announcement">
@@ -317,24 +317,111 @@
           dates.
         </p>
       </section>
-      <section class="listing-controls" data-listing-search data-listing-status="sold" aria-label="Search and filter the archive">
-        <input class="listing-search" type="search" placeholder="Search title, device series, or model" aria-label="Search the archive" />
+      <section
+        class="listing-controls"
+        data-listing-search
+        data-listing-status="sold"
+        aria-label="Search and filter the archive"
+      >
+        <input
+          class="listing-search"
+          type="search"
+          placeholder="Search title, device series, or model"
+          aria-label="Search the archive"
+        />
         <div class="listing-filter">
-          <button class="listing-filter-toggle" type="button" aria-expanded="false" aria-controls="archive-filter-panel">Filter</button>
+          <button
+            class="listing-filter-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="archive-filter-panel"
+          >
+            Filter
+          </button>
           <div class="listing-filter-panel" id="archive-filter-panel" hidden>
-            <fieldset class="filter-group"><label for="archive-category">By category</label><select id="archive-category" name="category"></select></fieldset>
-            <fieldset class="filter-group"><label for="archive-series">By device series</label><select id="archive-series" name="series"></select></fieldset>
-            <fieldset class="filter-group"><legend>Price range</legend><label class="filter-check"><input name="price-all-enabled" type="checkbox" /> Enable both price limits</label><div class="price-bound"><label class="filter-check"><input name="min-enabled" type="checkbox" /> Minimum price</label><input name="min-price" type="range" aria-label="Minimum price" /><input name="min-value" type="number" min="0" step="0.01" aria-label="Minimum price in pounds" /></div><div class="price-bound"><label class="filter-check"><input name="max-enabled" type="checkbox" /> Maximum price</label><input name="max-price" type="range" aria-label="Maximum price" /><input name="max-value" type="number" min="0" step="0.01" aria-label="Maximum price in pounds" /></div></fieldset>
+            <fieldset class="filter-group">
+              <label for="archive-category">By category</label
+              ><select id="archive-category" name="category"></select>
+            </fieldset>
+            <fieldset class="filter-group">
+              <label for="archive-series">By device series</label
+              ><select id="archive-series" name="series"></select>
+            </fieldset>
+            <fieldset class="filter-group">
+              <legend>Price range</legend>
+              <label class="filter-check"
+                ><input name="price-all-enabled" type="checkbox" /> Enable both
+                price limits</label
+              >
+              <div class="price-bound">
+                <label class="filter-check"
+                  ><input name="min-enabled" type="checkbox" /> Minimum
+                  price</label
+                ><input
+                  name="min-price"
+                  type="range"
+                  aria-label="Minimum price"
+                /><input
+                  name="min-value"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  aria-label="Minimum price in pounds"
+                />
+              </div>
+              <div class="price-bound">
+                <label class="filter-check"
+                  ><input name="max-enabled" type="checkbox" /> Maximum
+                  price</label
+                ><input
+                  name="max-price"
+                  type="range"
+                  aria-label="Maximum price"
+                /><input
+                  name="max-value"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  aria-label="Maximum price in pounds"
+                />
+              </div>
+            </fieldset>
             <button class="listing-reset" type="button">Clear filters</button>
           </div>
         </div>
-        <select class="listing-sort" aria-label="Sort listings"><option value="product-id">Sort: product ID</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option></select>
+        <select class="listing-sort" aria-label="Sort listings">
+          <option value="product-id">Sort: product ID</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+        </select>
         <span class="listing-count" aria-live="polite">Loading listings</span>
       </section>
       <section class="grid" aria-label="Sold listings">
         <!-- ARCHIVE:START -->
-<a class="card" data-product-id="RA0001" data-category="music" href="inventory/RA0001/listing.html"><div class="visual"><span class="tag">Sold</span><img src="inventory/RA0001/cover.jpg" alt="iPod shuffle 4th Generation (Late 2012) -Purple" loading="lazy"></div><div class="details"><div>iPod shuffle 4th Generation (Late 2012) -Purple<small>iPod · iPod shuffle 4th Generation</small></div><span class="price">£21.50</span><small class="sold-date">Sold 2026-11-21</small></div></a>
-<!-- ARCHIVE:END -->
+        <a
+          class="card"
+          data-product-id="RA0001"
+          data-category="music"
+          href="inventory/RA0001/listing.html"
+          ><div class="visual">
+            <span class="tag">Sold</span
+            ><img
+              src="inventory/RA0001/cover.jpg"
+              alt="iPod shuffle 4th Generation (Late 2012) -Purple"
+              loading="lazy"
+            />
+          </div>
+          <div class="details">
+            <div>
+              iPod shuffle 4th Generation (Late 2012) -Purple<small
+                >iPod · iPod shuffle 4th Generation</small
+              >
+            </div>
+            <span class="price">£21.50</span
+            ><small class="sold-date">Sold 2026-11-21</small>
+          </div></a
+        >
+        <!-- ARCHIVE:END -->
       </section>
     </main>
     <footer>
