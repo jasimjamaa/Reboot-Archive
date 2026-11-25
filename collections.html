@@ -362,7 +362,9 @@
       }
     </style>
     <link rel="stylesheet" href="navigation.css" />
+    <link rel="stylesheet" href="listing-search.css?v=2" />
     <script src="navigation.js" defer></script>
+    <script src="listing-search.js?v=6" defer></script>
   </head>
   <body>
     <div class="announcement">
@@ -392,53 +394,24 @@
           them.
         </p>
       </section>
-      <section class="toolbar" aria-label="Collection filters">
-        <div class="filters">
-          <button class="filter" aria-pressed="true" data-filter="all">
-            All objects</button
-          ><button class="filter" aria-pressed="false" data-filter="desktop">
-            Desktop</button
-          ><button class="filter" aria-pressed="false" data-filter="portable">
-            Portable</button
-          ><button class="filter" aria-pressed="false" data-filter="music">
-            Music</button
-          ><button
-            class="filter"
-            aria-pressed="false"
-            data-filter="accessories"
-          >
-            Accessories</button
-          ><button class="filter" aria-pressed="false" data-filter="other">
-            Other
-          </button>
+      <section class="listing-controls" data-listing-search data-listing-status="available" aria-label="Search and filter the collection">
+        <input class="listing-search" type="search" placeholder="Search title, device series, or model" aria-label="Search the collection" />
+        <div class="listing-filter">
+          <button class="listing-filter-toggle" type="button" aria-expanded="false" aria-controls="collection-filter-panel">Filter</button>
+          <div class="listing-filter-panel" id="collection-filter-panel" hidden>
+            <fieldset class="filter-group"><label for="collection-category">By category</label><select id="collection-category" name="category"></select></fieldset>
+            <fieldset class="filter-group"><label for="collection-series">By device series</label><select id="collection-series" name="series"></select></fieldset>
+            <fieldset class="filter-group"><legend>Price range</legend><label class="filter-check"><input name="price-all-enabled" type="checkbox" /> Enable both price limits</label><div class="price-bound"><label class="filter-check"><input name="min-enabled" type="checkbox" /> Minimum price</label><input name="min-price" type="range" aria-label="Minimum price" /><input name="min-value" type="number" min="0" step="0.01" aria-label="Minimum price in pounds" /></div><div class="price-bound"><label class="filter-check"><input name="max-enabled" type="checkbox" /> Maximum price</label><input name="max-price" type="range" aria-label="Maximum price" /><input name="max-value" type="number" min="0" step="0.01" aria-label="Maximum price in pounds" /></div></fieldset>
+            <button class="listing-reset" type="button">Clear filters</button>
+          </div>
         </div>
-        <span class="count" aria-live="polite">0 objects</span>
+        <select class="listing-sort" aria-label="Sort listings"><option value="product-id">Sort: product ID</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option></select>
+        <span class="listing-count" aria-live="polite">Loading listings</span>
       </section>
       <section class="grid" aria-label="Products">
         <!-- INVENTORY:START -->
-        <a
-          class="card"
-          data-product-id="RA0002"
-          data-category="portable"
-          href="inventory/RA0002/listing.html"
-          ><div class="visual">
-            <span class="tag">Curated vintage</span
-            ><img
-              src="inventory/RA0002/cover.png"
-              alt="iPhone SE (2nd Generation) – Black, 64GB, Good condition"
-              loading="lazy"
-            />
-          </div>
-          <div class="details">
-            <div>
-              iPhone SE (2nd Generation) – Black, 64GB, Good condition<small
-                >iPhone · iPhone SE (2nd Generation)</small
-              >
-            </div>
-            <span class="price">£50.00</span>
-          </div></a
-        >
-        <!-- INVENTORY:END -->
+<a class="card" data-product-id="RA0002" data-category="portable" href="inventory/RA0002/listing.html"><div class="visual"><span class="tag">Curated vintage</span><img src="inventory/RA0002/cover.png" alt="iPhone SE (2nd Generation) – Black, 64GB, Good condition" loading="lazy"></div><div class="details"><div>iPhone SE (2nd Generation) – Black, 64GB, Good condition<small>iPhone · iPhone SE (2nd Generation)</small></div><span class="price">£50.00</span></div></a>
+<!-- INVENTORY:END -->
       </section>
       <p class="note">Not obsolete. Just iconic.</p>
     </main>
@@ -469,43 +442,5 @@
     <div class="toast" role="status">
       Your archive is looking good. New pieces soon.
     </div>
-    <script>
-      const filters = [...document.querySelectorAll(".filter")],
-        cards = [...document.querySelectorAll(".card")],
-        count = document.querySelector(".count");
-      count.textContent = `${cards.length} objects`;
-      filters.forEach((button) =>
-        button.addEventListener("click", () => {
-          const key = button.dataset.filter;
-          filters.forEach((item) =>
-            item.setAttribute("aria-pressed", String(item === button)),
-          );
-          let visible = 0;
-          cards.forEach((card) => {
-            const show = key === "all" || card.dataset.category === key;
-            card.hidden = !show;
-            if (show) visible++;
-          });
-          count.textContent = `${visible} ${visible === 1 ? "object" : "objects"}`;
-        }),
-      );
-      const initialCategory = new URLSearchParams(location.search).get(
-        "category",
-      );
-      if (initialCategory) {
-        const initialFilter = filters.find(
-          (button) => button.dataset.filter === initialCategory,
-        );
-        if (initialFilter) initialFilter.click();
-      }
-      const bag = document.querySelector(".bag"),
-        toast = document.querySelector(".toast");
-      let timer;
-      bag.addEventListener("click", () => {
-        toast.classList.add("show");
-        clearTimeout(timer);
-        timer = setTimeout(() => toast.classList.remove("show"), 2500);
-      });
-    </script>
   </body>
 </html>

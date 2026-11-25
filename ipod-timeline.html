@@ -1784,6 +1784,7 @@
       endEra.append(endEntry);
       document.querySelectorAll(".entry").forEach((e) => {
         const b = e.querySelector(".expand");
+        if (!b) return;
         b.addEventListener("click", () => {
           const open = e.getAttribute("aria-expanded") === "true";
           e.setAttribute("aria-expanded", String(!open));

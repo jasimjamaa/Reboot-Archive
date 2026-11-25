@@ -1,8 +1,18 @@
 {
   "Listings": [
     {
+      "Product ID": "RA0001",
+      "Catalog URL": "inventory/RA0001/listing.html",
+      "Title": "iPod shuffle 4th Generation (Late 2012) -Purple",
+      "Category": "Music",
+      "Device Series": "iPod",
+      "Device Model": "iPod shuffle 4th Generation",
+      "Price (in GBP)": 21.5,
+      "Status": "sold"
+    },
+    {
       "Product ID": "RA0002",
-      "Catalog URL": "inventory/RA0003/listing.html",
+      "Catalog URL": "inventory/RA0002/listing.html",
       "Title": "iPhone SE (2nd Generation) – Black, 64GB, Good condition",
       "Category": "Portable",
       "Device Series": "iPhone",

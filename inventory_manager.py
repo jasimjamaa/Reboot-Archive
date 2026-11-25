@@ -215,10 +215,11 @@ def archive_card(data: dict) -> str:
 
 
 def rebuild_catalog_and_collection() -> None:
-    active = [item for item in all_listings() if item.get("Active", False) and not item.get("Archived", False)]
-    archived = sorted((item for item in all_listings() if item.get("Archived", False)), key=lambda item: str(item.get("Date sold", "")), reverse=True)
+    all_items = all_listings()
+    active = [item for item in all_items if item.get("Active", False) and not item.get("Archived", False)]
+    archived = sorted((item for item in all_items if item.get("Archived", False)), key=lambda item: str(item.get("Date sold", "")), reverse=True)
     entries = []
-    for item in active:
+    for item in all_items:
         product_id = str(item.get("Product ID", ""))
         if not ID_RE.fullmatch(product_id):
             continue
