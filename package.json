@@ -1,0 +1,13 @@
+{
+  "name": "reboot-archive",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint:python": "ruff check .",
+    "format:python": "ruff format ."
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  }
+}

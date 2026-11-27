@@ -57,7 +57,7 @@
 .menu-toggle-icon::after {
   position: absolute;
   left: 0;
-  content: "";
+  content: '';
 }
 
 .menu-toggle-icon::before {

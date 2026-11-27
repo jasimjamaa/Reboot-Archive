@@ -43,11 +43,11 @@
   cursor: pointer;
 }
 .listing-filter-toggle::after {
-  content: " +";
+  content: ' +';
   margin-left: 7px;
 }
 .listing-filter.is-open .listing-filter-toggle::after {
-  content: " −";
+  content: ' −';
 }
 .listing-filter-panel {
   position: static;
@@ -103,7 +103,7 @@
 .price-bound .filter-check {
   grid-column: 1 / -1;
 }
-.price-bound input[type="range"] {
+.price-bound input[type='range'] {
   width: 100%;
   accent-color: var(--rust);
 }
