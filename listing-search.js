@@ -137,6 +137,11 @@
       }));
     populate(category, categories, "All categories");
     populate(series, deviceSeries, "All device series");
+    const requestedCategory = new URLSearchParams(window.location.search).get(
+      "category",
+    );
+    if (requestedCategory)
+      category.value = canonical(requestedCategory, categories);
     setBounds();
     updatePriceInputs();
     render();
