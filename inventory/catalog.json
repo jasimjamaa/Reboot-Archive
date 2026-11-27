@@ -19,6 +19,16 @@
       "Device Model": "iPhone SE (2nd Generation)",
       "Price (in GBP)": 50.0,
       "Status": "available"
+    },
+    {
+      "Product ID": "RA0003",
+      "Catalog URL": "inventory/RA0003/listing.html",
+      "Title": "iPod Classic (6th Generation) – Silver",
+      "Category": "Music",
+      "Device Series": "iPod",
+      "Device Model": "iPod Classic (6th Generation)",
+      "Price (in GBP)": 75.0,
+      "Status": "available"
     }
   ]
 }
